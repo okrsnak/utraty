@@ -39,7 +39,7 @@ const SHELL = [
   './js/ui/backup-section.js',
   './js/ui/backup.js',
   './js/ui/dom.js',
-  './js/ui/note-editor.js',
+  './js/ui/entry-editor.js',
   './js/ui/overview-view.js',
   './js/ui/picker.js',
   './js/ui/recurring-section.js',

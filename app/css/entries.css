@@ -58,23 +58,58 @@ button.entry__main {
   border-bottom: 1px dotted var(--muted);
 }
 
-.entry__note-input {
-  width: 100%;
-  min-height: 40px;
+/* The amount of a plain entry is a button too: tapping it opens the form on the amount. */
+button.entry__amount {
+  min-height: 44px;
   padding: 0 2px;
-  border: 0;
-  border-bottom: 2px solid var(--text);
-  border-radius: 0;
-  background: transparent;
-  font-size: 1rem;
-  font-weight: 600;
-  font-stretch: 87.5%;
-  -webkit-appearance: none;
-  appearance: none;
+  color: inherit;
+  text-align: right;
 }
 
-.entry__note-input:focus-visible {
-  outline: none;
+/* Editing: the row opens into a white label with labelled write-in fields
+   (the shared .form-field styles live in controls.css). */
+
+.entry.is-editing {
+  display: block;
+  padding: 8px 0 14px;
+}
+
+.entry-editor {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px;
+  padding: 12px;
+  background: var(--surface);
+  border-top: 3px solid var(--rule);
+}
+
+.entry-editor .is-wide,
+.entry-editor__wide {
+  grid-column: 1 / -1;
+}
+
+.entry-editor__amount {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.entry-editor__amount input {
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-stretch: 62%;
+  font-variant-numeric: tabular-nums;
+}
+
+.entry-editor__currency {
+  font-weight: 800;
+  font-stretch: 75%;
+}
+
+.entry-editor__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .entry__amount {
@@ -106,8 +141,7 @@ button.entry__main {
   letter-spacing: 0.05em;
 }
 
-.entry__restore,
-.entry__done {
+.entry__restore {
   min-height: 44px;
   padding: 0 14px;
   background: var(--yellow);
@@ -131,8 +165,4 @@ button.entry__main {
 
 .empty p {
   font-weight: 600;
-}
-
-.entry__note-input::placeholder {
-  color: var(--muted);
 }

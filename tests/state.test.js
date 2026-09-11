@@ -13,6 +13,8 @@ import {
   activeCategories,
   categoryNameError,
   setExpenseNote,
+  updateExpense,
+  expenseEditError,
   MAX_NOTE,
 } from '../app/js/state.js';
 
@@ -67,6 +69,52 @@ test('setExpenseNote trims the note and changes only that expense', () => {
   assert.equal(note(state, 'x1'), 'polední menu');
   assert.equal(note(setExpenseNote(state, 'x1', 'x'.repeat(250)), 'x1').length, MAX_NOTE);
   assert.equal(setExpenseNote(state, 'missing', 'nic'), state);
+});
+
+test('updateExpense changes the amount and note of one expense', () => {
+  const state = addExpense(createInitialState(), lunch);
+  const edited = updateExpense(state, 'x1', { amount: 15000, note: '  menu a dezert ' }).expenses[0];
+  assert.equal(edited.amount, 15000);
+  assert.equal(edited.note, 'menu a dezert');
+  assert.equal(edited.categoryId, 'jidlo');
+  assert.equal(state.expenses[0].amount, 12990);
+  assert.equal(updateExpense(state, 'missing', { amount: 100 }), state);
+});
+
+test('updateExpense refuses an amount outside the valid range', () => {
+  const state = addExpense(createInitialState(), lunch);
+  for (const bad of [0, -100, 1.5, 1_000_000_000, '100']) {
+    assert.throws(() => updateExpense(state, 'x1', { amount: bad }), RangeError, String(bad));
+  }
+});
+
+test('updateExpense moves an expense to another category and day', () => {
+  const state = addExpense(createInitialState(), lunch);
+  const edited = updateExpense(state, 'x1', { categoryId: 'tanec', date: '2026-09-10' }).expenses[0];
+  assert.equal(edited.categoryId, 'tanec');
+  assert.equal(edited.date, '2026-09-10');
+  assert.equal(edited.amount, 12990);
+});
+
+test('updateExpense refuses an impossible date or an empty category', () => {
+  const state = addExpense(createInitialState(), lunch);
+  assert.throws(() => updateExpense(state, 'x1', { date: '2026-02-30' }), RangeError);
+  assert.throws(() => updateExpense(state, 'x1', { categoryId: '' }), RangeError);
+});
+
+test('expenseEditError explains a missing amount, an unknown category or a bad date', () => {
+  const { categories } = createInitialState();
+  const valid = { amount: 100, categoryId: 'jidlo', date: '2026-09-11' };
+  assert.equal(expenseEditError(valid, categories, '2026-09-11'), null);
+  assert.match(expenseEditError({ ...valid, amount: null }, categories, '2026-09-11'), /částk/i);
+  assert.match(expenseEditError({ ...valid, categoryId: 'nope' }, categories, '2026-09-11'), /kategori/i);
+  assert.match(expenseEditError({ ...valid, date: '' }, categories, '2026-09-11'), /datum/i);
+  assert.match(expenseEditError({ ...valid, date: '2026-09-12' }, categories, '2026-09-11'), /budoucn/i);
+});
+
+test('updateExpense ignores fields it does not own', () => {
+  const state = addExpense(createInitialState(), lunch);
+  assert.deepEqual(updateExpense(state, 'x1', { id: 'hacked', createdAt: 0, recurringId: 'r1' }).expenses[0], lunch);
 });
 
 test('addExpense ignores an expense whose id is already stored', () => {

@@ -218,6 +218,11 @@ components:
     rounded: "{rounded.square}"
     padding: "0 14px"
     height: "44px"
+  entry-editor:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.text}"
+    rounded: "{rounded.square}"
+    padding: "12px"
   entry-chip:
     backgroundColor: "transparent"
     textColor: "{colors.text}"
@@ -299,7 +304,7 @@ The world refuses the fintech dashboard: no rounded, shadowed white cards, no do
 The palette is a shelf: tag yellow and ink, a grey ground with white labels, black rails, and a single sale red kept for crossing things out.
 
 ### Primary
-- **Tag Yellow** (#ffd400): the price tag itself (the entry tag and the period total) and everything you act on: primary buttons, the undo strip's action, VRÁTIT and Hotovo on entries, the selected picker option, the active tab's top bar, the countdown fill in the top rail, the stamp flash on a shelf label, and text selection. It is also the lettering on the ink date chip and ink buttons, and the focus ring on both rails. It is identical in both themes. In dark mode it also becomes the focus ring everywhere and the category bar fill.
+- **Tag Yellow** (#ffd400): the price tag itself (the entry tag and the period total) and everything you act on: primary buttons (Hotovo in the entry editor among them), the undo strip's action, VRÁTIT on a deleted entry, the selected picker option, the active tab's top bar, the countdown fill in the top rail, the stamp flash on a shelf label, and text selection (an amount opened for editing shows selected in yellow). It is also the lettering on the ink date chip and ink buttons, and the focus ring on both rails. It is identical in both themes. In dark mode it also becomes the focus ring everywhere and the category bar fill.
 
 ### Secondary
 - **Sale Red** (#e3000f): the 3px line through a deleted entry's category and amount, and nothing else. Same in both themes.
@@ -308,7 +313,7 @@ The palette is a shelf: tag yellow and ink, a grey ground with white labels, bla
 - **Ink** (#111111): numerals, rules and text on every tag, the date chip fill and the pressed keypad key. It doesn't change between themes.
 - **Ink on Yellow** (rgba(17, 17, 17, 0.74)): secondary text on a tag: the note placeholder and the total tag's count and per-day line (6.8:1 on yellow).
 - **Shelf Grey** (`ground`, #e6e7ea; dark #1d1e21): the page ground. It also shows through each tag's hang hole.
-- **Label White** (`surface`, #ffffff; dark #2a2c30): shelf labels, category rows, recurring payment rows and their form, field rows, ruled panels, boxed inputs and the undo strip.
+- **Label White** (`surface`, #ffffff; dark #2a2c30): shelf labels, category rows, the entry editor, recurring payment rows and their form, field rows, ruled panels, boxed inputs and the undo strip.
 - **Key White** (`key`, #ffffff; dark #34363b), **Function Key Grey** (`key-alt`, #d9dbe0; dark #2a2c30), **Pressed Key Grey** (`key-pressed`, #d6d8dc; dark #474a50): keypad faces. The comma and backspace keys take the function grey; the pressed grey is also a shelf label's pressed fill.
 - **Text Ink** (`text`, #111111; dark #f3f3f1) and **Muted Slate** (`muted`, #53565c; dark #a9abb0): text and secondary text. Muted carries running totals, counts, help, hints, placeholders, and both the amount and the dashed rule of a payment still to come. Field errors are set in text ink, never red. Muted holds 6.0:1 on the ground and 7.4:1 on white; in dark mode, 7.3:1 and 6.1:1.
 - **Shelf Rule** (`rule`, #111111; dark #f3f3f1): the 3px top rules, 2px day-head rules, 2px input and select borders, and the drawn rings on quiet actions and the PRAVIDELNÁ chip.
@@ -336,12 +341,12 @@ The palette is a shelf: tag yellow and ink, a grey ground with white labels, bla
 ### Hierarchy
 - **Display** (800, 62% width, min(58cqh, 34cqw) of the tag, line height 0.9, -0.01em, tabular): the amount on the entry tag, sized by the tag container so it fills the tag. It steps down to min(46cqh, 25cqw) and then min(34cqh, 18.5cqw) as the number grows. The amount is right-aligned, haléře sit at 0.46em against the top, and "Kč" follows at 75% width.
 - **Headline** (800, 62%, clamp(3rem, 17vw, 4.5rem), line height 1, tabular): the period total on the Přehled tag.
-- **Price** (800, 62%, 1.375rem, tabular): category row amounts. Day-list amounts use the same cut at 1.25rem, and payments still to come at 1.125rem in muted.
+- **Price** (800, 62%, 1.375rem, tabular): category row amounts. Day-list amounts use the same cut at 1.25rem, an amount being edited at 1.5rem, and payments still to come at 1.125rem in muted.
 - **Key** (700, 75%, 1.875rem, tabular): keypad digits.
 - **Title** (800, 75%, 1.25rem, 0.01em): the rail's period range and view names.
 - **Name** (800, 75%, 1rem, 0.03em, uppercase): shelf label names. Category rows set it at 1.0625rem. Recurring payment names and category names in Nastavení use the same 800 condensed cut at 1.0625rem, in sentence case.
-- **Label** (800, 75%, 1rem, 0.05em, uppercase): buttons and the undo strip's actions. Entry actions (VRÁTIT, Hotovo) run at 0.04em, section heads at 0.9375rem and 0.06em, tabs at 700 and 0.06em, the date chip at 0.9375rem and 0.04em, form labels at 0.8125rem, and the PRAVIDELNÁ chip at 0.6875rem.
-- **List** (700, 87.5%, 1rem): entry categories and picker options. Text being written uses the same width: notes at 600 (1.0625rem on the tag and in the undo strip, 1rem in the day list) and the recurring form's fields at 700 and 1.0625rem. The shelf hint is 600 at 0.875rem.
+- **Label** (800, 75%, 1rem, 0.05em, uppercase): buttons and the undo strip's actions. VRÁTIT on a deleted entry runs at 0.04em, section heads at 0.9375rem and 0.06em, tabs at 700 and 0.06em, the date chip at 0.9375rem and 0.04em, form labels at 0.8125rem, and the PRAVIDELNÁ chip at 0.6875rem.
+- **List** (700, 87.5%, 1rem): entry categories and picker options. Text being written uses the same width: notes at 600 (1.0625rem on the tag and in the undo strip) and labelled form fields at 700 and 1.0625rem. An amount being written keeps the Price cut. The shelf hint is 600 at 0.875rem.
 - **Body** (400, normal width, 1rem, line height 1.35): help copy and messages, saved notes under an entry, and the recurring payment line ("12 000 Kč · měsíčně · Nájem"), the last two at 0.875rem in muted. Help paragraphs stop at 60ch.
 - **Caption** (600, 0.8125rem, tabular, in muted): running totals under shelf labels, counts, section-head notes (the ruler step, "celkem 259 Kč") and picker option notes.
 
@@ -381,13 +386,13 @@ Flat by construction. There are no drop shadows and no elevation layers. Depth c
 
 ## Shapes
 
-Square by default: a shelf is cut, not moulded. White labels, category rows, recurring payment rows and their form, field rows, panels, keys and the undo strip have square corners and a 3px top rule (the strip's rule runs along its bottom edge). The price tags are slightly rounded (6px), like die-cut card. Standalone controls you press or type into are rounded 4px: buttons, the date chip, the select and the new-category input. Actions and marks set into a strip or a row stay square: the undo strip's two actions, VRÁTIT and Hotovo on entries, and the PRAVIDELNÁ chip. The one circle is the 16px hang hole, top left on every tag.
+Square by default: a shelf is cut, not moulded. White labels, category rows, the entry editor, recurring payment rows and their form, field rows, panels, keys and the undo strip have square corners and a 3px top rule (the strip's rule runs along its bottom edge). The price tags are slightly rounded (6px), like die-cut card. Standalone controls you press or type into are rounded 4px: buttons, the date chip, the select and the new-category input. Actions and marks set into a strip or a row stay square: the undo strip's two actions, VRÁTIT on a deleted entry, and the PRAVIDELNÁ chip. Buttons inside a form, like the entry editor's Hotovo and Zrušit, are standalone buttons with 4px corners. The one circle is the 16px hang hole, top left on every tag.
 
 Line styles carry meaning:
 
 - **Solid 3px top rule:** a shelf edge.
 - **Dashed rules:** something not live. An archived category takes a dashed 3px top rule; a payment still to come sits on a 1px dashed rule in muted.
-- **Dotted underline:** text you can write on. It is 2px under a field (the note on the tag, the picker, category names in Nastavení, the note line in the undo strip, and every field in the recurring form, its date included), and 1px under the "přidat poznámku" invitation on an entry without a note. A field you are writing in shows a solid underline.
+- **Dotted underline:** text you can write on. It is 2px under a field (the note on the tag, the picker, category names in Nastavení, the note line in the undo strip, and every labelled form field, dates included), and 1px under the "přidat poznámku" invitation on an entry without a note. A field you are writing in shows a solid underline.
 - **1px hairline:** divides list items.
 
 ### Named Rules
@@ -426,10 +431,10 @@ Twelve flat, square keys on a black grid: 2px rail-colour seams and a 2px rail b
 - **Press / Focus:** drops 1px when pressed; the 3px focus ring sits at a 2px offset. There is no hover treatment; this is a touch app.
 
 ### Inputs / Fields
-- **Writable line:** no box and no fill, just a 2px dotted underline (muted on white labels and in the strip, 55% ink on the tag), square. The underline turns solid while you write, in place of an outline. Used for the note on the tag, the picker, category names, the note line in the undo strip and the recurring form's fields (the native date input included). Placeholders always take muted, or ink on yellow on the tag.
-- **Form label:** capitals at 0.8125rem, 800 and 75% width, 0.05em, 4px above its field.
+- **Writable line:** no box and no fill, just a 2px dotted underline (muted on white labels and in the strip, 55% ink on the tag), square. The underline turns solid while you write, in place of an outline. Used for the note on the tag, the picker, category names, the note line in the undo strip and every labelled form field (native date inputs included). Placeholders always take muted, or ink on yellow on the tag.
+- **Labelled field:** a form label (capitals at 0.8125rem, 800 and 75% width, 0.05em) 4px above its control. The recurring form and the entry editor share it. A text or date input inside is a writable line at 1.0625rem, 700 and 87.5% width; a select inside runs the full width.
 - **Boxed input:** the new-category input, white with a 2px `rule` border, 4px corners, 48px tall.
-- **Select:** white with a 2px `rule` border, 4px corners, 44px tall, set at 1.125rem, 800 and 75% width. A chevron (the right arrow turned 90°) sits 10px from the right edge. In a form it runs the full width.
+- **Select:** white with a 2px `rule` border, 4px corners, 44px tall, set at 1.125rem, 800 and 75% width. A chevron (the right arrow turned 90°) sits 10px from the right edge.
 - **Field row:** a white label with a 3px top rule, holding a 700-weight label on the left and the control on the right.
 - **Error:** 0.875rem 700 text in text ink directly under the field, announced as an alert. Errors are never red.
 
@@ -460,11 +465,20 @@ Rows sit on 1px dashed muted rules instead of the solid hairlines of the day lis
 ### Day List and Entries
 Day heads are 1rem, 800 and 75% width, with the day's total on the right, over a 2px rule. Entries are 56px rows divided by hairlines, in three states:
 
-- **Plain:** the category in List type with its saved note beneath (0.875rem, muted), the amount in Price at 1.25rem, and a 44px close icon that deletes. Category and note together form one button, at least 44px tall, that opens the note. An entry without a note shows "přidat poznámku" in muted over a 1px dotted line.
-- **Writing a note:** the note becomes a writable line (1rem, 600, 87.5% width) with a solid 2px underline in text colour, and the close icon gives way to a yellow Hotovo.
+- **Plain:** the category in List type with its saved note beneath (0.875rem, muted), the amount in Price at 1.25rem, and a 44px close icon that deletes. Two buttons open the entry editor. Category and note together (at least 44px tall) open it on the note; the amount, right-aligned and at least 44px tall, opens it with the amount selected. An entry without a note shows "přidat poznámku" in muted over a 1px dotted line.
+- **Editing:** the row opens in place into the entry editor, 8px from the row above and 14px from the rule below.
 - **Deleted:** the entry stays in place for a few seconds, muted. A 3px red line strikes its category and amount, the word SMAZÁNO (0.75rem, 800, capitals) sits under the category, and a yellow VRÁTIT button brings it back.
 
-VRÁTIT and Hotovo are the same square yellow action: 44px tall, 0 14px padding, capitals at 0.04em. An entry written by a recurring payment carries a PRAVIDELNÁ chip 6px after its category name, in any state. The chip is square, with a 1px drawn ring in `rule`, text colour, 1px 5px padding, and capitals at 0.6875rem, 800 and 75% width.
+VRÁTIT is a square yellow action: 44px tall, 0 14px padding, capitals at 0.04em. An entry written by a recurring payment carries a PRAVIDELNÁ chip 6px after its category name. The chip is square, with a 1px drawn ring in `rule`, text colour, 1px 5px padding, and capitals at 0.6875rem, 800 and 75% width.
+
+### Entry Editor
+A written expense opens into a small form: a white label with a 3px top rule, 12px padding and a two-column grid with 12px gaps.
+
+- **Částka and Datum** sit side by side. The amount is a writable line set in Price at 1.5rem, with "Kč" after it (800, 75% width); the date is a native date input on a writable line.
+- **Kategorie** (a select) and **Poznámka** (a writable line) run the full width.
+- **Error and actions:** an error line in text ink, then a primary Hotovo and a quiet Zrušit, both standalone buttons.
+
+The form speaks in the app's own words ("Zadej částku.", "Datum nemůže být v budoucnu."), not the browser's. Saving offers undo in the strip ("Uloženo · Ostatní · 150 Kč"); Escape cancels.
 
 ### Recurring Payments (Nastavení)
 The Pravidelné platby section opens with a help paragraph, then lists each payment as a white row with a 3px top rule, 6px apart, with 8px 4px 8px 12px padding. The left of a row stacks three lines:
@@ -477,7 +491,7 @@ A quiet Upravit button sits on the right. Below the list, a full-width primary b
 
 The form takes the edited row's place, or appears below the list for a new payment. It is a white label with a 3px top rule, 12px padding and 12px between fields:
 
-- Název and Částka are writable lines.
+- Název and Částka are labelled writable lines, the same labelled fields as the entry editor.
 - Kategorie and Jak často are selects; Jak často offers měsíčně, čtvrtletně, pololetně and ročně.
 - První platba is a native date input on a writable line.
 

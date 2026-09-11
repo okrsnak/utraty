@@ -1,5 +1,8 @@
 // App state and its pure transitions. Every function returns a new state.
 
+import { isValidIsoDate } from './dates.js';
+import { MAX_AMOUNT } from './money.js';
+
 export const STATE_VERSION = 1;
 export const DEFAULT_PAYDAY = 10;
 export const MAX_CATEGORY_NAME = 24;
@@ -28,12 +31,42 @@ export function createExpense({ amount, categoryId, date, note = '' }, { id, cre
   return { id, amount, categoryId, date, note: cleanNote(note), createdAt };
 }
 
-export function setExpenseNote(state, expenseId, note) {
+const EDITABLE_EXPENSE_FIELDS = ['amount', 'categoryId', 'date', 'note'];
+
+function checkExpenseField(field, value) {
+  if (field === 'amount' && !(Number.isInteger(value) && value > 0 && value <= MAX_AMOUNT)) {
+    throw new RangeError(`Neplatná částka: ${value}`);
+  }
+  if (field === 'date' && !isValidIsoDate(value)) throw new RangeError(`Neplatné datum: ${value}`);
+  if (field === 'categoryId' && !(typeof value === 'string' && value.length > 0)) throw new RangeError('Chybí kategorie.');
+}
+
+// Changes what a person may edit on a written expense (amount, category, date,
+// note); id, createdAt and recurringId stay as they were.
+export function updateExpense(state, expenseId, changes) {
   if (!state.expenses.some((expense) => expense.id === expenseId)) return state;
+  const patch = Object.fromEntries(EDITABLE_EXPENSE_FIELDS.filter((field) => field in changes).map((field) => {
+    checkExpenseField(field, changes[field]);
+    return [field, field === 'note' ? cleanNote(changes[field]) : changes[field]];
+  }));
   return {
     ...state,
-    expenses: state.expenses.map((expense) => (expense.id === expenseId ? { ...expense, note: cleanNote(note) } : expense)),
+    expenses: state.expenses.map((expense) => (expense.id === expenseId ? { ...expense, ...patch } : expense)),
   };
+}
+
+export function setExpenseNote(state, expenseId, note) {
+  return updateExpense(state, expenseId, { note });
+}
+
+// Why an edited expense cannot be saved yet, or null. Any existing category
+// counts (an archived one may stay); the day cannot be in the future.
+export function expenseEditError({ amount, categoryId, date }, categories, today) {
+  if (!Number.isInteger(amount) || amount <= 0 || amount > MAX_AMOUNT) return 'Zadej částku.';
+  if (!categories.some((category) => category.id === categoryId)) return 'Vyber kategorii.';
+  if (!isValidIsoDate(date)) return 'Zadej datum.';
+  if (date > today) return 'Datum nemůže být v budoucnu.';
+  return null;
 }
 
 // An id that is already stored is never added twice (e.g. an undo racing a restore).

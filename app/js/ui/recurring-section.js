@@ -65,7 +65,7 @@ export function createRecurringSection({ store, toast, now, requestRender }) {
     );
   }
 
-  const field = (label, control) => h('label', { class: 'recurring__field' }, h('span', { class: 'recurring__label' }, label), control);
+  const field = (label, control) => h('label', { class: 'form-field' }, h('span', { class: 'form-label' }, label), control);
 
   const selectField = (key, options) => h(
     'span',

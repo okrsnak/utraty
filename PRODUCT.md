@@ -32,6 +32,7 @@ iPhone home-screen web app, Czech UI, CZK. Works offline. Each phone keeps its o
 ## Capabilities and Constraints
 
 - Entry: amount in CZK (up to 2 decimals), category, date (defaults to today), optional note.
+- Any written expense can be edited later in Přehled (amount, category, date, note), with undo (user request); a note can also be added straight from the strip after saving.
 - Period starts on the configured payday and includes it; it ends the day before the next payday. Paydays moved by weekends are deliberately ignored. A payday beyond the month's length clamps to the last day.
 - Categories: starts with Jídlo, Tanec, Nájem, Ostatní. Users can add, rename and archive; archived categories keep their history.
 - Category picking (user request): the most used categories are one-tap labels; a typeable field searches all categories (case- and accent-insensitive), creates a new one when the name does not exist, or offers to restore an archived one.

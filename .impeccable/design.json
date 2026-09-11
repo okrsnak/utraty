@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-11T12:11:35.170Z",
+  "generatedAt": "2026-09-11T12:27:04.975Z",
   "title": "Design System: Útraty",
   "extensions": {
     "colorMeta": {
@@ -512,7 +512,7 @@
       },
       "price": {
         "displayName": "Row Price",
-        "purpose": "Amounts in category rows (1.375rem), the day list (1.25rem) and payments still to come (1.125rem, muted)."
+        "purpose": "Amounts in category rows (1.375rem), the day list (1.25rem), the entry editor (1.5rem) and payments still to come (1.125rem, muted)."
       },
       "key": {
         "displayName": "Key Digit",
@@ -528,7 +528,7 @@
       },
       "label": {
         "displayName": "Action Capitals",
-        "purpose": "Buttons and the undo strip actions; entry actions, section heads, tabs, the date chip, form labels and the PRAVIDELNÁ chip use close variants."
+        "purpose": "Buttons and the undo strip actions; VRÁTIT, section heads, tabs, the date chip, form labels and the PRAVIDELNÁ chip use close variants."
       },
       "list": {
         "displayName": "List Line",
@@ -663,12 +663,12 @@
       "css": ".ds-btn-ink{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:0 16px;border:0;border-radius:4px;background:var(--rail,#111111);color:var(--yellow,#ffd400);font-family:var(--font, 'Archivo', 'Helvetica Neue', Arial, sans-serif);font-size:1rem;font-weight:800;font-stretch:75%;text-transform:uppercase;letter-spacing:.05em;cursor:pointer}.ds-btn-ink:active{transform:translateY(1px)}.ds-btn-ink:focus-visible{outline:3px solid var(--focus,#111111);outline-offset:2px}"
     },
     {
-      "name": "Writable Line",
+      "name": "Entry Editor",
       "kind": "input",
-      "refersTo": "writable-line",
-      "description": "Text you can write on: no box, a 2px dotted underline that turns solid on focus, here as the category picker slot on a ruled white label.",
-      "html": "<div class=\"ds-write\"><input class=\"ds-write__input\" type=\"text\" placeholder=\"Hledat nebo nová…\" aria-label=\"Hledat kategorii\"></div>",
-      "css": ".ds-write{display:grid;align-items:center;width:220px;min-height:58px;padding:0 10px;background:var(--surface,#ffffff);border-top:3px solid var(--rule,#111111)}.ds-write__input{min-width:0;min-height:40px;padding:0;border:0;border-bottom:2px dotted var(--muted,#53565c);border-radius:0;background:transparent;color:var(--text,#111111);font-family:var(--font, 'Archivo', 'Helvetica Neue', Arial, sans-serif);font-size:1rem;font-weight:700;font-stretch:75%;appearance:none}.ds-write__input::placeholder{color:var(--muted,#53565c)}.ds-write__input:focus-visible{outline:none;border-bottom-style:solid}"
+      "refersTo": "entry-editor",
+      "description": "A written expense opened in place: labelled writable lines (dotted, solid while you write) on a ruled white label, the amount in the 62% price cut, a full-width select, and a yellow Hotovo beside a quiet Zrušit.",
+      "html": "<form class=\"ds-editor\" novalidate><label class=\"ds-editor__field\"><span class=\"ds-editor__label\">Částka</span><span class=\"ds-editor__amount\"><input class=\"ds-editor__input ds-editor__input--amount\" value=\"129,90\" inputmode=\"decimal\" aria-label=\"Částka v korunách\"><span class=\"ds-editor__currency\">Kč</span></span></label><label class=\"ds-editor__field\"><span class=\"ds-editor__label\">Datum</span><input class=\"ds-editor__input\" type=\"date\" value=\"2026-09-11\"></label><label class=\"ds-editor__field ds-editor__wide\"><span class=\"ds-editor__label\">Kategorie</span><span class=\"ds-editor__select\"><select><option>Jídlo</option><option>Tanec</option><option>Nájem</option></select><svg class=\"ds-editor__chevron\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M9 5l7 7-7 7\"/></svg></span></label><label class=\"ds-editor__field ds-editor__wide\"><span class=\"ds-editor__label\">Poznámka</span><input class=\"ds-editor__input\" type=\"text\" placeholder=\"za co?\"></label><div class=\"ds-editor__actions ds-editor__wide\"><button type=\"submit\" class=\"ds-editor__primary\">Hotovo</button><button type=\"button\" class=\"ds-editor__quiet\">Zrušit</button></div></form>",
+      "css": ".ds-editor{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;width:340px;padding:12px;background:var(--surface,#ffffff);border-top:3px solid var(--rule,#111111);color:var(--text,#111111);font-family:var(--font, 'Archivo', 'Helvetica Neue', Arial, sans-serif)}.ds-editor__wide{grid-column:1/-1}.ds-editor__field{display:grid;gap:4px;min-width:0}.ds-editor__label{font-size:.8125rem;font-weight:800;font-stretch:75%;text-transform:uppercase;letter-spacing:.05em}.ds-editor__input{width:100%;min-width:0;min-height:44px;padding:0 2px;border:0;border-bottom:2px dotted var(--muted,#53565c);border-radius:0;background:transparent;color:inherit;font-family:inherit;font-size:1.0625rem;font-weight:700;font-stretch:87.5%;appearance:none}.ds-editor__input::placeholder{color:var(--muted,#53565c)}.ds-editor__input:focus-visible{outline:none;border-bottom-style:solid;border-bottom-color:var(--text,#111111)}.ds-editor__input::selection{background:var(--yellow,#ffd400);color:var(--ink,#111111)}.ds-editor__amount{display:flex;align-items:baseline;gap:4px}.ds-editor__input--amount{font-size:1.5rem;font-weight:800;font-stretch:62%;font-variant-numeric:tabular-nums}.ds-editor__currency{font-weight:800;font-stretch:75%}.ds-editor__select{position:relative;display:flex}.ds-editor__select select{width:100%;min-height:44px;padding:0 40px 0 14px;border:2px solid var(--rule,#111111);border-radius:4px;background:var(--surface,#ffffff);color:inherit;font-family:inherit;font-size:1.125rem;font-weight:800;font-stretch:75%;appearance:none}.ds-editor__select select:focus-visible{outline:3px solid var(--focus,#111111);outline-offset:2px}.ds-editor__chevron{position:absolute;top:50%;right:10px;width:24px;height:24px;transform:translateY(-50%) rotate(90deg);pointer-events:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.ds-editor__actions{display:flex;flex-wrap:wrap;gap:10px}.ds-editor__primary,.ds-editor__quiet{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border:0;border-radius:4px;font-family:inherit;font-size:1rem;font-weight:800;font-stretch:75%;text-transform:uppercase;letter-spacing:.05em;cursor:pointer}.ds-editor__primary{background:var(--yellow,#ffd400);color:var(--ink,#111111)}.ds-editor__quiet{background:transparent;color:var(--text,#111111);box-shadow:inset 0 0 0 2px var(--rule,#111111)}.ds-editor__primary:active,.ds-editor__quiet:active{transform:translateY(1px)}.ds-editor__primary:focus-visible,.ds-editor__quiet:focus-visible{outline:3px solid var(--focus,#111111);outline-offset:2px}"
     },
     {
       "name": "Undo Strip",
