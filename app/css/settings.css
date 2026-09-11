@@ -1,0 +1,130 @@
+/* Nastavení: payday, the category shelf to edit, backup. */
+
+.settings {
+  display: grid;
+  gap: 30px;
+  padding: 16px var(--gutter) 40px;
+}
+
+.settings__section {
+  display: grid;
+  gap: 10px;
+}
+
+.settings__help {
+  max-width: 60ch;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+.settings__subtitle {
+  margin-top: 10px;
+  font-size: 0.875rem;
+  font-weight: 800;
+  font-stretch: 75%;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.settings__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.settings__footer {
+  font-size: 0.8125rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.category-editor {
+  display: grid;
+  gap: 6px;
+}
+
+.category-editor__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 4px 10px;
+  padding: 4px 4px 4px 12px;
+  background: var(--surface);
+  border-top: 3px solid var(--rule);
+}
+
+.category-editor__row.is-archived {
+  background: transparent;
+  border-top-style: dashed;
+  box-shadow: inset 0 0 0 1px var(--hairline);
+}
+
+.category-editor__name {
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 2px;
+  border: 0;
+  border-bottom: 2px dotted var(--muted);
+  border-radius: 0;
+  background: transparent;
+  font-size: 1.0625rem;
+  font-weight: 800;
+  font-stretch: 75%;
+  letter-spacing: 0.02em;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.category-editor__name:focus-visible {
+  outline: none;
+  border-bottom-style: solid;
+  border-bottom-color: var(--text);
+}
+
+.category-editor__archived-name {
+  font-weight: 800;
+  font-stretch: 75%;
+  color: var(--muted);
+}
+
+.category-editor .field__error,
+.add-category .field__error {
+  grid-column: 1 / -1;
+  padding-bottom: 4px;
+}
+
+.add-category {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.add-category__input {
+  min-width: 0;
+  min-height: 48px;
+  padding: 0 12px;
+  border: 2px solid var(--rule);
+  border-radius: 4px;
+  background: var(--surface);
+  font-size: 1rem;
+  font-weight: 700;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.add-category__input::placeholder {
+  color: var(--muted);
+}
+
+.confirm {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  background: var(--surface);
+  border-top: 3px solid var(--rule);
+}
+
+.confirm p {
+  font-weight: 600;
+}

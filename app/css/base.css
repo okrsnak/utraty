@@ -1,0 +1,268 @@
+/* Cenovka: shelf rail, tabs, toast and shared tokens. */
+
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url('../fonts/archivo-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url('../fonts/archivo-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --yellow: #ffd400;
+  --yellow-deep: #f2c200;
+  --ink: #111111;
+  --ink-on-yellow: rgba(17, 17, 17, 0.74);
+  --red: #e3000f;
+  --red-text: #e3000f;
+  --bar: #111111;
+  --ground: #e6e7ea;
+  --surface: #ffffff;
+  --key: #ffffff;
+  --key-pressed: #d6d8dc;
+  --key-alt: #d9dbe0;
+  --text: #111111;
+  --muted: #53565c;
+  --rule: #111111;
+  --hairline: #c7c9ce;
+  --rail: #111111;
+  --rail-text: #ffffff;
+  --rail-muted: #b9bbc0;
+  --focus: #111111;
+  --gutter: 16px;
+  --app-width: 520px;
+  --font: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --ease-print: cubic-bezier(0.2, 0.9, 0.3, 1);
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground: #1d1e21;
+    --surface: #2a2c30;
+    --key: #34363b;
+    --key-pressed: #474a50;
+    --key-alt: #2a2c30;
+    --text: #f3f3f1;
+    --muted: #a9abb0;
+    --rule: #f3f3f1;
+    --hairline: #484b51;
+    --rail: #000000;
+    --focus: #ffd400;
+    --red-text: #ff5a64;
+    --bar: #ffd400;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.35;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+
+h1, h2, h3, p, ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+::selection {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+input {
+  caret-color: currentColor;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon-button {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex: none;
+}
+
+/* App frame: views scroll between the two rails. */
+
+.app {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  max-width: var(--app-width);
+  height: 100dvh;
+  margin-inline: auto;
+}
+
+.views {
+  min-height: 0;
+  position: relative;
+}
+
+.view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.view[hidden] {
+  display: none;
+}
+
+/* The shelf-edge rail: black strip carrying the period. */
+
+.rail {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 4px 12px;
+  padding: max(env(safe-area-inset-top), 12px) var(--gutter) 10px;
+  background: var(--rail);
+  color: var(--rail-text);
+  font-stretch: 75%;
+  flex: none;
+}
+
+.rail__period {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.rail__countdown,
+.rail__status {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--rail-muted);
+  white-space: nowrap;
+}
+
+.rail__strip {
+  grid-column: 1 / -1;
+  height: 4px;
+  background: #3a3b3e;
+}
+
+.rail__strip span {
+  display: block;
+  height: 100%;
+  background: var(--yellow);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.4s var(--ease-print);
+}
+
+/* Bottom rail: tabs. The active tab carries a yellow top bar, not just a colour. */
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: var(--rail);
+  padding-bottom: env(safe-area-inset-bottom);
+  position: relative;
+  z-index: 3;
+}
+
+.tab {
+  min-height: 52px;
+  color: var(--rail-muted);
+  font-size: 1rem;
+  font-weight: 700;
+  font-stretch: 75%;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-top: 4px solid transparent;
+}
+
+.tab[aria-current='page'] {
+  color: var(--rail-text);
+  border-top-color: var(--yellow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+  }
+}

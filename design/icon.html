@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>Útraty – ikona</title>
+  <!-- Source of app/icons/*.png: rendered at 1024×1024, then downscaled. -->
+  <style>
+    @font-face {
+      font-family: 'Archivo';
+      src: url('../app/fonts/archivo-latin-ext.woff2') format('woff2');
+      font-weight: 100 900;
+      font-stretch: 62% 125%;
+    }
+
+    html,
+    body {
+      margin: 0;
+    }
+
+    body {
+      display: grid;
+      place-items: center;
+      width: 1024px;
+      height: 1024px;
+      overflow: hidden;
+      background: #111111;
+    }
+
+    .tag {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      box-sizing: border-box;
+      width: 620px;
+      height: 420px;
+      padding: 0 58px 30px 0;
+      background: #ffd400;
+      border-radius: 44px;
+      transform: rotate(-9deg);
+      color: #111111;
+      font-family: 'Archivo', sans-serif;
+      font-size: 330px;
+      font-weight: 800;
+      font-stretch: 62%;
+      line-height: 1;
+      letter-spacing: -0.01em;
+    }
+
+    .hole {
+      position: absolute;
+      top: 58px;
+      left: 58px;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #111111;
+    }
+  </style>
+</head>
+<body>
+  <div class="tag"><span class="hole"></span>Kč</div>
+</body>
+</html>

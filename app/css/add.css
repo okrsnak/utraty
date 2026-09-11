@@ -1,0 +1,223 @@
+/* Přidat: the yellow tag and the scale keypad. The shelf lives in shelf.css. */
+
+.install-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px var(--gutter) 0;
+  padding: 6px 0 6px 12px;
+  background: var(--surface);
+  border-top: 3px solid var(--rule);
+  font-size: 0.875rem;
+  flex: none;
+}
+
+.install-hint[hidden] {
+  display: none;
+}
+
+/* The tag takes the height the keypad and shelf leave: about a third of the screen. */
+
+.tag {
+  position: relative;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 4px;
+  margin: 12px var(--gutter) 0;
+  padding: 16px 18px 10px;
+  background: var(--yellow);
+  color: var(--ink);
+  border-radius: 6px;
+  flex: 1 1 0;
+  min-height: 176px;
+  max-height: 300px;
+  container-type: size;
+}
+
+.tag__hole {
+  position: absolute;
+  top: 16px;
+  left: 18px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--ground);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.tag__amount {
+  display: flex;
+  align-items: flex-start;
+  align-self: end;
+  justify-content: flex-end;
+  font-size: min(58cqh, 34cqw);
+  font-weight: 800;
+  font-stretch: 62%;
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.tag__amount[data-size='m'] {
+  font-size: min(46cqh, 25cqw);
+}
+
+.tag__amount[data-size='s'] {
+  font-size: min(34cqh, 18.5cqw);
+}
+
+.tag__amount output {
+  display: flex;
+  align-items: flex-start;
+}
+
+.tag.is-empty .price__int {
+  color: rgba(17, 17, 17, 0.5);
+}
+
+.tag__amount .price__dec {
+  font-size: 0.46em;
+  margin-top: 0.08em;
+}
+
+.tag__currency {
+  align-self: flex-end;
+  margin: 0 0 0.1em 4px;
+  font-size: clamp(1.25rem, 9cqh, 2rem);
+  font-weight: 800;
+  font-stretch: 75%;
+}
+
+.tag__meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tag__note {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 2px;
+  border: 0;
+  border-bottom: 2px dotted rgba(17, 17, 17, 0.55);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  font-stretch: 87.5%;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.tag__note::placeholder {
+  color: var(--ink-on-yellow);
+}
+
+.tag__note:focus-visible {
+  outline: none;
+  border-bottom-style: solid;
+}
+
+.tag__date {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 14px;
+  background: var(--ink);
+  color: var(--yellow);
+  border-radius: 4px;
+  font-size: 0.9375rem;
+  font-weight: 800;
+  font-stretch: 75%;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.tag__date input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.tag__date:focus-within {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.tag.is-printing .tag__amount {
+  animation: print-down 0.34s var(--ease-print);
+}
+
+@keyframes print-down {
+  0% { transform: translateY(0); opacity: 1; }
+  45% { transform: translateY(22px); opacity: 0; }
+  46% { transform: translateY(-14px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.tag.is-nudged {
+  animation: nudge 0.3s var(--ease-print);
+}
+
+@keyframes nudge {
+  0%, 100% { transform: translateX(0); }
+  30% { transform: translateX(-6px); }
+  65% { transform: translateX(4px); }
+}
+
+/* The scale keypad: one flat membrane panel, twelve printed keys on a black grid. */
+
+.keypad {
+  display: grid;
+  flex: none;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: clamp(46px, 7.4dvh, 64px);
+  gap: 2px;
+  margin: 12px var(--gutter);
+  padding: 2px;
+  background: var(--rail);
+}
+
+.keypad button {
+  display: grid;
+  place-items: center;
+  background: var(--key);
+  color: var(--text);
+  font-size: 1.875rem;
+  font-weight: 700;
+  font-stretch: 75%;
+  font-variant-numeric: tabular-nums;
+}
+
+.keypad [data-key=','],
+.keypad [data-key='back'] {
+  background: var(--key-alt);
+}
+
+/* Every key, "," and backspace included, inverts to ink while pressed. */
+.keypad button:active {
+  background: var(--ink);
+  color: var(--yellow);
+}
+
+/* Short phones (iPhone SE): tighten so the whole entry screen fits. */
+
+@media (max-height: 700px) {
+  .tag {
+    min-height: 150px;
+    margin-top: 8px;
+  }
+
+  .keypad {
+    grid-auto-rows: clamp(44px, 7dvh, 52px);
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}

@@ -1,0 +1,1 @@
+Origin: authored vector artwork, not AI-generated. Rendered from design/icon.html (HTML/CSS; Archivo variable font, SIL Open Font License) with Playwright Chromium at 1024x1024 px to design/icon-1024.png, then downscaled with macOS sips to 512, 192 and 180 px.

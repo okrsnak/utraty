@@ -1,0 +1,7 @@
+.DS_Store
+node_modules/
+coverage/
+.playwright-cli/
+.impeccable/review/
+.impeccable/config.local.json
+.impeccable/questions/

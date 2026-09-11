@@ -1,0 +1,204 @@
+/* The shelf of category labels and the typeable picker in its last slot. */
+
+.shelf {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 14px var(--gutter) 0;
+  flex: none;
+}
+
+.shelf__hint {
+  grid-column: 1 / -1;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-stretch: 87.5%;
+  color: var(--muted);
+}
+
+.shelf__hint.is-warning {
+  color: var(--text);
+  font-weight: 800;
+}
+
+.shelf__labels {
+  display: contents;
+}
+
+.shelf-label,
+.picker {
+  min-height: 58px;
+  background: var(--surface);
+  border-top: 3px solid var(--rule);
+}
+
+.shelf-label {
+  display: grid;
+  align-content: space-between;
+  padding: 7px 10px 6px;
+  text-align: left;
+  color: var(--text);
+}
+
+.shelf-label__name {
+  overflow: hidden;
+  font-size: 1rem;
+  font-weight: 800;
+  font-stretch: 75%;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shelf-label__total {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.shelf-label:active {
+  background: var(--key-pressed);
+  transform: translateY(1px);
+}
+
+.shelf-label.is-stamped {
+  animation: stamp 0.5s var(--ease-print);
+}
+
+@keyframes stamp {
+  0% { background: var(--yellow); color: var(--ink); transform: translateY(3px); }
+  100% { transform: translateY(0); }
+}
+
+/* Picker: a label you can write on (dotted line, like the note on the tag). */
+
+.picker {
+  grid-column: span var(--picker-span, 1);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  padding: 0 4px 0 10px;
+}
+
+.picker__input {
+  min-width: 0;
+  min-height: 40px;
+  border: 0;
+  border-bottom: 2px dotted var(--muted);
+  border-radius: 0;
+  background: transparent;
+  font-size: 1rem;
+  font-weight: 700;
+  font-stretch: 75%;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.picker__input::placeholder {
+  color: var(--muted);
+}
+
+.picker__input:focus-visible {
+  outline: none;
+  border-bottom-style: solid;
+}
+
+.picker__close {
+  display: none;
+}
+
+.picker__list {
+  grid-column: 1 / -1;
+  margin: 8px -4px 0 -10px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-top: 1px solid var(--hairline);
+}
+
+.picker__list[hidden] {
+  display: none;
+}
+
+.picker__option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 48px;
+  padding: 0 14px;
+  border-bottom: 1px solid var(--hairline);
+  font-weight: 700;
+  font-stretch: 87.5%;
+  cursor: pointer;
+}
+
+.picker__option-label {
+  flex: 1;
+  min-width: 0;
+}
+
+/* The chosen option carries a drawn marker too, not only the yellow fill. */
+.picker__marker {
+  display: inline-grid;
+  flex: none;
+  visibility: hidden;
+}
+
+.picker__option[aria-selected='true'] {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.picker__option[aria-selected='true'] .picker__marker {
+  visibility: visible;
+}
+
+.picker__option--create,
+.picker__option--restore {
+  justify-content: flex-start;
+  font-weight: 800;
+}
+
+.picker__option-note {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.picker__message {
+  padding: 12px 14px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+/* Picking mode: the keyboard is up, so the picker takes over the shelf. */
+
+.view--add.is-picking .shelf-label,
+.view--add.is-picking .shelf__hint,
+.view--add.is-picking .keypad {
+  display: none;
+}
+
+.view--add.is-picking .picker {
+  grid-column: 1 / -1;
+  padding-top: 6px;
+}
+
+.view--add.is-picking .picker__close {
+  display: inline-grid;
+}
+
+@media (max-height: 700px) {
+  .shelf {
+    margin-top: 10px;
+  }
+
+  .shelf-label,
+  .picker {
+    min-height: 52px;
+  }
+}

@@ -1,0 +1,149 @@
+/* Shared controls: section titles, buttons, fields. Yellow is what you act on. */
+
+.section-title {
+  margin-bottom: 10px;
+  font-size: 0.9375rem;
+  font-weight: 800;
+  font-stretch: 75%;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 16px;
+  background: var(--yellow);
+  color: var(--ink);
+  border-radius: 4px;
+  font-weight: 800;
+  font-stretch: 75%;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.button .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.button--quiet {
+  background: transparent;
+  color: var(--text);
+  box-shadow: inset 0 0 0 2px var(--rule);
+}
+
+/* Actions that replace or delete data: ink, because red only strikes cancelled amounts. */
+.button--ink {
+  background: var(--rail);
+  color: var(--yellow);
+}
+
+.file-button {
+  position: relative;
+  cursor: pointer;
+}
+
+.file-button:focus-within {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 6px 6px 12px;
+  background: var(--surface);
+  border-top: 3px solid var(--rule);
+}
+
+.field__label {
+  font-weight: 700;
+}
+
+.select {
+  position: relative;
+  display: inline-flex;
+}
+
+.select select {
+  min-height: 44px;
+  padding: 0 40px 0 14px;
+  border: 2px solid var(--rule);
+  border-radius: 4px;
+  background: var(--surface);
+  font-size: 1.125rem;
+  font-weight: 800;
+  font-stretch: 75%;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.select .icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%) rotate(90deg);
+  pointer-events: none;
+}
+
+.field__error {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--red-text);
+}
+
+/* Undo strip: fed down from beneath the top rail, which stays black above it
+   (toast.js sets --toast-top to the rail's bottom edge; the rail sits above it). */
+
+.toast {
+  position: fixed;
+  top: var(--toast-top, 0);
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: var(--app-width);
+  margin-inline: auto;
+  padding: 8px var(--gutter);
+  background: var(--surface);
+  border-bottom: 3px solid var(--rule);
+  animation: print-down-strip 0.26s var(--ease-print);
+}
+
+.toast[hidden] {
+  display: none;
+}
+
+.toast__text {
+  flex: 1;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.toast__action {
+  min-height: 44px;
+  padding: 0 18px;
+  background: var(--yellow);
+  color: var(--ink);
+  font-weight: 800;
+  font-stretch: 75%;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@keyframes print-down-strip {
+  from { clip-path: inset(0 0 100% 0); transform: translateY(-12px); }
+  to { clip-path: inset(0); transform: translateY(0); }
+}
