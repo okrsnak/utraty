@@ -21,8 +21,18 @@ export function createInitialState() {
   };
 }
 
+const cleanNote = (note) => note.trim().slice(0, MAX_NOTE);
+
 export function createExpense({ amount, categoryId, date, note = '' }, { id, createdAt }) {
-  return { id, amount, categoryId, date, note: note.trim().slice(0, MAX_NOTE), createdAt };
+  return { id, amount, categoryId, date, note: cleanNote(note), createdAt };
+}
+
+export function setExpenseNote(state, expenseId, note) {
+  if (!state.expenses.some((expense) => expense.id === expenseId)) return state;
+  return {
+    ...state,
+    expenses: state.expenses.map((expense) => (expense.id === expenseId ? { ...expense, note: cleanNote(note) } : expense)),
+  };
 }
 
 // An id that is already stored is never added twice (e.g. an undo racing a restore).

@@ -1,0 +1,784 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-11T11:47:59.597Z",
+  "title": "Design System: Útraty",
+  "extensions": {
+    "colorMeta": {
+      "yellow": {
+        "role": "primary",
+        "displayName": "Tag Yellow",
+        "canonical": "#ffd400",
+        "oklch": "oklch(88.1% 0.181 94.0)",
+        "tonalRamp": [
+          "oklch(15% 0.181 94.0)",
+          "oklch(26% 0.181 94.0)",
+          "oklch(37% 0.181 94.0)",
+          "oklch(48% 0.181 94.0)",
+          "oklch(60% 0.181 94.0)",
+          "oklch(71% 0.181 94.0)",
+          "oklch(83% 0.181 94.0)",
+          "oklch(95% 0.181 94.0)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#111111",
+        "oklch": "oklch(17.8% 0.000 0.0)",
+        "tonalRamp": [
+          "oklch(15% 0.000 0.0)",
+          "oklch(26% 0.000 0.0)",
+          "oklch(37% 0.000 0.0)",
+          "oklch(48% 0.000 0.0)",
+          "oklch(60% 0.000 0.0)",
+          "oklch(71% 0.000 0.0)",
+          "oklch(83% 0.000 0.0)",
+          "oklch(95% 0.000 0.0)"
+        ]
+      },
+      "ink-on-yellow": {
+        "role": "neutral",
+        "displayName": "Ink on Yellow",
+        "canonical": "rgba(17, 17, 17, 0.74)",
+        "oklch": "oklch(17.8% 0.000 0.0 / 0.74)",
+        "tonalRamp": [
+          "oklch(15% 0.000 0.0 / 0.74)",
+          "oklch(26% 0.000 0.0 / 0.74)",
+          "oklch(37% 0.000 0.0 / 0.74)",
+          "oklch(48% 0.000 0.0 / 0.74)",
+          "oklch(60% 0.000 0.0 / 0.74)",
+          "oklch(71% 0.000 0.0 / 0.74)",
+          "oklch(83% 0.000 0.0 / 0.74)",
+          "oklch(95% 0.000 0.0 / 0.74)"
+        ]
+      },
+      "red": {
+        "role": "secondary",
+        "displayName": "Sale Red",
+        "canonical": "#e3000f",
+        "oklch": "oklch(57.6% 0.235 28.1)",
+        "tonalRamp": [
+          "oklch(15% 0.235 28.1)",
+          "oklch(26% 0.235 28.1)",
+          "oklch(37% 0.235 28.1)",
+          "oklch(48% 0.235 28.1)",
+          "oklch(60% 0.235 28.1)",
+          "oklch(71% 0.235 28.1)",
+          "oklch(83% 0.235 28.1)",
+          "oklch(95% 0.235 28.1)"
+        ]
+      },
+      "ground": {
+        "role": "neutral",
+        "displayName": "Shelf Grey",
+        "canonical": "#e6e7ea",
+        "oklch": "oklch(92.8% 0.004 271.4)",
+        "tonalRamp": [
+          "oklch(15% 0.004 271.4)",
+          "oklch(26% 0.004 271.4)",
+          "oklch(37% 0.004 271.4)",
+          "oklch(48% 0.004 271.4)",
+          "oklch(60% 0.004 271.4)",
+          "oklch(71% 0.004 271.4)",
+          "oklch(83% 0.004 271.4)",
+          "oklch(95% 0.004 271.4)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Label White",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 0.0)",
+        "tonalRamp": [
+          "oklch(15% 0.000 0.0)",
+          "oklch(26% 0.000 0.0)",
+          "oklch(37% 0.000 0.0)",
+          "oklch(48% 0.000 0.0)",
+          "oklch(60% 0.000 0.0)",
+          "oklch(71% 0.000 0.0)",
+          "oklch(83% 0.000 0.0)",
+          "oklch(95% 0.000 0.0)"
+        ]
+      },
+      "key": {
+        "role": "neutral",
+        "displayName": "Key White",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 0.0)",
+        "tonalRamp": [
+          "oklch(15% 0.000 0.0)",
+          "oklch(26% 0.000 0.0)",
+          "oklch(37% 0.000 0.0)",
+          "oklch(48% 0.000 0.0)",
+          "oklch(60% 0.000 0.0)",
+          "oklch(71% 0.000 0.0)",
+          "oklch(83% 0.000 0.0)",
+          "oklch(95% 0.000 0.0)"
+        ]
+      },
+      "key-pressed": {
+        "role": "neutral",
+        "displayName": "Pressed Key Grey",
+        "canonical": "#d6d8dc",
+        "oklch": "oklch(88.2% 0.006 264.5)",
+        "tonalRamp": [
+          "oklch(15% 0.006 264.5)",
+          "oklch(26% 0.006 264.5)",
+          "oklch(37% 0.006 264.5)",
+          "oklch(48% 0.006 264.5)",
+          "oklch(60% 0.006 264.5)",
+          "oklch(71% 0.006 264.5)",
+          "oklch(83% 0.006 264.5)",
+          "oklch(95% 0.006 264.5)"
+        ]
+      },
+      "key-alt": {
+        "role": "neutral",
+        "displayName": "Function Key Grey",
+        "canonical": "#d9dbe0",
+        "oklch": "oklch(89.1% 0.007 268.5)",
+        "tonalRamp": [
+          "oklch(15% 0.007 268.5)",
+          "oklch(26% 0.007 268.5)",
+          "oklch(37% 0.007 268.5)",
+          "oklch(48% 0.007 268.5)",
+          "oklch(60% 0.007 268.5)",
+          "oklch(71% 0.007 268.5)",
+          "oklch(83% 0.007 268.5)",
+          "oklch(95% 0.007 268.5)"
+        ]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Text Ink",
+        "canonical": "#111111",
+        "oklch": "oklch(17.8% 0.000 0.0)",
+        "tonalRamp": [
+          "oklch(15% 0.000 0.0)",
+          "oklch(26% 0.000 0.0)",
+          "oklch(37% 0.000 0.0)",
+          "oklch(48% 0.000 0.0)",
+          "oklch(60% 0.000 0.0)",
+          "oklch(71% 0.000 0.0)",
+          "oklch(83% 0.000 0.0)",
+          "oklch(95% 0.000 0.0)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Slate",
+        "canonical": "#53565c",
+        "oklch": "oklch(45.3% 0.010 264.5)",
+        "tonalRamp": [
+          "oklch(15% 0.010 264.5)",
+          "oklch(26% 0.010 264.5)",
+          "oklch(37% 0.010 264.5)",
+          "oklch(48% 0.010 264.5)",
+          "oklch(60% 0.010 264.5)",
+          "oklch(71% 0.010 264.5)",
+          "oklch(83% 0.010 264.5)",
+          "oklch(95% 0.010 264.5)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Shelf Rule",
+        "canonical": "#111111",
+        "oklch": "oklch(17.8% 0.000 0.0)",
+        "tonalRamp": [
+          "oklch(15% 0.000 0.0)",
+          "oklch(26% 0.000 0.0)",
+          "oklch(37% 0.000 0.0)",
+          "oklch(48% 0.000 0.0)",
+          "oklch(60% 0.000 0.0)",
+          "oklch(71% 0.000 0.0)",
+          "oklch(83% 0.000 0.0)",
+          "oklch(95% 0.000 0.0)"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline Grey",
+        "canonical": "#c7c9ce",
+        "oklch": "oklch(83.6% 0.007 268.5)",
+        "tonalRamp": [
+          "oklch(15% 0.007 268.5)",
+          "oklch(26% 0.007 268.5)",
+          "oklch(37% 0.007 268.5)",
+          "oklch(48% 0.007 268.5)",
+          "oklch(60% 0.007 268.5)",
+          "oklch(71% 0.007 268.5)",
+          "oklch(83% 0.007 268.5)",
+          "oklch(95% 0.007 268.5)"
+        ]
+      },
+      "bar": {
+        "role": "neutral",
+        "displayName": "Bar Ink",
+        "canonical": "#111111",
+        "oklch": "oklch(17.8% 0.000 0.0)",
+        "tonalRamp": [
+          "oklch(15% 0.000 0.0)",
+          "oklch(26% 0.000 0.0)",
+          "oklch(37% 0.000 0.0)",
+          "oklch(48% 0.000 0.0)",
+          "oklch(60% 0.000 0.0)",
+          "oklch(71% 0.000 0.0)",
+          "oklch(83% 0.000 0.0)",
+          "oklch(95% 0.000 0.0)"
+        ]
+      },
+      "focus": {
+        "role": "neutral",
+        "displayName": "Focus Ink",
+        "canonical": "#111111",
+        "oklch": "oklch(17.8% 0.000 0.0)",
+        "tonalRamp": [
+          "oklch(15% 0.000 0.0)",
+          "oklch(26% 0.000 0.0)",
+          "oklch(37% 0.000 0.0)",
+          "oklch(48% 0.000 0.0)",
+          "oklch(60% 0.000 0.0)",
+          "oklch(71% 0.000 0.0)",
+          "oklch(83% 0.000 0.0)",
+          "oklch(95% 0.000 0.0)"
+        ]
+      },
+      "rail": {
+        "role": "neutral",
+        "displayName": "Rail Black",
+        "canonical": "#111111",
+        "oklch": "oklch(17.8% 0.000 0.0)",
+        "tonalRamp": [
+          "oklch(15% 0.000 0.0)",
+          "oklch(26% 0.000 0.0)",
+          "oklch(37% 0.000 0.0)",
+          "oklch(48% 0.000 0.0)",
+          "oklch(60% 0.000 0.0)",
+          "oklch(71% 0.000 0.0)",
+          "oklch(83% 0.000 0.0)",
+          "oklch(95% 0.000 0.0)"
+        ]
+      },
+      "rail-text": {
+        "role": "neutral",
+        "displayName": "Rail White",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 0.0)",
+        "tonalRamp": [
+          "oklch(15% 0.000 0.0)",
+          "oklch(26% 0.000 0.0)",
+          "oklch(37% 0.000 0.0)",
+          "oklch(48% 0.000 0.0)",
+          "oklch(60% 0.000 0.0)",
+          "oklch(71% 0.000 0.0)",
+          "oklch(83% 0.000 0.0)",
+          "oklch(95% 0.000 0.0)"
+        ]
+      },
+      "rail-muted": {
+        "role": "neutral",
+        "displayName": "Rail Grey",
+        "canonical": "#b9bbc0",
+        "oklch": "oklch(79.2% 0.007 268.5)",
+        "tonalRamp": [
+          "oklch(15% 0.007 268.5)",
+          "oklch(26% 0.007 268.5)",
+          "oklch(37% 0.007 268.5)",
+          "oklch(48% 0.007 268.5)",
+          "oklch(60% 0.007 268.5)",
+          "oklch(71% 0.007 268.5)",
+          "oklch(83% 0.007 268.5)",
+          "oklch(95% 0.007 268.5)"
+        ]
+      },
+      "rail-track": {
+        "role": "neutral",
+        "displayName": "Rail Track",
+        "canonical": "#3a3b3e",
+        "oklch": "oklch(35.2% 0.005 271.3)",
+        "tonalRamp": [
+          "oklch(15% 0.005 271.3)",
+          "oklch(26% 0.005 271.3)",
+          "oklch(37% 0.005 271.3)",
+          "oklch(48% 0.005 271.3)",
+          "oklch(60% 0.005 271.3)",
+          "oklch(71% 0.005 271.3)",
+          "oklch(83% 0.005 271.3)",
+          "oklch(95% 0.005 271.3)"
+        ]
+      },
+      "ground-dark": {
+        "role": "neutral",
+        "displayName": "Shelf Grey (dark)",
+        "canonical": "#1d1e21",
+        "oklch": "oklch(23.5% 0.006 271.2)",
+        "tonalRamp": [
+          "oklch(15% 0.006 271.2)",
+          "oklch(26% 0.006 271.2)",
+          "oklch(37% 0.006 271.2)",
+          "oklch(48% 0.006 271.2)",
+          "oklch(60% 0.006 271.2)",
+          "oklch(71% 0.006 271.2)",
+          "oklch(83% 0.006 271.2)",
+          "oklch(95% 0.006 271.2)"
+        ]
+      },
+      "surface-dark": {
+        "role": "neutral",
+        "displayName": "Label White (dark)",
+        "canonical": "#2a2c30",
+        "oklch": "oklch(29.3% 0.008 264.4)",
+        "tonalRamp": [
+          "oklch(15% 0.008 264.4)",
+          "oklch(26% 0.008 264.4)",
+          "oklch(37% 0.008 264.4)",
+          "oklch(48% 0.008 264.4)",
+          "oklch(60% 0.008 264.4)",
+          "oklch(71% 0.008 264.4)",
+          "oklch(83% 0.008 264.4)",
+          "oklch(95% 0.008 264.4)"
+        ]
+      },
+      "key-dark": {
+        "role": "neutral",
+        "displayName": "Key White (dark)",
+        "canonical": "#34363b",
+        "oklch": "oklch(33.3% 0.009 268.4)",
+        "tonalRamp": [
+          "oklch(15% 0.009 268.4)",
+          "oklch(26% 0.009 268.4)",
+          "oklch(37% 0.009 268.4)",
+          "oklch(48% 0.009 268.4)",
+          "oklch(60% 0.009 268.4)",
+          "oklch(71% 0.009 268.4)",
+          "oklch(83% 0.009 268.4)",
+          "oklch(95% 0.009 268.4)"
+        ]
+      },
+      "key-pressed-dark": {
+        "role": "neutral",
+        "displayName": "Pressed Key Grey (dark)",
+        "canonical": "#474a50",
+        "oklch": "oklch(40.9% 0.011 264.4)",
+        "tonalRamp": [
+          "oklch(15% 0.011 264.4)",
+          "oklch(26% 0.011 264.4)",
+          "oklch(37% 0.011 264.4)",
+          "oklch(48% 0.011 264.4)",
+          "oklch(60% 0.011 264.4)",
+          "oklch(71% 0.011 264.4)",
+          "oklch(83% 0.011 264.4)",
+          "oklch(95% 0.011 264.4)"
+        ]
+      },
+      "key-alt-dark": {
+        "role": "neutral",
+        "displayName": "Function Key Grey (dark)",
+        "canonical": "#2a2c30",
+        "oklch": "oklch(29.3% 0.008 264.4)",
+        "tonalRamp": [
+          "oklch(15% 0.008 264.4)",
+          "oklch(26% 0.008 264.4)",
+          "oklch(37% 0.008 264.4)",
+          "oklch(48% 0.008 264.4)",
+          "oklch(60% 0.008 264.4)",
+          "oklch(71% 0.008 264.4)",
+          "oklch(83% 0.008 264.4)",
+          "oklch(95% 0.008 264.4)"
+        ]
+      },
+      "text-dark": {
+        "role": "neutral",
+        "displayName": "Text Ink (dark)",
+        "canonical": "#f3f3f1",
+        "oklch": "oklch(96.4% 0.003 106.4)",
+        "tonalRamp": [
+          "oklch(15% 0.003 106.4)",
+          "oklch(26% 0.003 106.4)",
+          "oklch(37% 0.003 106.4)",
+          "oklch(48% 0.003 106.4)",
+          "oklch(60% 0.003 106.4)",
+          "oklch(71% 0.003 106.4)",
+          "oklch(83% 0.003 106.4)",
+          "oklch(95% 0.003 106.4)"
+        ]
+      },
+      "muted-dark": {
+        "role": "neutral",
+        "displayName": "Muted Slate (dark)",
+        "canonical": "#a9abb0",
+        "oklch": "oklch(74.1% 0.007 268.5)",
+        "tonalRamp": [
+          "oklch(15% 0.007 268.5)",
+          "oklch(26% 0.007 268.5)",
+          "oklch(37% 0.007 268.5)",
+          "oklch(48% 0.007 268.5)",
+          "oklch(60% 0.007 268.5)",
+          "oklch(71% 0.007 268.5)",
+          "oklch(83% 0.007 268.5)",
+          "oklch(95% 0.007 268.5)"
+        ]
+      },
+      "rule-dark": {
+        "role": "neutral",
+        "displayName": "Shelf Rule (dark)",
+        "canonical": "#f3f3f1",
+        "oklch": "oklch(96.4% 0.003 106.4)",
+        "tonalRamp": [
+          "oklch(15% 0.003 106.4)",
+          "oklch(26% 0.003 106.4)",
+          "oklch(37% 0.003 106.4)",
+          "oklch(48% 0.003 106.4)",
+          "oklch(60% 0.003 106.4)",
+          "oklch(71% 0.003 106.4)",
+          "oklch(83% 0.003 106.4)",
+          "oklch(95% 0.003 106.4)"
+        ]
+      },
+      "hairline-dark": {
+        "role": "neutral",
+        "displayName": "Hairline Grey (dark)",
+        "canonical": "#484b51",
+        "oklch": "oklch(41.2% 0.011 264.5)",
+        "tonalRamp": [
+          "oklch(15% 0.011 264.5)",
+          "oklch(26% 0.011 264.5)",
+          "oklch(37% 0.011 264.5)",
+          "oklch(48% 0.011 264.5)",
+          "oklch(60% 0.011 264.5)",
+          "oklch(71% 0.011 264.5)",
+          "oklch(83% 0.011 264.5)",
+          "oklch(95% 0.011 264.5)"
+        ]
+      },
+      "bar-dark": {
+        "role": "primary",
+        "displayName": "Bar Ink (dark)",
+        "canonical": "#ffd400",
+        "oklch": "oklch(88.1% 0.181 94.0)",
+        "tonalRamp": [
+          "oklch(15% 0.181 94.0)",
+          "oklch(26% 0.181 94.0)",
+          "oklch(37% 0.181 94.0)",
+          "oklch(48% 0.181 94.0)",
+          "oklch(60% 0.181 94.0)",
+          "oklch(71% 0.181 94.0)",
+          "oklch(83% 0.181 94.0)",
+          "oklch(95% 0.181 94.0)"
+        ]
+      },
+      "focus-dark": {
+        "role": "primary",
+        "displayName": "Focus Ink (dark)",
+        "canonical": "#ffd400",
+        "oklch": "oklch(88.1% 0.181 94.0)",
+        "tonalRamp": [
+          "oklch(15% 0.181 94.0)",
+          "oklch(26% 0.181 94.0)",
+          "oklch(37% 0.181 94.0)",
+          "oklch(48% 0.181 94.0)",
+          "oklch(60% 0.181 94.0)",
+          "oklch(71% 0.181 94.0)",
+          "oklch(83% 0.181 94.0)",
+          "oklch(95% 0.181 94.0)"
+        ]
+      },
+      "rail-dark": {
+        "role": "neutral",
+        "displayName": "Rail Black (dark)",
+        "canonical": "#000000",
+        "oklch": "oklch(0.0% 0.000 0.0)",
+        "tonalRamp": [
+          "oklch(15% 0.000 0.0)",
+          "oklch(26% 0.000 0.0)",
+          "oklch(37% 0.000 0.0)",
+          "oklch(48% 0.000 0.0)",
+          "oklch(60% 0.000 0.0)",
+          "oklch(71% 0.000 0.0)",
+          "oklch(83% 0.000 0.0)",
+          "oklch(95% 0.000 0.0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Tag Price",
+        "purpose": "The amount on the entry tag, sized by the tag container; steps down as the number grows."
+      },
+      "headline": {
+        "displayName": "Period Total",
+        "purpose": "The total on the Přehled tag."
+      },
+      "price": {
+        "displayName": "Row Price",
+        "purpose": "Amounts in category rows (1.375rem) and the day list (1.25rem)."
+      },
+      "key": {
+        "displayName": "Key Digit",
+        "purpose": "Keypad digits."
+      },
+      "title": {
+        "displayName": "Rail Title",
+        "purpose": "The period range and view names in the top rail."
+      },
+      "name": {
+        "displayName": "Shelf Name",
+        "purpose": "Category names in capitals on shelf labels and category rows."
+      },
+      "label": {
+        "displayName": "Action Capitals",
+        "purpose": "Buttons and the undo strip actions; entry actions, section heads, tabs and the date chip use close variants."
+      },
+      "list": {
+        "displayName": "List Line",
+        "purpose": "Entry categories and picker options; notes being written and the shelf hint at the same width."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Help copy and messages, up to 60ch."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Running totals, counts, the ruler step and picker notes, in muted."
+      }
+    },
+    "shadows": [
+      {
+        "name": "hang-hole",
+        "value": "inset 0 1px 2px rgba(0, 0, 0, 0.4)",
+        "purpose": "The only soft shadow: depth for the 16px punched hole in each tag, filled with the ground colour."
+      },
+      {
+        "name": "drawn-ring",
+        "value": "inset 0 0 0 2px var(--rule)",
+        "purpose": "The 2px outline on quiet buttons and the undo strip Poznámka action, drawn inside so they keep their size."
+      },
+      {
+        "name": "archived-ring",
+        "value": "inset 0 0 0 1px var(--hairline)",
+        "purpose": "Outline for archived category rows in Nastavení, whose fill drops to transparent."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-print",
+        "value": "cubic-bezier(0.2, 0.9, 0.3, 1)",
+        "purpose": "The one curve: fast start, weighted landing. Used by every animation and transition."
+      },
+      {
+        "name": "print-down",
+        "value": "340ms var(--ease-print)",
+        "purpose": "On save the tag amount drops 22px out while fading, then the fresh zero prints in from 14px above."
+      },
+      {
+        "name": "stamp",
+        "value": "500ms var(--ease-print)",
+        "purpose": "The tapped shelf label lands 3px low in yellow with ink lettering and settles back as the yellow fades."
+      },
+      {
+        "name": "print-down-strip",
+        "value": "260ms var(--ease-print)",
+        "purpose": "The undo strip feeds down from under the top rail, clipped from the top and dropping 12px."
+      },
+      {
+        "name": "nudge",
+        "value": "300ms var(--ease-print)",
+        "purpose": "The one sideways move: the tag shakes (-6px, +4px) when a label is tapped with no amount."
+      },
+      {
+        "name": "countdown-fill",
+        "value": "transform 400ms var(--ease-print)",
+        "purpose": "The yellow countdown strip in the top rail grows left to right as the period runs."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "1ms",
+        "purpose": "Under prefers-reduced-motion every animation and transition collapses to 1ms."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "app-width",
+        "value": "520px"
+      },
+      {
+        "name": "short-phone",
+        "value": "(max-height: 700px)"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Price Tag",
+      "kind": "custom",
+      "refersTo": "price-tag",
+      "description": "The yellow shelf tag that owns the entry screen: hang hole, condensed amount with raised haléře and Kč, writable note line and ink date chip.",
+      "html": "<div class=\"ds-tag\"><span class=\"ds-tag__hole\"></span><p class=\"ds-tag__amount\"><span>129</span><span class=\"ds-tag__dec\">,90</span><span class=\"ds-tag__cur\">Kč</span></p><div class=\"ds-tag__meta\"><input class=\"ds-tag__note\" type=\"text\" placeholder=\"za co? (nepovinné)\" aria-label=\"Poznámka\"><span class=\"ds-tag__date\">Dnes</span></div></div>",
+      "css": ".ds-tag{position:relative;display:grid;align-content:end;gap:4px;width:340px;min-height:210px;padding:16px 18px 10px;background:var(--yellow,#ffd400);color:var(--ink,#111111);border-radius:6px;font-family:var(--font, 'Archivo', 'Helvetica Neue', Arial, sans-serif)}.ds-tag__hole{position:absolute;top:16px;left:18px;width:16px;height:16px;border-radius:50%;background:var(--ground,#e6e7ea);box-shadow:inset 0 1px 2px rgba(0,0,0,.4)}.ds-tag__amount{display:flex;align-items:flex-start;justify-content:flex-end;margin:0;font-size:104px;font-weight:800;font-stretch:62%;line-height:.9;letter-spacing:-.01em;font-variant-numeric:tabular-nums;white-space:nowrap}.ds-tag__dec{font-size:.46em;margin-top:.08em}.ds-tag__cur{align-self:flex-end;margin:0 0 .1em 4px;font-size:2rem;font-stretch:75%}.ds-tag__meta{display:flex;align-items:center;gap:10px}.ds-tag__note{flex:1;min-width:0;min-height:44px;padding:0 2px;border:0;border-bottom:2px dotted rgba(17,17,17,.55);border-radius:0;background:transparent;color:var(--ink,#111111);font-family:inherit;font-size:1.0625rem;font-weight:600;font-stretch:87.5%;appearance:none}.ds-tag__note::placeholder{color:var(--ink-on-yellow,rgba(17,17,17,.74))}.ds-tag__note:focus-visible{outline:none;border-bottom-style:solid}.ds-tag__date{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;background:var(--ink,#111111);color:var(--yellow,#ffd400);border-radius:4px;font-size:.9375rem;font-weight:800;font-stretch:75%;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}"
+    },
+    {
+      "name": "Shelf Label",
+      "kind": "chip",
+      "refersTo": "shelf-label",
+      "description": "A category label on the shelf: square, 3px black top rule, condensed name over its running total. Tapping saves and stamps it yellow.",
+      "html": "<div class=\"ds-shelf\"><button class=\"ds-shelf-label\" type=\"button\"><span class=\"ds-shelf-label__name\">Jídlo</span><span class=\"ds-shelf-label__total\">120 Kč</span></button><button class=\"ds-shelf-label ds-shelf-label--stamped\" type=\"button\"><span class=\"ds-shelf-label__name\">Tanec</span><span class=\"ds-shelf-label__total\">500 Kč</span></button><button class=\"ds-shelf-label\" type=\"button\"><span class=\"ds-shelf-label__name\">Nájem</span><span class=\"ds-shelf-label__total\">zatím nic</span></button></div>",
+      "css": ".ds-shelf{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:340px;padding:12px;background:var(--ground,#e6e7ea)}.ds-shelf-label{display:grid;align-content:space-between;min-height:58px;padding:7px 10px 6px;border:0;border-top:3px solid var(--rule,#111111);border-radius:0;background:var(--surface,#ffffff);color:var(--text,#111111);text-align:left;font-family:var(--font, 'Archivo', 'Helvetica Neue', Arial, sans-serif);cursor:pointer}.ds-shelf-label__name{overflow:hidden;font-size:1rem;font-weight:800;font-stretch:75%;text-transform:uppercase;letter-spacing:.03em;text-overflow:ellipsis;white-space:nowrap}.ds-shelf-label__total{font-size:.8125rem;font-weight:600;color:var(--muted,#53565c);font-variant-numeric:tabular-nums;white-space:nowrap}.ds-shelf-label:active{background:var(--key-pressed,#d6d8dc);transform:translateY(1px)}.ds-shelf-label:focus-visible{outline:3px solid var(--focus,#111111);outline-offset:2px}.ds-shelf-label--stamped{animation:ds-stamp .5s cubic-bezier(.2,.9,.3,1) infinite alternate}@keyframes ds-stamp{0%{background:var(--yellow,#ffd400);color:var(--ink,#111111);transform:translateY(3px)}100%{transform:translateY(0)}}"
+    },
+    {
+      "name": "Scale Keypad",
+      "kind": "custom",
+      "refersTo": "keypad-key",
+      "description": "Twelve flat square keys on 2px black seams, one membrane panel; every key inverts to ink with yellow digits while pressed.",
+      "html": "<div class=\"ds-keypad\" role=\"group\" aria-label=\"Klávesnice\"><button type=\"button\">1</button><button type=\"button\">2</button><button type=\"button\">3</button><button type=\"button\">4</button><button type=\"button\">5</button><button type=\"button\">6</button><button type=\"button\">7</button><button type=\"button\">8</button><button type=\"button\">9</button><button type=\"button\" class=\"ds-keypad__alt\" aria-label=\"Desetinná čárka\">,</button><button type=\"button\">0</button><button type=\"button\" class=\"ds-keypad__alt\" aria-label=\"Smazat\"><svg class=\"ds-keypad__icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M9 5h11a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H9l-6-7z\"/><path d=\"M12 9l6 6M18 9l-6 6\"/></svg></button></div>",
+      "css": ".ds-keypad{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:60px;gap:2px;width:340px;padding:2px;background:var(--rail,#111111)}.ds-keypad button{display:grid;place-items:center;border:0;border-radius:0;background:var(--key,#ffffff);color:var(--text,#111111);font-family:var(--font, 'Archivo', 'Helvetica Neue', Arial, sans-serif);font-size:1.875rem;font-weight:700;font-stretch:75%;font-variant-numeric:tabular-nums;cursor:pointer}.ds-keypad .ds-keypad__alt{background:var(--key-alt,#d9dbe0)}.ds-keypad button:active{background:var(--ink,#111111);color:var(--yellow,#ffd400)}.ds-keypad button:focus-visible{outline:3px solid var(--focus,#111111);outline-offset:2px}.ds-keypad__icon{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}"
+    },
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Yellow fill, ink condensed capitals, 4px corners: the default for any action.",
+      "html": "<button type=\"button\" class=\"ds-btn-primary\"><svg class=\"ds-btn-primary__icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 5v14M5 12h14\"/></svg>Přidat</button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:0 16px;border:0;border-radius:4px;background:var(--yellow,#ffd400);color:var(--ink,#111111);font-family:var(--font, 'Archivo', 'Helvetica Neue', Arial, sans-serif);font-size:1rem;font-weight:800;font-stretch:75%;text-transform:uppercase;letter-spacing:.05em;cursor:pointer}.ds-btn-primary:active{transform:translateY(1px)}.ds-btn-primary:focus-visible{outline:3px solid var(--focus,#111111);outline-offset:2px}.ds-btn-primary__icon{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}"
+    },
+    {
+      "name": "Quiet Button",
+      "kind": "button",
+      "refersTo": "button-quiet",
+      "description": "Transparent with a 2px ring drawn inside in the rule colour: secondary actions such as Vyřadit or Zrušit.",
+      "html": "<button type=\"button\" class=\"ds-btn-quiet\">Vyřadit</button>",
+      "css": ".ds-btn-quiet{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:0 16px;border:0;border-radius:4px;background:transparent;color:var(--text,#111111);box-shadow:inset 0 0 0 2px var(--rule,#111111);font-family:var(--font, 'Archivo', 'Helvetica Neue', Arial, sans-serif);font-size:1rem;font-weight:800;font-stretch:75%;text-transform:uppercase;letter-spacing:.05em;cursor:pointer}.ds-btn-quiet:active{transform:translateY(1px)}.ds-btn-quiet:focus-visible{outline:3px solid var(--focus,#111111);outline-offset:2px}"
+    },
+    {
+      "name": "Ink Button",
+      "kind": "button",
+      "refersTo": "button-ink",
+      "description": "Rail-black fill with yellow capitals, only for actions that replace or delete data (Obnovit, Opravdu smazat); red is never used for them.",
+      "html": "<button type=\"button\" class=\"ds-btn-ink\">Obnovit</button>",
+      "css": ".ds-btn-ink{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:0 16px;border:0;border-radius:4px;background:var(--rail,#111111);color:var(--yellow,#ffd400);font-family:var(--font, 'Archivo', 'Helvetica Neue', Arial, sans-serif);font-size:1rem;font-weight:800;font-stretch:75%;text-transform:uppercase;letter-spacing:.05em;cursor:pointer}.ds-btn-ink:active{transform:translateY(1px)}.ds-btn-ink:focus-visible{outline:3px solid var(--focus,#111111);outline-offset:2px}"
+    },
+    {
+      "name": "Writable Line",
+      "kind": "input",
+      "refersTo": "writable-line",
+      "description": "Text you can write on: no box, a 2px dotted underline that turns solid on focus, here as the category picker slot on a ruled white label.",
+      "html": "<div class=\"ds-write\"><input class=\"ds-write__input\" type=\"text\" placeholder=\"Hledat nebo nová…\" aria-label=\"Hledat kategorii\"></div>",
+      "css": ".ds-write{display:grid;align-items:center;width:220px;min-height:58px;padding:0 10px;background:var(--surface,#ffffff);border-top:3px solid var(--rule,#111111)}.ds-write__input{min-width:0;min-height:40px;padding:0;border:0;border-bottom:2px dotted var(--muted,#53565c);border-radius:0;background:transparent;color:var(--text,#111111);font-family:var(--font, 'Archivo', 'Helvetica Neue', Arial, sans-serif);font-size:1rem;font-weight:700;font-stretch:75%;appearance:none}.ds-write__input::placeholder{color:var(--muted,#53565c)}.ds-write__input:focus-visible{outline:none;border-bottom-style:solid}"
+    },
+    {
+      "name": "Undo Strip",
+      "kind": "custom",
+      "refersTo": "undo-strip",
+      "description": "The white strip fed down from under the top rail: a message with a quiet square Poznámka and a yellow VRÁTIT, or a dotted note line with a yellow Hotovo.",
+      "html": "<div class=\"ds-strips\"><div class=\"ds-strip\" role=\"status\"><p class=\"ds-strip__text\">Uloženo · Jídlo · 129,90 Kč</p><button type=\"button\" class=\"ds-strip__secondary\">Poznámka</button><button type=\"button\" class=\"ds-strip__action\">Vrátit</button></div><div class=\"ds-strip\"><input class=\"ds-strip__input\" type=\"text\" placeholder=\"za co?\" aria-label=\"Poznámka k právě uložené útratě\"><button type=\"button\" class=\"ds-strip__action\">Hotovo</button></div></div>",
+      "css": ".ds-strips{display:grid;gap:16px;width:360px;padding:12px 0;background:var(--ground,#e6e7ea)}.ds-strip{display:flex;align-items:center;gap:12px;padding:8px 16px;background:var(--surface,#ffffff);border-bottom:3px solid var(--rule,#111111);color:var(--text,#111111);font-family:var(--font, 'Archivo', 'Helvetica Neue', Arial, sans-serif);animation:ds-feed .26s cubic-bezier(.2,.9,.3,1)}.ds-strip__text{flex:1;margin:0;font-weight:600;font-variant-numeric:tabular-nums}.ds-strip__input{flex:1;min-width:0;min-height:44px;padding:0 2px;border:0;border-bottom:2px dotted var(--muted,#53565c);border-radius:0;background:transparent;color:inherit;font-family:inherit;font-size:1.0625rem;font-weight:600;font-stretch:87.5%;appearance:none}.ds-strip__input::placeholder{color:var(--muted,#53565c)}.ds-strip__input:focus-visible{outline:none;border-bottom-style:solid;border-bottom-color:var(--text,#111111)}.ds-strip__secondary,.ds-strip__action{min-height:44px;border:0;border-radius:0;font-family:inherit;font-size:1rem;font-weight:800;font-stretch:75%;text-transform:uppercase;letter-spacing:.05em;cursor:pointer}.ds-strip__secondary{padding:0 14px;background:transparent;color:var(--text,#111111);box-shadow:inset 0 0 0 2px var(--rule,#111111)}.ds-strip__action{padding:0 18px;background:var(--yellow,#ffd400);color:var(--ink,#111111)}.ds-strip__secondary:focus-visible,.ds-strip__action:focus-visible{outline:3px solid var(--focus,#111111);outline-offset:2px}@keyframes ds-feed{from{clip-path:inset(0 0 100% 0);transform:translateY(-12px)}to{clip-path:inset(0);transform:translateY(0)}}"
+    },
+    {
+      "name": "Rails and Tabs",
+      "kind": "nav",
+      "refersTo": "tab",
+      "description": "The black shelf-edge rails: period and countdown over a rail-track strip with its yellow fill on top, three condensed tabs below with a 4px yellow bar on the active one. Focus rings on the rails are yellow.",
+      "html": "<div class=\"ds-frame\"><header class=\"ds-rail\"><p class=\"ds-rail__period\">10. 9. – 9. 10.</p><p class=\"ds-rail__countdown\">Do výplaty 29 dní</p><div class=\"ds-rail__strip\"><span></span></div></header><nav class=\"ds-tabs\" aria-label=\"Hlavní nabídka\"><button type=\"button\" class=\"ds-tab\" aria-current=\"page\">Přidat</button><button type=\"button\" class=\"ds-tab\">Přehled</button><button type=\"button\" class=\"ds-tab\">Nastavení</button></nav></div>",
+      "css": ".ds-frame{display:grid;gap:24px;width:360px;background:var(--ground,#e6e7ea);font-family:var(--font, 'Archivo', 'Helvetica Neue', Arial, sans-serif)}.ds-rail{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:4px 12px;padding:12px 16px 10px;background:var(--rail,#111111);color:var(--rail-text,#ffffff);font-stretch:75%}.ds-rail p{margin:0}.ds-rail__period{font-size:1.25rem;font-weight:800;letter-spacing:.01em;white-space:nowrap}.ds-rail__countdown{font-size:.9375rem;font-weight:600;color:var(--rail-muted,#b9bbc0);white-space:nowrap}.ds-rail__strip{grid-column:1/-1;height:4px;background:var(--rail-track,#3a3b3e)}.ds-rail__strip span{display:block;width:6%;height:100%;background:var(--yellow,#ffd400)}.ds-tabs{display:grid;grid-template-columns:repeat(3,1fr);background:var(--rail,#111111)}.ds-tab{min-height:52px;border:0;border-top:4px solid transparent;background:none;color:var(--rail-muted,#b9bbc0);font-family:inherit;font-size:1rem;font-weight:700;font-stretch:75%;text-transform:uppercase;letter-spacing:.06em;cursor:pointer}.ds-tab[aria-current=\"page\"]{color:var(--rail-text,#ffffff);border-top-color:var(--yellow,#ffd400)}.ds-tab:focus-visible{outline:3px solid var(--yellow,#ffd400);outline-offset:2px}"
+    },
+    {
+      "name": "Category Row with Ruler",
+      "kind": "card",
+      "refersTo": "category-row",
+      "description": "Přehled category totals on one measured scale: ruled white row, condensed name and count, 62% amount, 8px bar with a tick ruler; archived rows take a dashed rule.",
+      "html": "<ul class=\"ds-rows\"><li class=\"ds-row\" style=\"--share:.8333;--tick:.3333\"><span class=\"ds-row__name\"><span>Nájem</span><span class=\"ds-row__count\">1×</span></span><span class=\"ds-row__amount\">1 250 <span class=\"ds-row__cur\">Kč</span></span><span class=\"ds-row__bar\"><span></span></span></li><li class=\"ds-row\" style=\"--share:.3333;--tick:.3333\"><span class=\"ds-row__name\"><span>Tanec</span><span class=\"ds-row__count\">1×</span></span><span class=\"ds-row__amount\">500 <span class=\"ds-row__cur\">Kč</span></span><span class=\"ds-row__bar\"><span></span></span></li><li class=\"ds-row ds-row--archived\" style=\"--share:.08;--tick:.3333\"><span class=\"ds-row__name\"><span>Kino</span><span class=\"ds-row__count\">2× · vyřazená</span></span><span class=\"ds-row__amount\">120 <span class=\"ds-row__cur\">Kč</span></span><span class=\"ds-row__bar\"><span></span></span></li></ul>",
+      "css": ".ds-rows{display:grid;gap:6px;width:340px;margin:0;padding:12px;list-style:none;background:var(--ground,#e6e7ea);color:var(--text,#111111);font-family:var(--font, 'Archivo', 'Helvetica Neue', Arial, sans-serif)}.ds-row{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:'name amount' 'bar bar';align-items:baseline;gap:6px 12px;padding:8px 12px 10px;background:var(--surface,#ffffff);border-top:3px solid var(--rule,#111111)}.ds-row--archived{border-top-style:dashed}.ds-row__name{grid-area:name;display:flex;align-items:baseline;gap:8px;min-width:0;font-size:1.0625rem;font-weight:800;font-stretch:75%;text-transform:uppercase;letter-spacing:.03em}.ds-row__count{flex:none;font-size:.8125rem;font-weight:600;color:var(--muted,#53565c);text-transform:none;letter-spacing:0}.ds-row__amount{grid-area:amount;font-size:1.375rem;font-weight:800;font-stretch:62%;font-variant-numeric:tabular-nums;white-space:nowrap}.ds-row__cur{font-size:.72em;font-weight:700}.ds-row__bar{grid-area:bar;position:relative;height:8px;margin-bottom:6px;background:var(--hairline,#c7c9ce)}.ds-row__bar span{display:block;width:calc(var(--share,0) * 100%);height:100%;background:var(--bar,#111111)}.ds-row__bar::after{content:'';position:absolute;top:100%;left:0;right:0;height:5px;border-right:1px solid var(--muted,#53565c);background:linear-gradient(to right,var(--muted,#53565c) 1px,transparent 1px) 0 0/calc(100% * var(--tick,1)) 100% repeat-x}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Cenovka",
+    "overview": "Cenovka is the Czech supermarket shelf price tag. Each spend is a yellow tag printed in three taps; the pay period is the shelf it lands on. Black shelf-edge rails frame the top and bottom of every view. Between them, a grey ground holds square white labels, each hung from a heavy black top rule, and the tags are the only large yellow on screen. It reads like a shop's own signage, printed and matter-of-fact, not like a finance product.\n\nDensity is shelf-like: one narrow column, controls packed 2 to 12px apart, every touch target at least 44px. Hierarchy comes from one condensed grotesque, Archivo, ranked by how narrow it runs, how heavy and how big: prices in the narrowest, heaviest cut, names and actions in condensed capitals, sentences at normal width. Colour does almost no ranking. Yellow means tag or action, ink means numerals and rules, red means cancelled.\n\nThe world refuses the fintech dashboard: no rounded, shadowed white cards, no donut chart, no gradient header, no floating plus. Motion prints, short, weighted and downward. Nothing floats.",
+    "keyCharacteristics": [
+      "One yellow tag owns each view; everything else is white label, grey ground or black rail.",
+      "Heavy 3px top rules and square corners; only tags (6px) and standalone controls (4px) are rounded.",
+      "One variable family ranked by width (62, 75, 87.5 and 100%), weight and size.",
+      "Flat throughout: depth comes from fill, rule and seam, never shadow.",
+      "Every state carries a form and a word, never colour alone.",
+      "Motion prints downward on one weighted curve.",
+      "Light and dark: the tags and their ink never change; ground, labels, keys, rules and rails do."
+    ],
+    "rules": [
+      {
+        "name": "The Tag Yellow Rule",
+        "body": "Yellow is the tag and what you act on: price tags, primary actions, the undo action, Hotovo, the chosen option, the active tab bar, the countdown fill, the stamp flash, and the focus ring on the rails. It never fills the ground, a section or a plain label.",
+        "section": "colors"
+      },
+      {
+        "name": "The Sale Red Rule",
+        "body": "Red only crosses out: it strikes cancelled amounts and does nothing else. Errors are written in ink, and actions that replace or delete data use the ink button.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tag Doesn't Dim Rule",
+        "body": "Yellow and ink are theme-invariant. Dark mode swaps the ground, labels, keys, rules and rails around the tags; the tags print exactly the same.",
+        "section": "colors"
+      },
+      {
+        "name": "The Width Is Rank Rule",
+        "body": "Rank by width before anything else: 62% for prices, 75% for names, labels, rails, keys and buttons, 87.5% for list lines, hints and notes being written, normal width for sentences. Weight follows role: 800 for prices, names and actions, 700 for keys, tabs and list lines, 600 for meta, hints and written notes, 400 for prose.",
+        "section": "typography"
+      },
+      {
+        "name": "The Small Haléře Rule",
+        "body": "Every amount prints like a shelf price: crowns big, haléře small and raised (0.46em on the tag, 0.62em lifted 0.42em inline), \"Kč\" smaller after the number, tabular figures, never wrapping.",
+        "section": "typography"
+      },
+      {
+        "name": "The Shelf Rail Rule",
+        "body": "Every view hangs between two black rails. The top rail carries what you are looking at (the period with its countdown or status, or the view name); the bottom rail carries the three tabs. Content scrolls between them, never over them.",
+        "section": "layout"
+      },
+      {
+        "name": "The Printed Flat Rule",
+        "body": "Nothing floats. To make something stand out, give it a fill, a rule or a word, never a shadow.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Shelf Edge Rule",
+        "body": "Every white label, row, field and panel hangs from a 3px top rule in `rule` and keeps square corners.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Write-Here Rule",
+        "body": "A dotted underline means you can write here: 2px under a field, 1px under the invitation to add a note. While you write, the line goes solid instead of showing a focus outline.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Form and Word Rule",
+        "body": "Every state carries a form and a word, never colour alone:\n- The active tab gets a yellow top bar.\n- The chosen option gets a chevron.\n- A deleted entry gets a red strike, SMAZÁNO and VRÁTIT.\n- An archived category gets a dashed rule and \"vyřazená\".\n- An empty category reads \"nic\".\n- An entry without a note reads \"přidat poznámku\" over a dotted line.\n- The no-amount warning is heavier and darker, and changes its words.",
+        "section": "components"
+      },
+      {
+        "name": "The Printing Motion Rule",
+        "body": "Motion prints: short, weighted and downward on `cubic-bezier(0.2, 0.9, 0.3, 1)`, from 260 to 500ms.\n- The amount drops out and a fresh one prints in.\n- A label stamps down.\n- The undo strip feeds down from under the rail. The only sideways move is the refusal nudge. Reduced motion collapses every animation to 1ms.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Do print every amount in Archivo at 62% width and 800 weight with tabular figures, small raised haléře and a smaller \"Kč\" after the number.",
+      "Do hang every white label, row, field and panel from a 3px top rule in `rule`, with square corners; round only tags (6px) and standalone controls (4px).",
+      "Do keep yellow for tags and for what you act on: primary buttons, undo, Hotovo, the chosen option, the active tab bar.",
+      "Do use the ink button (black fill, yellow lettering) for actions that replace or delete data.",
+      "Do write field errors in text ink at 700, directly under the field.",
+      "Do mark writable text with a dotted underline that goes solid while you write, with its placeholder in muted (ink on yellow on the tag).",
+      "Do give every state a form and a word, not just a colour.",
+      "Do keep touch targets at least 44px (shelf labels 58px, tabs 52px) and the column no wider than 520px.",
+      "Do move things down when they print or are pressed, on `cubic-bezier(0.2, 0.9, 0.3, 1)`, and collapse motion to 1ms under reduced motion."
+    ],
+    "donts": [
+      "Don't use red for anything but the strike through a cancelled amount: not for fills, buttons, errors or destructive actions.",
+      "Don't build the fintech dashboard: no rounded, shadowed white cards, no donut or pie chart, no gradient header, no floating plus button.",
+      "Don't add drop shadows or elevation; the hang hole's inset is the only soft shadow.",
+      "Don't introduce a second typeface; rank with Archivo's width, weight and size.",
+      "Don't signal a state with colour alone.",
+      "Don't make anything float, bounce or rise; the only sideways move is the refusal nudge.",
+      "Don't put small uppercase lead-ins above headings. Condensed capitals name the thing itself: a label, a section head, an action or a tag's name line.",
+      "Don't dim or invert the tags in dark mode."
+    ]
+  }
+}

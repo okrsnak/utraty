@@ -1,6 +1,6 @@
 // Přehled: one pay period at a time — the total, categories on one measured
 // scale and the day-by-day list. Deleted entries stay struck through for a
-// moment with a way back, instead of vanishing.
+// moment with a way back, instead of vanishing. Notes are written in note-editor.js.
 
 import { formatDayLabel, parseIsoDate, todayIso } from '../dates.js';
 import { formatAmount } from '../money.js';
@@ -9,6 +9,7 @@ import { plural } from '../plural.js';
 import { addExpense, removeExpense } from '../state.js';
 import { categoryBreakdown, dailyAverage, expensesInPeriod, groupByDate, niceScale, totalAmount } from '../summary.js';
 import { bindings, h, icon, price } from './dom.js';
+import { createNoteEditor } from './note-editor.js';
 
 const UNDO_WINDOW_MS = 6000;
 const ERROR_TOAST_MS = 8000;
@@ -24,6 +25,7 @@ export function createOverviewView({ root, store, toast, onAddRequested, now = (
   const rail = bindings(root.querySelector('.rail'));
   const body = root.querySelector('#overview');
   const nextButton = root.querySelector('[data-action="next-period"]');
+  const notes = createNoteEditor({ body, store, toast, rerender: () => render(store.get()) });
   let offset = 0;
   let struck = new Map(); // expenseId → deleted expense that can still come back
   const forgetTimers = new Map(); // expenseId → timer that ends its undo window
@@ -82,21 +84,40 @@ export function createOverviewView({ root, store, toast, onAddRequested, now = (
     );
   }
 
+  // An entry is struck (deleted, restorable), being written on (note input), or
+  // plain, where tapping it opens its note.
   function entryRow(expense, categoryName) {
-    const isStruck = struck.has(expense.id);
     const label = `${categoryName} ${formatAmount(expense.amount)}`;
-    const detail = isStruck
-      ? h('span', { class: 'entry__struck' }, 'Smazáno')
-      : expense.note && h('span', { class: 'entry__note' }, expense.note);
-    const action = isStruck
-      ? h('button', { type: 'button', class: 'entry__restore', dataset: { restore: expense.id }, 'aria-label': `Vrátit útratu ${label}` }, 'Vrátit')
-      : h('button', { type: 'button', class: 'entry__delete icon-button', dataset: { delete: expense.id }, 'aria-label': `Smazat útratu ${label}` }, icon('close'));
+    const name = h('span', { class: 'entry__category' }, categoryName);
+    const amount = h('span', { class: 'entry__amount' }, price(expense.amount));
+    if (struck.has(expense.id)) {
+      return h(
+        'li',
+        { class: 'entry is-struck' },
+        h('div', { class: 'entry__main' }, name, h('span', { class: 'entry__struck' }, 'Smazáno')),
+        amount,
+        h('button', { type: 'button', class: 'entry__restore', dataset: { restore: expense.id }, 'aria-label': `Vrátit útratu ${label}` }, 'Vrátit'),
+      );
+    }
+    if (notes.isEditing(expense.id)) {
+      return h(
+        'li',
+        { class: 'entry is-editing' },
+        h('div', { class: 'entry__main' }, name, notes.input(expense, label)),
+        amount,
+        h('button', { type: 'button', class: 'entry__done', dataset: { noteDone: expense.id } }, 'Hotovo'),
+      );
+    }
+    const note = expense.note
+      ? h('span', { class: 'entry__note' }, expense.note)
+      : h('span', { class: 'entry__note is-placeholder' }, 'přidat poznámku');
+    const describe = expense.note ? `Poznámka: ${expense.note}` : 'Bez poznámky';
     return h(
       'li',
-      { class: isStruck ? 'entry is-struck' : 'entry' },
-      h('div', { class: 'entry__main' }, h('span', { class: 'entry__category' }, categoryName), detail),
-      h('span', { class: 'entry__amount' }, price(expense.amount)),
-      action,
+      { class: 'entry' },
+      h('button', { type: 'button', class: 'entry__main', dataset: { editNote: expense.id }, 'aria-label': `${label}. ${describe}. Upravit poznámku.` }, name, note),
+      amount,
+      h('button', { type: 'button', class: 'entry__delete icon-button', dataset: { delete: expense.id }, 'aria-label': `Smazat útratu ${label}` }, icon('close')),
     );
   }
 
@@ -139,7 +160,7 @@ export function createOverviewView({ root, store, toast, onAddRequested, now = (
     const sections = visible.length === 0
       ? [emptyState()]
       : [live.length > 0 && categorySection(live, state.categories), daysSection(visible, state.categories, day)];
-    body.replaceChildren(totalTag(live, period, day), ...sections.filter(Boolean));
+    notes.keepFocus(() => body.replaceChildren(totalTag(live, period, day), ...sections.filter(Boolean)));
   }
 
   function focusButton(attribute, id) {
@@ -188,20 +209,23 @@ export function createOverviewView({ root, store, toast, onAddRequested, now = (
   body.addEventListener('click', (event) => {
     const button = event.target.closest('button');
     if (!button) return;
-    if (button.dataset.delete) deleteExpense(button.dataset.delete);
-    else if (button.dataset.restore) restoreExpense(button.dataset.restore);
-    else if (button.dataset.action === 'go-add') onAddRequested();
+    const { delete: deleteId, restore, editNote, noteDone, action } = button.dataset;
+    if (deleteId) deleteExpense(deleteId);
+    else if (restore) restoreExpense(restore);
+    else if (editNote) notes.start(editNote);
+    else if (noteDone) notes.commit();
+    else if (action === 'go-add') onAddRequested();
   });
 
-  root.querySelector('[data-action="prev-period"]').addEventListener('click', () => {
-    offset -= 1;
+  function changePeriod(step) {
+    notes.stop();
+    offset += step;
     render(store.get());
-  });
+  }
 
+  root.querySelector('[data-action="prev-period"]').addEventListener('click', () => changePeriod(-1));
   nextButton.addEventListener('click', () => {
-    if (offset >= 0) return;
-    offset += 1;
-    render(store.get());
+    if (offset < 0) changePeriod(1);
   });
 
   return { render };

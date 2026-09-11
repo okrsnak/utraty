@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="css/add.css">
   <link rel="stylesheet" href="css/shelf.css">
   <link rel="stylesheet" href="css/overview.css">
+  <link rel="stylesheet" href="css/entries.css">
   <link rel="stylesheet" href="css/settings.css">
   <script type="module" src="js/main.js"></script>
 </head>
@@ -120,6 +121,8 @@
 
     <div class="toast" id="toast" role="status" aria-live="polite" hidden>
       <p class="toast__text" id="toast-text"></p>
+      <input class="toast__input" id="toast-input" type="text" maxlength="200" enterkeyhint="done" autocomplete="off" hidden>
+      <button type="button" class="toast__secondary" id="toast-secondary" hidden></button>
       <button type="button" class="toast__action" id="toast-action">Vrátit</button>
     </div>
 

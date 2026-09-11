@@ -1,0 +1,138 @@
+/* Přehled: the day-by-day list, its entries and the empty period. */
+
+.days {
+  display: grid;
+  gap: 18px;
+}
+
+.day__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0 2px 6px;
+  border-bottom: 2px solid var(--rule);
+  font-size: 1rem;
+  font-weight: 800;
+  font-stretch: 75%;
+}
+
+.entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 8px;
+  min-height: 56px;
+  padding: 6px 0 6px 2px;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.entry__main {
+  display: grid;
+  min-width: 0;
+}
+
+.entry__category {
+  font-weight: 700;
+  font-stretch: 87.5%;
+}
+
+.entry__note {
+  overflow: hidden;
+  max-width: 100%;
+  font-size: 0.875rem;
+  color: var(--muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Tapping a plain entry opens its note; an empty one shows a dotted line to write on. */
+button.entry__main {
+  justify-items: start;
+  align-content: center;
+  min-height: 44px;
+  text-align: left;
+  color: inherit;
+}
+
+.entry__note.is-placeholder {
+  border-bottom: 1px dotted var(--muted);
+}
+
+.entry__note-input {
+  width: 100%;
+  min-height: 40px;
+  padding: 0 2px;
+  border: 0;
+  border-bottom: 2px solid var(--text);
+  border-radius: 0;
+  background: transparent;
+  font-size: 1rem;
+  font-weight: 600;
+  font-stretch: 87.5%;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.entry__note-input:focus-visible {
+  outline: none;
+}
+
+.entry__amount {
+  font-size: 1.25rem;
+  font-weight: 800;
+  font-stretch: 62%;
+}
+
+.entry__delete {
+  color: var(--muted);
+}
+
+.entry.is-struck {
+  color: var(--muted);
+}
+
+.entry.is-struck .entry__category,
+.entry.is-struck .entry__amount {
+  text-decoration: line-through;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: 3px;
+}
+
+.entry__struck {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.entry__restore,
+.entry__done {
+  min-height: 44px;
+  padding: 0 14px;
+  background: var(--yellow);
+  color: var(--ink);
+  font-weight: 800;
+  font-stretch: 75%;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Empty period */
+
+.empty {
+  display: grid;
+  justify-items: start;
+  gap: 12px;
+  padding: 16px;
+  background: var(--surface);
+  border-top: 3px solid var(--rule);
+}
+
+.empty p {
+  font-weight: 600;
+}
+
+.entry__note-input::placeholder {
+  color: var(--muted);
+}

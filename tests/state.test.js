@@ -12,6 +12,8 @@ import {
   setPayday,
   activeCategories,
   categoryNameError,
+  setExpenseNote,
+  MAX_NOTE,
 } from '../app/js/state.js';
 
 const lunch = createExpense(
@@ -52,6 +54,18 @@ test('addExpense and removeExpense return new states', () => {
   assert.deepEqual(added.expenses, [lunch]);
   assert.deepEqual(removeExpense(added, 'x1').expenses, []);
   assert.deepEqual(added.expenses, [lunch]);
+});
+
+test('setExpenseNote trims the note and changes only that expense', () => {
+  const dance = createExpense({ amount: 50000, categoryId: 'tanec', date: '2026-09-11', note: 'kurz' }, { id: 'x2', createdAt: 6 });
+  const state = addExpense(addExpense(createInitialState(), lunch), dance);
+  const updated = setExpenseNote(state, 'x1', '  Lidl  ');
+  const note = (from, id) => from.expenses.find((expense) => expense.id === id).note;
+  assert.equal(note(updated, 'x1'), 'Lidl');
+  assert.equal(note(updated, 'x2'), 'kurz');
+  assert.equal(note(state, 'x1'), 'polední menu');
+  assert.equal(note(setExpenseNote(state, 'x1', 'x'.repeat(250)), 'x1').length, MAX_NOTE);
+  assert.equal(setExpenseNote(state, 'missing', 'nic'), state);
 });
 
 test('addExpense ignores an expense whose id is already stored', () => {

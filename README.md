@@ -28,4 +28,4 @@ Ikona se renderuje z `design/icon.html` (1024 × 1024) a zmenšuje na velikosti 
 
 ## Instalace na iPhone
 
-Otevři adresu appky v Safari → Sdílet → Přidat na plochu.
+Otevři https://okrsnak.github.io/utraty/ v Safari → Sdílet → Přidat na plochu.

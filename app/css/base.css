@@ -24,11 +24,9 @@
 
 :root {
   --yellow: #ffd400;
-  --yellow-deep: #f2c200;
   --ink: #111111;
   --ink-on-yellow: rgba(17, 17, 17, 0.74);
   --red: #e3000f;
-  --red-text: #e3000f;
   --bar: #111111;
   --ground: #e6e7ea;
   --surface: #ffffff;
@@ -42,6 +40,7 @@
   --rail: #111111;
   --rail-text: #ffffff;
   --rail-muted: #b9bbc0;
+  --rail-track: #3a3b3e;
   --focus: #111111;
   --gutter: 16px;
   --app-width: 520px;
@@ -63,7 +62,6 @@
     --hairline: #484b51;
     --rail: #000000;
     --focus: #ffd400;
-    --red-text: #ff5a64;
     --bar: #ffd400;
   }
 }
@@ -219,7 +217,13 @@ input {
 .rail__strip {
   grid-column: 1 / -1;
   height: 4px;
-  background: #3a3b3e;
+  background: var(--rail-track);
+}
+
+/* On the black rails an ink focus ring would vanish; it turns yellow there. */
+.rail :focus-visible,
+.tabs :focus-visible {
+  outline-color: var(--yellow);
 }
 
 .rail__strip span {

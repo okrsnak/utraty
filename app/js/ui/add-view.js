@@ -6,7 +6,15 @@ import { formatDayLabel, isValidIsoDate, parseIsoDate, todayIso } from '../dates
 import { daysUntilNextPeriod, formatCountdown, formatPeriodLabel, periodForDate, periodProgress } from '../period.js';
 import { expensesInPeriod, totalsByCategory } from '../summary.js';
 import { shelfCategories } from '../categories.js';
-import { addCategory, addExpense, createExpense, removeCategory, removeExpense, setCategoryArchived } from '../state.js';
+import {
+  addCategory,
+  addExpense,
+  createExpense,
+  removeCategory,
+  removeExpense,
+  setCategoryArchived,
+  setExpenseNote,
+} from '../state.js';
 import { createId } from '../ids.js';
 import { bindings, h } from './dom.js';
 import { createPicker } from './picker.js';
@@ -159,8 +167,26 @@ export function createAddView({ root, store, toast, now = () => new Date() }) {
     const when = date === today() ? '' : ` · ${formatDayLabel(date, today())}`;
     toast.show(`Uloženo · ${categoryName} · ${formatAmount(amount)}${when}`, {
       onAction: () => undo(expense.id, draft, revert),
+      secondaryLabel: 'Poznámka',
+      onSecondary: () => askNote(expense.id),
     });
     return true;
+  }
+
+  // The strip turns into a line to write on, so a note can follow the save.
+  function askNote(expenseId) {
+    const saved = store.get().expenses.find((expense) => expense.id === expenseId);
+    if (!saved) return;
+    toast.ask({
+      value: saved.note,
+      placeholder: 'za co?',
+      label: 'Poznámka k právě uložené útratě',
+      onSubmit: (note) => {
+        if (note.trim() === saved.note) return;
+        const result = store.update((state) => setExpenseNote(state, expenseId, note));
+        toast.show(result.ok ? 'Poznámka uložena' : result.error, { duration: result.ok ? 3000 : ERROR_TOAST_MS });
+      },
+    });
   }
 
   function pick(choice) {
