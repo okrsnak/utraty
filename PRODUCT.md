@@ -39,7 +39,8 @@ iPhone home-screen web app, Czech UI, CZK. Works offline. Each phone keeps its o
 - Damaged records are skipped one by one, never the whole dataset; unreadable data is set aside and can be saved from Nastavení.
 - Summary per period: per-category totals and overall total, with navigation to earlier periods.
 - Undo after save/delete instead of confirmation dialogs.
-- Out of scope for v1: income / remaining budget, recurring payments, charts, shared budgets or sync.
+- Recurring payments (user request): rent, insurance, subscriptions. Each has a name, amount, category, a frequency (monthly, quarterly, half-yearly, yearly) and a first payment date. They are written automatically on the due day when the app opens; missed ones are caught up and none is ever written twice. Přehled shows the ones still due in the current period as "Ještě přijde".
+- Out of scope for now: income / remaining budget, charts, shared budgets or sync.
 - Open decisions: app name (working name "Útraty"), final category list ("doladíme spolu").
 
 ## Evidence on Hand

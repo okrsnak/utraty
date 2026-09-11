@@ -2,10 +2,11 @@
 // scale and the day-by-day list. Deleted entries stay struck through for a
 // moment with a way back, instead of vanishing. Notes are written in note-editor.js.
 
-import { formatDayLabel, parseIsoDate, todayIso } from '../dates.js';
+import { formatDayLabel, formatShortDate, parseIsoDate, todayIso } from '../dates.js';
 import { formatAmount } from '../money.js';
 import { formatPeriodLabel, periodForDate, shiftPeriod } from '../period.js';
 import { plural } from '../plural.js';
+import { upcomingInPeriod } from '../recurring.js';
 import { addExpense, removeExpense } from '../state.js';
 import { categoryBreakdown, dailyAverage, expensesInPeriod, groupByDate, niceScale, totalAmount } from '../summary.js';
 import { bindings, h, icon, price } from './dom.js';
@@ -84,11 +85,35 @@ export function createOverviewView({ root, store, toast, onAddRequested, now = (
     );
   }
 
+  // Recurring payments still to come before the next payday (current period only).
+  function upcomingSection(state, day, period) {
+    const rows = upcomingInPeriod(state.recurring, day, period);
+    if (rows.length === 0) return null;
+    return h(
+      'section',
+      { class: 'upcoming', 'aria-labelledby': 'upcoming' },
+      h(
+        'div',
+        { class: 'section-head' },
+        h('h2', { class: 'section-title', id: 'upcoming' }, 'Ještě přijde'),
+        h('p', { class: 'section-head__note' }, `celkem ${formatAmount(totalAmount(rows.map((row) => row.template)))}`),
+      ),
+      h('ul', { class: 'upcoming__rows' }, ...rows.map(({ template, date }) => h(
+        'li',
+        { class: 'upcoming__row' },
+        h('span', { class: 'upcoming__date' }, formatShortDate(date)),
+        h('span', { class: 'upcoming__name' }, template.name),
+        h('span', { class: 'upcoming__amount' }, price(template.amount)),
+      ))),
+    );
+  }
+
   // An entry is struck (deleted, restorable), being written on (note input), or
   // plain, where tapping it opens its note.
   function entryRow(expense, categoryName) {
     const label = `${categoryName} ${formatAmount(expense.amount)}`;
-    const name = h('span', { class: 'entry__category' }, categoryName);
+    const chip = expense.recurringId && h('span', { class: 'entry__chip' }, 'pravidelná');
+    const name = h('span', { class: 'entry__category' }, categoryName, chip);
     const amount = h('span', { class: 'entry__amount' }, price(expense.amount));
     if (struck.has(expense.id)) {
       return h(
@@ -157,9 +182,10 @@ export function createOverviewView({ root, store, toast, onAddRequested, now = (
 
     const live = expensesInPeriod(state.expenses, period);
     const visible = expensesInPeriod([...state.expenses, ...struck.values()], period);
+    const upcoming = offset === 0 && upcomingSection(state, day, period);
     const sections = visible.length === 0
-      ? [emptyState()]
-      : [live.length > 0 && categorySection(live, state.categories), daysSection(visible, state.categories, day)];
+      ? [upcoming, emptyState()]
+      : [upcoming, live.length > 0 && categorySection(live, state.categories), daysSection(visible, state.categories, day)];
     notes.keepFocus(() => body.replaceChildren(totalTag(live, period, day), ...sections.filter(Boolean)));
   }
 

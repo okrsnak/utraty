@@ -5,6 +5,7 @@ import { formatPeriodLabel, periodForDate } from '../period.js';
 import { MAX_CATEGORY_NAME, addCategory, categoryNameError, renameCategory, setCategoryArchived, setPayday } from '../state.js';
 import { createId } from '../ids.js';
 import { createBackupSection } from './backup-section.js';
+import { createRecurringSection } from './recurring-section.js';
 import { h, icon } from './dom.js';
 
 const ERROR_TOAST_MS = 8000;
@@ -16,7 +17,9 @@ export function createSettingsView({ root, store, toast, isStandalone, setAside,
   let drafts = {}; // focus key → rejected text to show again
   let values = {}; // focus key → text to put back into inputs while rebuilding
   let frame = 0;
+  let pendingFocus = null; // focus key to move to on the next paint
   const backup = createBackupSection({ store, toast, setAside, now, requestRender: () => render() });
+  const recurring = createRecurringSection({ store, toast, now, requestRender: (options) => render(options) });
 
   const errorLine = (key) => errors[key] && h('p', { class: 'field__error', role: 'alert' }, errors[key]);
   const section = (id, title, ...children) => h(
@@ -124,11 +127,13 @@ export function createSettingsView({ root, store, toast, isStandalone, setAside,
 
   function paint() {
     const state = store.get();
-    const focusKey = document.activeElement?.dataset?.focusKey;
+    const focusKey = pendingFocus ?? document.activeElement?.dataset?.focusKey;
+    pendingFocus = null;
     values = collectValues();
     const sections = [
       paydaySection(state),
       categoriesSection(state),
+      section('recurring', 'Pravidelné platby', ...recurring.render(state).filter(Boolean)),
       section('backup', 'Záloha', ...backup.render(state).filter(Boolean)),
       !isStandalone() && installSection(),
       h('p', { class: 'settings__footer' }, 'Útraty · data zůstávají v telefonu'),
@@ -138,7 +143,8 @@ export function createSettingsView({ root, store, toast, isStandalone, setAside,
   }
 
   // Rebuilt on the next frame, so a tap that moves focus to another field lands first.
-  function render() {
+  function render(options = {}) {
+    if (options.focus) pendingFocus = options.focus;
     cancelAnimationFrame(frame);
     frame = requestAnimationFrame(paint);
   }
@@ -191,8 +197,10 @@ export function createSettingsView({ root, store, toast, isStandalone, setAside,
     const target = event.target;
     if (target.dataset.setting === 'payday') commit((state) => setPayday(state, Number(target.value)));
     else if (target.dataset.rename) rename(target);
-    else backup.handleChange(target);
+    else if (!recurring.handleInput(target)) backup.handleChange(target);
   });
+
+  body.addEventListener('input', (event) => recurring.handleInput(event.target));
 
   body.addEventListener('keydown', (event) => {
     if (event.key === 'Enter' && event.target.dataset.rename) event.target.blur();
@@ -200,12 +208,13 @@ export function createSettingsView({ root, store, toast, isStandalone, setAside,
 
   body.addEventListener('submit', (event) => {
     event.preventDefault();
-    addNewCategory(event.target);
+    if (event.target.dataset.form === 'recurring') recurring.submit();
+    else addNewCategory(event.target);
   });
 
   body.addEventListener('click', (event) => {
     const button = event.target.closest('button');
-    if (!button) return;
+    if (!button || recurring.handleClick(button)) return;
     const { archive: archiveId, unarchive, action } = button.dataset;
     if (archiveId) archive(archiveId);
     else if (unarchive) commit((state) => setCategoryArchived(state, unarchive, false));

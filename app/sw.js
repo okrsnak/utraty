@@ -14,6 +14,7 @@ const SHELL = [
   './css/shelf.css',
   './css/overview.css',
   './css/entries.css',
+  './css/recurring.css',
   './css/settings.css',
   './fonts/archivo-latin.woff2',
   './fonts/archivo-latin-ext.woff2',
@@ -29,6 +30,7 @@ const SHELL = [
   './js/money.js',
   './js/period.js',
   './js/plural.js',
+  './js/recurring.js',
   './js/state.js',
   './js/storage.js',
   './js/summary.js',
@@ -40,6 +42,7 @@ const SHELL = [
   './js/ui/note-editor.js',
   './js/ui/overview-view.js',
   './js/ui/picker.js',
+  './js/ui/recurring-section.js',
   './js/ui/settings-view.js',
   './js/ui/toast.js',
 ];

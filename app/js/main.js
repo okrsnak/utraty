@@ -1,6 +1,8 @@
 // Composition root: load the data, wire the three views, the tabs and offline support.
 
 import { createStore } from './app-state.js';
+import { todayIso } from './dates.js';
+import { applyDueRecurring } from './recurring.js';
 import { STORAGE_KEY, listSetAside, loadState, readStoredState, removeSetAside, saveState } from './storage.js';
 import { createAddView } from './ui/add-view.js';
 import { createOverviewView } from './ui/overview-view.js';
@@ -98,6 +100,24 @@ function start() {
     if (stored && JSON.stringify(stored) !== JSON.stringify(store.get())) store.replace(stored);
   };
 
+  // Recurring payments that fell due since the app was last open are written now.
+  function writeDuePayments() {
+    const today = todayIso();
+    const { added } = applyDueRecurring(store.get(), today, Date.now());
+    if (added.length === 0) return;
+    const result = store.update((state) => applyDueRecurring(state, today, Date.now()).state);
+    if (!result.ok) {
+      toast.show(result.error, { duration: PROBLEM_TOAST_MS });
+      return;
+    }
+    const names = [...new Set(added.map((expense) => expense.note))].join(', ');
+    toast.show(`Zapsané pravidelné platby: ${names}`, {
+      actionLabel: 'Ukázat',
+      onAction: () => showView('overview'),
+      duration: 8000,
+    });
+  }
+
   store.subscribe(renderAll);
   tabs.forEach((tab) => tab.addEventListener('click', () => showView(tab.dataset.view)));
   window.addEventListener('storage', (event) => {
@@ -106,12 +126,14 @@ function start() {
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState !== 'visible') return;
     syncFromStorage();
+    writeDuePayments();
     renderAll();
   });
 
   setUpInstallHint(storage);
   renderAll();
   showView('add');
+  writeDuePayments();
 
   if (!persistent) toast.show('Tenhle prohlížeč nedovolí ukládat data. Po zavření zmizí.', { duration: PROBLEM_TOAST_MS });
   else if (loaded.problem) toast.show(loaded.problem, { duration: PROBLEM_TOAST_MS });

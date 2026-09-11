@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-11T11:47:59.597Z",
+  "generatedAt": "2026-09-11T12:11:35.170Z",
   "title": "Design System: Útraty",
   "extensions": {
     "colorMeta": {
@@ -512,7 +512,7 @@
       },
       "price": {
         "displayName": "Row Price",
-        "purpose": "Amounts in category rows (1.375rem) and the day list (1.25rem)."
+        "purpose": "Amounts in category rows (1.375rem), the day list (1.25rem) and payments still to come (1.125rem, muted)."
       },
       "key": {
         "displayName": "Key Digit",
@@ -524,15 +524,15 @@
       },
       "name": {
         "displayName": "Shelf Name",
-        "purpose": "Category names in capitals on shelf labels and category rows."
+        "purpose": "Category names in capitals on shelf labels and category rows; recurring payment and editable category names in sentence case."
       },
       "label": {
         "displayName": "Action Capitals",
-        "purpose": "Buttons and the undo strip actions; entry actions, section heads, tabs and the date chip use close variants."
+        "purpose": "Buttons and the undo strip actions; entry actions, section heads, tabs, the date chip, form labels and the PRAVIDELNÁ chip use close variants."
       },
       "list": {
         "displayName": "List Line",
-        "purpose": "Entry categories and picker options; notes being written and the shelf hint at the same width."
+        "purpose": "Entry categories and picker options; text being written and the shelf hint at the same width."
       },
       "body": {
         "displayName": "Body",
@@ -540,7 +540,7 @@
       },
       "caption": {
         "displayName": "Caption",
-        "purpose": "Running totals, counts, the ruler step and picker notes, in muted."
+        "purpose": "Running totals, counts, section-head notes and picker notes, in muted."
       }
     },
     "shadows": [
@@ -553,6 +553,11 @@
         "name": "drawn-ring",
         "value": "inset 0 0 0 2px var(--rule)",
         "purpose": "The 2px outline on quiet buttons and the undo strip Poznámka action, drawn inside so they keep their size."
+      },
+      {
+        "name": "chip-ring",
+        "value": "inset 0 0 0 1px var(--rule)",
+        "purpose": "Outline of the PRAVIDELNÁ chip on entries a recurring payment wrote."
       },
       {
         "name": "archived-ring",
@@ -688,6 +693,14 @@
       "description": "Přehled category totals on one measured scale: ruled white row, condensed name and count, 62% amount, 8px bar with a tick ruler; archived rows take a dashed rule.",
       "html": "<ul class=\"ds-rows\"><li class=\"ds-row\" style=\"--share:.8333;--tick:.3333\"><span class=\"ds-row__name\"><span>Nájem</span><span class=\"ds-row__count\">1×</span></span><span class=\"ds-row__amount\">1 250 <span class=\"ds-row__cur\">Kč</span></span><span class=\"ds-row__bar\"><span></span></span></li><li class=\"ds-row\" style=\"--share:.3333;--tick:.3333\"><span class=\"ds-row__name\"><span>Tanec</span><span class=\"ds-row__count\">1×</span></span><span class=\"ds-row__amount\">500 <span class=\"ds-row__cur\">Kč</span></span><span class=\"ds-row__bar\"><span></span></span></li><li class=\"ds-row ds-row--archived\" style=\"--share:.08;--tick:.3333\"><span class=\"ds-row__name\"><span>Kino</span><span class=\"ds-row__count\">2× · vyřazená</span></span><span class=\"ds-row__amount\">120 <span class=\"ds-row__cur\">Kč</span></span><span class=\"ds-row__bar\"><span></span></span></li></ul>",
       "css": ".ds-rows{display:grid;gap:6px;width:340px;margin:0;padding:12px;list-style:none;background:var(--ground,#e6e7ea);color:var(--text,#111111);font-family:var(--font, 'Archivo', 'Helvetica Neue', Arial, sans-serif)}.ds-row{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:'name amount' 'bar bar';align-items:baseline;gap:6px 12px;padding:8px 12px 10px;background:var(--surface,#ffffff);border-top:3px solid var(--rule,#111111)}.ds-row--archived{border-top-style:dashed}.ds-row__name{grid-area:name;display:flex;align-items:baseline;gap:8px;min-width:0;font-size:1.0625rem;font-weight:800;font-stretch:75%;text-transform:uppercase;letter-spacing:.03em}.ds-row__count{flex:none;font-size:.8125rem;font-weight:600;color:var(--muted,#53565c);text-transform:none;letter-spacing:0}.ds-row__amount{grid-area:amount;font-size:1.375rem;font-weight:800;font-stretch:62%;font-variant-numeric:tabular-nums;white-space:nowrap}.ds-row__cur{font-size:.72em;font-weight:700}.ds-row__bar{grid-area:bar;position:relative;height:8px;margin-bottom:6px;background:var(--hairline,#c7c9ce)}.ds-row__bar span{display:block;width:calc(var(--share,0) * 100%);height:100%;background:var(--bar,#111111)}.ds-row__bar::after{content:'';position:absolute;top:100%;left:0;right:0;height:5px;border-right:1px solid var(--muted,#53565c);background:linear-gradient(to right,var(--muted,#53565c) 1px,transparent 1px) 0 0/calc(100% * var(--tick,1)) 100% repeat-x}"
+    },
+    {
+      "name": "Payments Still to Come",
+      "kind": "custom",
+      "refersTo": "upcoming-row",
+      "description": "Ještě přijde: payments not written yet sit on 1px dashed muted rules with muted 62% amounts; once written, an entry sits on a solid hairline and carries the square PRAVIDELNÁ chip.",
+      "html": "<section class=\"ds-upcoming\"><div class=\"ds-upcoming__head\"><h2 class=\"ds-upcoming__title\">Ještě přijde</h2><p class=\"ds-upcoming__note\">celkem 428 Kč</p></div><ul class=\"ds-upcoming__rows\"><li class=\"ds-upcoming__row\"><span class=\"ds-upcoming__date\">25. 9.</span><span class=\"ds-upcoming__name\">Netflix</span><span class=\"ds-upcoming__amount\">259 <span class=\"ds-upcoming__cur\">Kč</span></span></li><li class=\"ds-upcoming__row\"><span class=\"ds-upcoming__date\">1. 10.</span><span class=\"ds-upcoming__name\">Spotify</span><span class=\"ds-upcoming__amount\">169 <span class=\"ds-upcoming__cur\">Kč</span></span></li></ul><ul class=\"ds-upcoming__written\"><li class=\"ds-upcoming__entry\"><span class=\"ds-upcoming__category\">Nájem<span class=\"ds-upcoming__chip\">pravidelná</span></span><span class=\"ds-upcoming__entry-amount\">12 000 <span class=\"ds-upcoming__cur\">Kč</span></span></li></ul></section>",
+      "css": ".ds-upcoming{display:grid;gap:18px;width:340px;padding:12px 16px;background:var(--ground,#e6e7ea);color:var(--text,#111111);font-family:var(--font, 'Archivo', 'Helvetica Neue', Arial, sans-serif)}.ds-upcoming__head{display:flex;align-items:baseline;justify-content:space-between;gap:12px}.ds-upcoming__title{margin:0;font-size:.9375rem;font-weight:800;font-stretch:75%;text-transform:uppercase;letter-spacing:.06em}.ds-upcoming__note{margin:0;font-size:.8125rem;font-weight:600;color:var(--muted,#53565c);font-variant-numeric:tabular-nums}.ds-upcoming__rows,.ds-upcoming__written{display:grid;margin:0;padding:0;list-style:none}.ds-upcoming__rows{margin-top:-8px}.ds-upcoming__row{display:grid;grid-template-columns:4.5em minmax(0,1fr) auto;align-items:baseline;gap:10px;min-height:44px;padding:10px 2px;border-bottom:1px dashed var(--muted,#53565c)}.ds-upcoming__date{font-weight:700;font-variant-numeric:tabular-nums}.ds-upcoming__name{overflow:hidden;font-weight:600;text-overflow:ellipsis;white-space:nowrap}.ds-upcoming__amount{font-size:1.125rem;font-weight:800;font-stretch:62%;color:var(--muted,#53565c);font-variant-numeric:tabular-nums;white-space:nowrap}.ds-upcoming__cur{font-size:.72em;font-weight:700}.ds-upcoming__entry{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px;min-height:56px;padding:6px 0 6px 2px;border-bottom:1px solid var(--hairline,#c7c9ce)}.ds-upcoming__category{font-weight:700;font-stretch:87.5%}.ds-upcoming__chip{display:inline-block;margin-left:6px;padding:1px 5px;vertical-align:2px;color:var(--text,#111111);box-shadow:inset 0 0 0 1px var(--rule,#111111);font-size:.6875rem;font-weight:800;font-stretch:75%;text-transform:uppercase;letter-spacing:.05em}.ds-upcoming__entry-amount{font-size:1.25rem;font-weight:800;font-stretch:62%;font-variant-numeric:tabular-nums;white-space:nowrap}"
     }
   ],
   "narrative": {
@@ -696,6 +709,7 @@
     "keyCharacteristics": [
       "One yellow tag owns each view; everything else is white label, grey ground or black rail.",
       "Heavy 3px top rules and square corners; only tags (6px) and standalone controls (4px) are rounded.",
+      "Solid rules hold what is written; dashed rules hold what isn't live.",
       "One variable family ranked by width (62, 75, 87.5 and 100%), weight and size.",
       "Flat throughout: depth comes from fill, rule and seam, never shadow.",
       "Every state carries a form and a word, never colour alone.",
@@ -720,7 +734,7 @@
       },
       {
         "name": "The Width Is Rank Rule",
-        "body": "Rank by width before anything else: 62% for prices, 75% for names, labels, rails, keys and buttons, 87.5% for list lines, hints and notes being written, normal width for sentences. Weight follows role: 800 for prices, names and actions, 700 for keys, tabs and list lines, 600 for meta, hints and written notes, 400 for prose.",
+        "body": "Rank by width before anything else: 62% for prices, 75% for names, labels, rails, keys and buttons, 87.5% for list lines, hints and text being written, normal width for sentences. Weight follows role: 800 for prices, names and actions, 700 for keys, tabs and list lines, 600 for meta, hints and written notes, 400 for prose.",
         "section": "typography"
       },
       {
@@ -744,13 +758,18 @@
         "section": "shapes"
       },
       {
+        "name": "The Dashed Line Rule",
+        "body": "A dashed rule means not live: an archived category, or a payment not written yet. Everything written sits on a solid rule.",
+        "section": "shapes"
+      },
+      {
         "name": "The Write-Here Rule",
         "body": "A dotted underline means you can write here: 2px under a field, 1px under the invitation to add a note. While you write, the line goes solid instead of showing a focus outline.",
         "section": "shapes"
       },
       {
         "name": "The Form and Word Rule",
-        "body": "Every state carries a form and a word, never colour alone:\n- The active tab gets a yellow top bar.\n- The chosen option gets a chevron.\n- A deleted entry gets a red strike, SMAZÁNO and VRÁTIT.\n- An archived category gets a dashed rule and \"vyřazená\".\n- An empty category reads \"nic\".\n- An entry without a note reads \"přidat poznámku\" over a dotted line.\n- The no-amount warning is heavier and darker, and changes its words.",
+        "body": "Every state carries a form and a word, never colour alone:\n- The active tab gets a yellow top bar.\n- The chosen option gets a chevron.\n- A deleted entry gets a red strike, SMAZÁNO and VRÁTIT.\n- An archived category gets a dashed rule and \"vyřazená\".\n- An empty category reads \"nic\".\n- An entry without a note reads \"přidat poznámku\" over a dotted line.\n- A payment still to come sits on a dashed rule under \"Ještě přijde\"; one already written carries PRAVIDELNÁ.\n- The no-amount warning is heavier and darker, and changes its words.",
         "section": "components"
       },
       {
@@ -766,6 +785,7 @@
       "Do use the ink button (black fill, yellow lettering) for actions that replace or delete data.",
       "Do write field errors in text ink at 700, directly under the field.",
       "Do mark writable text with a dotted underline that goes solid while you write, with its placeholder in muted (ink on yellow on the tag).",
+      "Do draw anything not written yet on a dashed rule, with its amount in muted.",
       "Do give every state a form and a word, not just a colour.",
       "Do keep touch targets at least 44px (shelf labels 58px, tabs 52px) and the column no wider than 520px.",
       "Do move things down when they print or are pressed, on `cubic-bezier(0.2, 0.9, 0.3, 1)`, and collapse motion to 1ms under reduced motion."

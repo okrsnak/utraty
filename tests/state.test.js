@@ -27,6 +27,7 @@ test('initial state has payday 10 and the starter categories', () => {
   assert.equal(state.settings.payday, 10);
   assert.deepEqual(state.categories.map((category) => category.name), ['Jídlo', 'Tanec', 'Nájem', 'Ostatní']);
   assert.deepEqual(state.expenses, []);
+  assert.deepEqual(state.recurring, []);
 });
 
 test('each initial state is an independent copy', () => {

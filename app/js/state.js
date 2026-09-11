@@ -18,6 +18,7 @@ export function createInitialState() {
     settings: { payday: DEFAULT_PAYDAY },
     categories: STARTER_CATEGORIES.map((category) => ({ ...category, archived: false })),
     expenses: [],
+    recurring: [],
   };
 }
 

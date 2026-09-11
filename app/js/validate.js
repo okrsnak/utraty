@@ -5,6 +5,7 @@
 
 import { isValidIsoDate } from './dates.js';
 import { MAX_AMOUNT } from './money.js';
+import { MAX_RECURRING_NAME, isValidFrequency } from './recurring.js';
 import { STATE_VERSION, MAX_CATEGORY_NAME, MAX_NOTE, isValidPayday } from './state.js';
 
 const MAX_ID = 64;
@@ -24,13 +25,32 @@ function cleanExpense(raw) {
   if (!Number.isInteger(raw.amount) || raw.amount <= 0 || raw.amount > MAX_AMOUNT) return null;
   if (!isValidIsoDate(raw.date) || typeof raw.note !== 'string' || raw.note.length > MAX_NOTE) return null;
   if (!Number.isFinite(raw.createdAt)) return null;
-  return {
+  const expense = {
     id: raw.id,
     amount: raw.amount,
     categoryId: raw.categoryId,
     date: raw.date,
     note: raw.note,
     createdAt: raw.createdAt,
+  };
+  return isId(raw.recurringId) ? { ...expense, recurringId: raw.recurringId } : expense;
+}
+
+function cleanRecurring(raw) {
+  if (!isPlainObject(raw) || !isId(raw.id) || !isId(raw.categoryId)) return null;
+  if (typeof raw.name !== 'string' || raw.name.trim() === '' || raw.name.length > MAX_RECURRING_NAME) return null;
+  if (!Number.isInteger(raw.amount) || raw.amount <= 0 || raw.amount > MAX_AMOUNT) return null;
+  if (!isValidFrequency(raw.everyMonths) || !isValidIsoDate(raw.firstDate)) return null;
+  const lastDate = raw.lastDate ?? null;
+  if (lastDate !== null && !isValidIsoDate(lastDate)) return null;
+  return {
+    id: raw.id,
+    name: raw.name,
+    amount: raw.amount,
+    categoryId: raw.categoryId,
+    everyMonths: raw.everyMonths,
+    firstDate: raw.firstDate,
+    lastDate,
   };
 }
 
@@ -55,9 +75,12 @@ export function validateState(data) {
   }
   if (!Array.isArray(data.categories)) return fail('Seznam kategorií chybí.');
   if (!Array.isArray(data.expenses)) return fail('Seznam útrat chybí.');
+  // Data saved before recurring payments existed has no list at all.
+  if (data.recurring !== undefined && !Array.isArray(data.recurring)) return fail('Seznam pravidelných plateb je poškozený.');
 
   const categories = cleanList(data.categories, cleanCategory);
   const expenses = cleanList(data.expenses, cleanExpense);
+  const recurring = cleanList(data.recurring ?? [], cleanRecurring);
   return {
     ok: true,
     state: {
@@ -65,7 +88,8 @@ export function validateState(data) {
       settings: { payday: data.settings.payday },
       categories: categories.items,
       expenses: expenses.items,
+      recurring: recurring.items,
     },
-    dropped: categories.dropped + expenses.dropped,
+    dropped: categories.dropped + expenses.dropped + recurring.dropped,
   };
 }

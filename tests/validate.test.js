@@ -87,3 +87,38 @@ test('drops duplicate expense ids, keeping the first', () => {
   assert.deepEqual(result.state.expenses.map((expense) => expense.amount), [25000]);
   assert.equal(result.dropped, 1);
 });
+
+const rentTemplate = { id: 'r1', name: 'Nájem', amount: 1200000, categoryId: 'najem', everyMonths: 1, firstDate: '2026-09-15', lastDate: null };
+
+test('older data without recurring payments loads with an empty list', () => {
+  const { recurring: _missing, ...older } = validState();
+  const result = validateState(older);
+  assert.equal(result.ok, true);
+  assert.deepEqual(result.state.recurring, []);
+  assert.equal(result.dropped, 0);
+});
+
+test('a recurring list that is not a list is rejected', () => {
+  assert.equal(validateState({ ...validState(), recurring: 'x' }).ok, false);
+});
+
+test('broken recurring payments are dropped and counted', () => {
+  const recurring = [
+    rentTemplate,
+    { ...rentTemplate, id: 'r2', everyMonths: 2 },
+    { ...rentTemplate, id: 'r3', lastDate: 'soon' },
+    { ...rentTemplate, id: 'r4', name: '' },
+    'junk',
+  ];
+  const result = validateState({ ...validState(), recurring });
+  assert.deepEqual(result.state.recurring, [rentTemplate]);
+  assert.equal(result.dropped, 4);
+});
+
+test('an expense keeps a valid recurringId and loses an invalid one', () => {
+  const base = validState().expenses[0];
+  const result = validateState({ ...validState(), expenses: [{ ...base, recurringId: 'r1' }, { ...base, id: 'e2', recurringId: 42 }] });
+  assert.equal(result.state.expenses[0].recurringId, 'r1');
+  assert.equal('recurringId' in result.state.expenses[1], false);
+  assert.equal(result.dropped, 0);
+});
