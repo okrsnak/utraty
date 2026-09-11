@@ -16,7 +16,7 @@
   gap: 6px;
   min-height: 44px;
   padding: 0 16px;
-  background: var(--yellow);
+  background: var(--tag);
   color: var(--ink);
   border-radius: 4px;
   font-weight: 800;
@@ -43,7 +43,7 @@
 /* Actions that replace or delete data: ink, because red only strikes cancelled amounts. */
 .button--ink {
   background: var(--rail);
-  color: var(--yellow);
+  color: var(--tag);
 }
 
 .file-button {
@@ -216,7 +216,7 @@
 .toast__action {
   min-height: 44px;
   padding: 0 18px;
-  background: var(--yellow);
+  background: var(--tag);
   color: var(--ink);
   font-weight: 800;
   font-stretch: 75%;

@@ -129,7 +129,7 @@ button.entry__amount {
 .entry.is-struck .entry__category,
 .entry.is-struck .entry__amount {
   text-decoration: line-through;
-  text-decoration-color: var(--red);
+  text-decoration-color: var(--strike);
   text-decoration-thickness: 3px;
 }
 
@@ -144,7 +144,7 @@ button.entry__amount {
 .entry__restore {
   min-height: 44px;
   padding: 0 14px;
-  background: var(--yellow);
+  background: var(--tag);
   color: var(--ink);
   font-weight: 800;
   font-stretch: 75%;

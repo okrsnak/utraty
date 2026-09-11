@@ -1,0 +1,234 @@
+/* Colour schemes other than the default (which lives in base.css). Each sets
+   every colour token for light mode and again for dark mode; the tag keeps
+   its colour in both modes, like the yellow one. Picked with the data-theme
+   attribute on <html>, and on the preview cards in Nastavení. */
+
+/* Marcipán: pastel pink tag, plum rails. */
+
+[data-theme='marcipan'] {
+  --tag: #f7c3d4;
+  --ink: #3a1627;
+  --ink-soft: #6b4354;
+  --ink-line: #8b6071;
+  --ink-faint: #8d6273;
+  --strike: #c2185b;
+  --bar: #3a1627;
+  --ground: #f6eaef;
+  --surface: #fffbfc;
+  --key: #fffbfc;
+  --key-pressed: #efdbe3;
+  --key-alt: #eddbe2;
+  --text: #2f1420;
+  --muted: #6b4a58;
+  --rule: #3a1627;
+  --hairline: #e3cad4;
+  --rail: #3a1627;
+  --rail-text: #fff5f8;
+  --rail-muted: #dcbcc9;
+  --rail-track: #5c3346;
+  --focus: #3a1627;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-theme='marcipan'] {
+    --strike: #ff7aa2;
+    --bar: #f7c3d4;
+    --ground: #231419;
+    --surface: #301e26;
+    --key: #3b2831;
+    --key-pressed: #4d3541;
+    --key-alt: #2c1b23;
+    --text: #fbeef3;
+    --muted: #c9aab8;
+    --rule: #fbeef3;
+    --hairline: #4d3541;
+    --rail: #150a0f;
+    --rail-muted: #cfa9b9;
+    --rail-track: #4a2c3b;
+    --focus: #f7c3d4;
+  }
+}
+
+/* Cukrová vata: pink tag on lavender, violet rails. */
+
+[data-theme='cukrova-vata'] {
+  --tag: #ffc7de;
+  --ink: #2a1d47;
+  --ink-soft: #61496e;
+  --ink-line: #816385;
+  --ink-faint: #886889;
+  --strike: #c2185b;
+  --bar: #6a52b8;
+  --ground: #efebfa;
+  --surface: #fdfbff;
+  --key: #fdfbff;
+  --key-pressed: #e4ddf5;
+  --key-alt: #e6e0f6;
+  --text: #231a3b;
+  --muted: #5d5380;
+  --rule: #45357a;
+  --hairline: #dcd4ef;
+  --rail: #45357a;
+  --rail-text: #fbf8ff;
+  --rail-muted: #d2c7f0;
+  --rail-track: #5f4f96;
+  --focus: #45357a;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-theme='cukrova-vata'] {
+    --strike: #ff7aa2;
+    --bar: #ffc7de;
+    --ground: #1b1729;
+    --surface: #262038;
+    --key: #302a45;
+    --key-pressed: #3f3759;
+    --key-alt: #221c33;
+    --text: #f4f0ff;
+    --muted: #b8aed8;
+    --rule: #f4f0ff;
+    --hairline: #3f3759;
+    --rail: #110d1c;
+    --rail-muted: #c3b6ea;
+    --rail-track: #3a3060;
+    --focus: #ffc7de;
+  }
+}
+
+/* Pudr: muted powder rose, mauve rails. */
+
+[data-theme='pudr'] {
+  --tag: #e8b7bf;
+  --ink: #33201f;
+  --ink-soft: #624749;
+  --ink-line: #7a5b5d;
+  --ink-faint: #7f5f62;
+  --strike: #b3261e;
+  --bar: #4a2f36;
+  --ground: #efe7e5;
+  --surface: #fcf9f8;
+  --key: #fcf9f8;
+  --key-pressed: #e8dcd9;
+  --key-alt: #e9dedb;
+  --text: #2c1d1d;
+  --muted: #685252;
+  --rule: #4a2f36;
+  --hairline: #dccfcc;
+  --rail: #4a2f36;
+  --rail-text: #fbf3f2;
+  --rail-muted: #d6bcc0;
+  --rail-track: #6b4a52;
+  --focus: #4a2f36;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-theme='pudr'] {
+    --strike: #ff6f61;
+    --bar: #e8b7bf;
+    --ground: #211819;
+    --surface: #2d2223;
+    --key: #382b2d;
+    --key-pressed: #4a3a3c;
+    --key-alt: #281e1f;
+    --text: #f8efee;
+    --muted: #c4acad;
+    --rule: #f8efee;
+    --hairline: #4a3a3c;
+    --rail: #140e0f;
+    --rail-muted: #cdb1b5;
+    --rail-track: #4a3439;
+    --focus: #e8b7bf;
+  }
+}
+
+/* Broskev: peach-pink tag, cocoa rails. */
+
+[data-theme='broskev'] {
+  --tag: #ffcdb5;
+  --ink: #3b1d12;
+  --ink-soft: #6e4b3c;
+  --ink-line: #8b6555;
+  --ink-faint: #916a5a;
+  --strike: #a3123a;
+  --bar: #4a2620;
+  --ground: #f8ece6;
+  --surface: #fffaf7;
+  --key: #fffaf7;
+  --key-pressed: #f0dcd2;
+  --key-alt: #f1dfd6;
+  --text: #2f1a12;
+  --muted: #6b4d41;
+  --rule: #4a2620;
+  --hairline: #ead6cc;
+  --rail: #4a2620;
+  --rail-text: #fff6f1;
+  --rail-muted: #e0bfb0;
+  --rail-track: #6b3f35;
+  --focus: #4a2620;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-theme='broskev'] {
+    --strike: #ff7a7a;
+    --bar: #ffcdb5;
+    --ground: #221713;
+    --surface: #2e211b;
+    --key: #3a2a23;
+    --key-pressed: #4c382f;
+    --key-alt: #291d17;
+    --text: #fbefe9;
+    --muted: #c9ada1;
+    --rule: #fbefe9;
+    --hairline: #4c382f;
+    --rail: #150d0a;
+    --rail-muted: #d4b3a5;
+    --rail-track: #4d3129;
+    --focus: #ffcdb5;
+  }
+}
+
+/* Máta: pastel mint tag, deep teal rails. */
+
+[data-theme='mata'] {
+  --tag: #bfe9d5;
+  --ink: #0f2b25;
+  --ink-soft: #3d5c53;
+  --ink-line: #5b7d71;
+  --ink-faint: #608276;
+  --strike: #c62828;
+  --bar: #15403a;
+  --ground: #e7f1ed;
+  --surface: #fbfefd;
+  --key: #fbfefd;
+  --key-pressed: #d8e9e2;
+  --key-alt: #d9ebe4;
+  --text: #10241f;
+  --muted: #465e58;
+  --rule: #15403a;
+  --hairline: #cde0d8;
+  --rail: #15403a;
+  --rail-text: #f1fbf7;
+  --rail-muted: #b5d7cc;
+  --rail-track: #2f5d55;
+  --focus: #15403a;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-theme='mata'] {
+    --strike: #ff6b6b;
+    --bar: #bfe9d5;
+    --ground: #131d1b;
+    --surface: #1c2926;
+    --key: #25332f;
+    --key-pressed: #34453f;
+    --key-alt: #18231f;
+    --text: #eaf6f1;
+    --muted: #a4c0b7;
+    --rule: #eaf6f1;
+    --hairline: #34453f;
+    --rail: #0a110f;
+    --rail-muted: #a9cbbf;
+    --rail-track: #26443e;
+    --focus: #bfe9d5;
+  }
+}

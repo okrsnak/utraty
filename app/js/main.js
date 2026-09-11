@@ -3,6 +3,7 @@
 import { createStore } from './app-state.js';
 import { todayIso } from './dates.js';
 import { applyDueRecurring } from './recurring.js';
+import { DEFAULT_THEME } from './themes.js';
 import { STORAGE_KEY, listSetAside, loadState, readStoredState, removeSetAside, saveState } from './storage.js';
 import { createAddView } from './ui/add-view.js';
 import { createOverviewView } from './ui/overview-view.js';
@@ -49,6 +50,15 @@ function setUpInstallHint(storage) {
     hint.hidden = true;
     storage.setItem(INSTALL_HINT_KEY, '1');
   });
+}
+
+// The scheme is the data-theme attribute on <html> (index.html sets it early,
+// before the first paint); the browser's bar colour follows the scheme's rail.
+function applyTheme(themeId = DEFAULT_THEME) {
+  const root = document.documentElement;
+  if (root.dataset.theme !== themeId) root.dataset.theme = themeId;
+  const rail = getComputedStyle(root).getPropertyValue('--rail').trim();
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', rail);
 }
 
 function registerServiceWorker() {
@@ -118,6 +128,9 @@ function start() {
     });
   }
 
+  applyTheme(store.get().settings.theme);
+  store.subscribe((state) => applyTheme(state.settings.theme));
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => applyTheme(store.get().settings.theme));
   store.subscribe(renderAll);
   tabs.forEach((tab) => tab.addEventListener('click', () => showView(tab.dataset.view)));
   window.addEventListener('storage', (event) => {

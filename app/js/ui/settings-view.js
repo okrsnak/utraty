@@ -2,10 +2,19 @@
 
 import { parseIsoDate, todayIso } from '../dates.js';
 import { formatPeriodLabel, periodForDate } from '../period.js';
-import { MAX_CATEGORY_NAME, addCategory, categoryNameError, renameCategory, setCategoryArchived, setPayday } from '../state.js';
+import {
+  MAX_CATEGORY_NAME,
+  addCategory,
+  categoryNameError,
+  renameCategory,
+  setCategoryArchived,
+  setPayday,
+  setTheme,
+} from '../state.js';
 import { createId } from '../ids.js';
 import { createBackupSection } from './backup-section.js';
 import { createRecurringSection } from './recurring-section.js';
+import { renderAppearance } from './appearance-section.js';
 import { h, icon } from './dom.js';
 
 const ERROR_TOAST_MS = 8000;
@@ -134,6 +143,7 @@ export function createSettingsView({ root, store, toast, isStandalone, setAside,
       paydaySection(state),
       categoriesSection(state),
       section('recurring', 'Pravidelné platby', ...recurring.render(state).filter(Boolean)),
+      section('appearance', 'Vzhled', ...renderAppearance(state)),
       section('backup', 'Záloha', ...backup.render(state).filter(Boolean)),
       !isStandalone() && installSection(),
       h('p', { class: 'settings__footer' }, 'Útraty · data zůstávají v telefonu'),
@@ -196,6 +206,7 @@ export function createSettingsView({ root, store, toast, isStandalone, setAside,
   body.addEventListener('change', (event) => {
     const target = event.target;
     if (target.dataset.setting === 'payday') commit((state) => setPayday(state, Number(target.value)));
+    else if (target.dataset.themeChoice) commit((state) => setTheme(state, target.value));
     else if (target.dataset.rename) rename(target);
     else if (!recurring.handleInput(target)) backup.handleChange(target);
   });

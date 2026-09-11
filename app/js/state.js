@@ -2,6 +2,7 @@
 
 import { isValidIsoDate } from './dates.js';
 import { MAX_AMOUNT } from './money.js';
+import { DEFAULT_THEME, isThemeId } from './themes.js';
 
 export const STATE_VERSION = 1;
 export const DEFAULT_PAYDAY = 10;
@@ -18,7 +19,7 @@ const STARTER_CATEGORIES = [
 export function createInitialState() {
   return {
     version: STATE_VERSION,
-    settings: { payday: DEFAULT_PAYDAY },
+    settings: { payday: DEFAULT_PAYDAY, theme: DEFAULT_THEME },
     categories: STARTER_CATEGORIES.map((category) => ({ ...category, archived: false })),
     expenses: [],
     recurring: [],
@@ -108,6 +109,11 @@ export function activeCategories(state) {
 
 export function isValidPayday(value) {
   return Number.isInteger(value) && value >= 1 && value <= 31;
+}
+
+export function setTheme(state, themeId) {
+  if (!isThemeId(themeId)) throw new RangeError(`Neznámé barevné schéma: ${themeId}`);
+  return { ...state, settings: { ...state.settings, theme: themeId } };
 }
 
 export function setPayday(state, payday) {

@@ -1,11 +1,14 @@
 ---
 name: "Útraty"
-description: "A pay-period spending log printed as Czech supermarket shelf price tags."
+description: "A pay-period spending log printed as Czech supermarket shelf price tags, in six colour schemes."
 colors:
-  yellow: "#ffd400"
+  tag: "#ffd400"
   ink: "#111111"
-  ink-on-yellow: "rgba(17, 17, 17, 0.74)"
-  red: "#e3000f"
+  ink-soft: "#4f440d"
+  ink-line: "#7c6909"
+  ink-faint: "#887309"
+  strike: "#e3000f"
+  bar: "#111111"
   ground: "#e6e7ea"
   surface: "#ffffff"
   key: "#ffffff"
@@ -15,12 +18,13 @@ colors:
   muted: "#53565c"
   rule: "#111111"
   hairline: "#c7c9ce"
-  bar: "#111111"
-  focus: "#111111"
   rail: "#111111"
   rail-text: "#ffffff"
   rail-muted: "#b9bbc0"
   rail-track: "#3a3b3e"
+  focus: "#111111"
+  strike-dark: "#ff4d5e"
+  bar-dark: "#ffd400"
   ground-dark: "#1d1e21"
   surface-dark: "#2a2c30"
   key-dark: "#34363b"
@@ -30,9 +34,8 @@ colors:
   muted-dark: "#a9abb0"
   rule-dark: "#f3f3f1"
   hairline-dark: "#484b51"
-  bar-dark: "#ffd400"
-  focus-dark: "#ffd400"
   rail-dark: "#000000"
+  focus-dark: "#ffd400"
 typography:
   display:
     fontFamily: "Archivo, 'Helvetica Neue', Arial, sans-serif"
@@ -108,13 +111,13 @@ spacing:
   gutter: "16px"
 components:
   price-tag:
-    backgroundColor: "{colors.yellow}"
+    backgroundColor: "{colors.tag}"
     textColor: "{colors.ink}"
     typography: "{typography.display}"
     rounded: "{rounded.tag}"
     padding: "16px 18px 10px"
   total-tag:
-    backgroundColor: "{colors.yellow}"
+    backgroundColor: "{colors.tag}"
     textColor: "{colors.ink}"
     typography: "{typography.headline}"
     rounded: "{rounded.tag}"
@@ -125,7 +128,7 @@ components:
     size: "16px"
   date-chip:
     backgroundColor: "{colors.ink}"
-    textColor: "{colors.yellow}"
+    textColor: "{colors.tag}"
     rounded: "{rounded.control}"
     padding: "0 14px"
     height: "44px"
@@ -139,7 +142,7 @@ components:
   shelf-label-pressed:
     backgroundColor: "{colors.key-pressed}"
   shelf-label-stamped:
-    backgroundColor: "{colors.yellow}"
+    backgroundColor: "{colors.tag}"
     textColor: "{colors.ink}"
   keypad-key:
     backgroundColor: "{colors.key}"
@@ -151,9 +154,9 @@ components:
     backgroundColor: "{colors.key-alt}"
   keypad-key-pressed:
     backgroundColor: "{colors.ink}"
-    textColor: "{colors.yellow}"
+    textColor: "{colors.tag}"
   button-primary:
-    backgroundColor: "{colors.yellow}"
+    backgroundColor: "{colors.tag}"
     textColor: "{colors.ink}"
     typography: "{typography.label}"
     rounded: "{rounded.control}"
@@ -168,7 +171,7 @@ components:
     height: "44px"
   button-ink:
     backgroundColor: "{colors.rail}"
-    textColor: "{colors.yellow}"
+    textColor: "{colors.tag}"
     typography: "{typography.label}"
     rounded: "{rounded.control}"
     padding: "0 16px"
@@ -197,7 +200,7 @@ components:
     padding: "0 14px"
     height: "48px"
   picker-option-selected:
-    backgroundColor: "{colors.yellow}"
+    backgroundColor: "{colors.tag}"
     textColor: "{colors.ink}"
   category-row:
     backgroundColor: "{colors.surface}"
@@ -212,7 +215,7 @@ components:
     backgroundColor: "{colors.bar}"
     height: "8px"
   entry-action:
-    backgroundColor: "{colors.yellow}"
+    backgroundColor: "{colors.tag}"
     textColor: "{colors.ink}"
     typography: "{typography.label}"
     rounded: "{rounded.square}"
@@ -243,6 +246,11 @@ components:
     textColor: "{colors.text}"
     rounded: "{rounded.square}"
     padding: "12px"
+  scheme-card:
+    backgroundColor: "{colors.ground}"
+    textColor: "{colors.text}"
+    rounded: "{rounded.square}"
+    padding: "8px 8px 10px"
   rail:
     backgroundColor: "{colors.rail}"
     textColor: "{colors.rail-text}"
@@ -262,7 +270,7 @@ components:
     textColor: "{colors.text}"
     padding: "8px 16px"
   undo-action:
-    backgroundColor: "{colors.yellow}"
+    backgroundColor: "{colors.tag}"
     textColor: "{colors.ink}"
     typography: "{typography.label}"
     rounded: "{rounded.square}"
@@ -283,52 +291,101 @@ components:
 
 **Creative North Star: "Cenovka"**
 
-Cenovka is the Czech supermarket shelf price tag. Each spend is a yellow tag printed in three taps; the pay period is the shelf it lands on. Black shelf-edge rails frame the top and bottom of every view. Between them, a grey ground holds square white labels, each hung from a heavy black top rule, and the tags are the only large yellow on screen. It reads like a shop's own signage, printed and matter-of-fact, not like a finance product.
+Cenovka is the Czech supermarket shelf price tag. Each spend is a tag printed in three taps; the pay period is the shelf it lands on. In the canonical Cenovka scheme the tag is shop yellow and black shelf-edge rails frame the top and bottom of every view. Between them, a grey ground holds square white labels, each hung from a heavy black top rule, and the tags are the only large block of colour on screen. It reads like a shop's own signage, printed and matter-of-fact, not like a finance product. Five colourways recolour the same shelf through the same tokens.
 
-Density is shelf-like: one narrow column, controls packed 2 to 12px apart, every touch target at least 44px. Hierarchy comes from one condensed grotesque, Archivo, ranked by how narrow it runs, how heavy and how big: prices in the narrowest, heaviest cut, names and actions in condensed capitals, sentences at normal width. Colour does almost no ranking. Yellow means tag or action, ink means numerals and rules, red means cancelled.
+Density is shelf-like: one narrow column, controls packed 2 to 12px apart, every touch target at least 44px. Hierarchy comes from one condensed grotesque, Archivo, ranked by how narrow it runs, how heavy and how big: prices in the narrowest, heaviest cut, names and actions in condensed capitals, sentences at normal width. Colour does almost no ranking. The tag colour means tag or action, ink means numerals and rules, strike red means cancelled.
 
 The world refuses the fintech dashboard: no rounded, shadowed white cards, no donut chart, no gradient header, no floating plus. Motion prints, short, weighted and downward. Nothing floats.
 
 **Key Characteristics:**
-- One yellow tag owns each view; everything else is white label, grey ground or black rail.
+- One tag-coloured tag owns each view; everything else is white label, ground or rail.
 - Heavy 3px top rules and square corners; only tags (6px) and standalone controls (4px) are rounded.
 - Solid rules hold what is written; dashed rules hold what isn't live.
 - One variable family ranked by width (62, 75, 87.5 and 100%), weight and size.
 - Flat throughout: depth comes from fill, rule and seam, never shadow.
 - Every state carries a form and a word, never colour alone.
 - Motion prints downward on one weighted curve.
-- Light and dark: the tags and their ink never change; ground, labels, keys, rules and rails do.
+- Six colour schemes on the same 21 tokens, light and dark; the tag and its ink never change between modes.
 
 ## Colors
 
-The palette is a shelf: tag yellow and ink, a grey ground with white labels, black rails, and a single sale red kept for crossing things out.
+The palette is a shelf: a tag colour and its ink, a ground with white labels, rails, and a strike red kept for crossing things out. Colour lives in 21 tokens, each a solid hex. The frontmatter holds Cenovka, the canonical scheme; five colourways set the same tokens to other values (see Colour Schemes).
 
 ### Primary
-- **Tag Yellow** (#ffd400): the price tag itself (the entry tag and the period total) and everything you act on: primary buttons (Hotovo in the entry editor among them), the undo strip's action, VRÁTIT on a deleted entry, the selected picker option, the active tab's top bar, the countdown fill in the top rail, the stamp flash on a shelf label, and text selection (an amount opened for editing shows selected in yellow). It is also the lettering on the ink date chip and ink buttons, and the focus ring on both rails. It is identical in both themes. In dark mode it also becomes the focus ring everywhere and the category bar fill.
+- **Tag Yellow** (`tag`, #ffd400): the price tag itself (the entry tag and the period total) and everything you act on:
+  - Primary buttons, Hotovo in the entry editor among them.
+  - The undo strip's action and VRÁTIT on a deleted entry.
+  - The selected picker option and the active tab's top bar.
+  - The countdown fill in the top rail and the stamp flash on a shelf label.
+  - Text selection: an amount opened for editing shows selected in the tag colour.
+
+  It is also the lettering on the ink date chip and ink buttons, and the focus ring on both rails. It keeps its colour in dark mode, where it also becomes the focus ring everywhere and the category bar fill. In the colourways the tag is pink, rose, peach or mint.
 
 ### Secondary
-- **Sale Red** (#e3000f): the 3px line through a deleted entry's category and amount, and nothing else. Same in both themes.
+- **Sale Red** (`strike`, #e3000f; dark #ff4d5e): the 3px line through a deleted entry's category and amount, and nothing else. In dark mode it is lifted: the light value measured only about 2.9:1 on the dark surface, the dark one holds 4.3:1.
 
 ### Neutral
-- **Ink** (#111111): numerals, rules and text on every tag, the date chip fill and the pressed keypad key. It doesn't change between themes.
-- **Ink on Yellow** (rgba(17, 17, 17, 0.74)): secondary text on a tag: the note placeholder and the total tag's count and per-day line (6.8:1 on yellow).
+- **Ink** (`ink`, #111111): numerals, rules and text on every tag, the date chip fill and the pressed keypad key.
+- **Soft Ink** (`ink-soft`, #4f440d), **Ink Line** (`ink-line`, #7c6909) and **Faint Ink** (`ink-faint`, #887309): ink mixed into the tag colour, stored as solid colours. Each is the lightest mix that still clears its floor on the tag.
+  - Soft ink carries secondary text on a tag: the note placeholder and the total tag's count and per-day line (6.8:1).
+  - Ink line draws the dotted note line on the entry tag and the rule over the total tag's unit line (3.8:1).
+  - Faint ink sets the empty zero on the entry tag (3.3:1).
 - **Shelf Grey** (`ground`, #e6e7ea; dark #1d1e21): the page ground. It also shows through each tag's hang hole.
 - **Label White** (`surface`, #ffffff; dark #2a2c30): shelf labels, category rows, the entry editor, recurring payment rows and their form, field rows, ruled panels, boxed inputs and the undo strip.
 - **Key White** (`key`, #ffffff; dark #34363b), **Function Key Grey** (`key-alt`, #d9dbe0; dark #2a2c30), **Pressed Key Grey** (`key-pressed`, #d6d8dc; dark #474a50): keypad faces. The comma and backspace keys take the function grey; the pressed grey is also a shelf label's pressed fill.
 - **Text Ink** (`text`, #111111; dark #f3f3f1) and **Muted Slate** (`muted`, #53565c; dark #a9abb0): text and secondary text. Muted carries running totals, counts, help, hints, placeholders, and both the amount and the dashed rule of a payment still to come. Field errors are set in text ink, never red. Muted holds 6.0:1 on the ground and 7.4:1 on white; in dark mode, 7.3:1 and 6.1:1.
-- **Shelf Rule** (`rule`, #111111; dark #f3f3f1): the 3px top rules, 2px day-head rules, 2px input and select borders, and the drawn rings on quiet actions and the PRAVIDELNÁ chip.
-- **Hairline Grey** (`hairline`, #c7c9ce; dark #484b51): 1px list dividers, the picker list's top edge and the empty track of each category bar.
-- **Rail Black** (`rail`, #111111; dark #000000), **Rail White** (`rail-text`, #ffffff), **Rail Grey** (`rail-muted`, #b9bbc0): both rails, the keypad seams and the ink button fill. Rail grey sets the countdown, the period status and inactive tabs (9.8:1).
-- **Rail Track** (`rail-track`, #3a3b3e): the empty track of the countdown strip in the top rail, in both themes.
-- **Bar Ink** (`bar`, #111111; dark #ffd400): the fill of each category's measured bar. It turns yellow in dark mode.
-- **Focus Ink** (`focus`, #111111; dark #ffd400): the 3px focus ring at a 2px offset. On both black rails it switches to tag yellow in either theme, so it never disappears into the black.
+- **Shelf Rule** (`rule`, #111111; dark #f3f3f1): the 3px top rules and 2px day-head rules, plus 2px input and select borders. It also draws the rings on quiet actions, the PRAVIDELNÁ chip and the chosen scheme card.
+- **Hairline Grey** (`hairline`, #c7c9ce; dark #484b51): 1px list dividers, the picker list's top edge, the empty track of each category bar and the ring around each scheme card.
+- **Rail Black** (`rail`, #111111; dark #000000), **Rail White** (`rail-text`, #ffffff), **Rail Grey** (`rail-muted`, #b9bbc0): both rails, the keypad seams and the ink button fill. Rail grey sets the countdown, the period status and inactive tabs (9.8:1). The browser bar follows the rail colour.
+- **Rail Track** (`rail-track`, #3a3b3e): the empty track of the countdown strip in the top rail, in both modes.
+- **Bar Ink** (`bar`, #111111; dark #ffd400): the fill of each category's measured bar. It takes the tag colour in dark mode.
+- **Focus Ink** (`focus`, #111111; dark #ffd400): the 3px focus ring at a 2px offset. On both rails it switches to the tag colour in either mode, so it never disappears into them.
+
+### Colour Schemes
+A scheme is one full set of the 21 colour tokens for light mode, plus a dark block that reassigns the ground, labels, keys, rules, rails and strike. It changes colour only: layout, type, shape and motion are the same in every scheme. The scheme is chosen in Nastavení → Vzhled and applied as `data-theme` on `<html>` before the first paint; an unknown scheme falls back to Cenovka. The browser bar takes the scheme's rail colour, and the home-screen icon stays Cenovka yellow.
+
+Five roles make a scheme:
+
+- **Tag** (`tag`): a light, clear colour the ink reads on. The same in dark mode.
+- **Ink family** (`ink`, `ink-soft`, `ink-line`, `ink-faint`): a deep ink in the tag's hue and its solid mixes over the tag. The same in dark mode.
+- **Rails** (`rail`, `rail-text`, `rail-muted`, `rail-track`, with `rule`, `focus` and `bar`): a deep colour for both rails and the keypad seams. In light mode the same colour draws the shelf rules and the focus ring, and in every scheme but Cukrová vata the bar. In dark mode the rail goes near-black, rules take the text colour, and the focus ring and bar take the tag colour.
+- **Ground and surface** (`ground`, `surface`, `key`, `key-pressed`, `key-alt`, `hairline`, with `text` and `muted`): a ground tinted towards the scheme, near-white labels and keys, and the text that sits on them. In dark mode, tinted near-blacks.
+- **Strike** (`strike`): always a red (sale red, raspberry, brick or crimson), lifted in dark mode.
+
+The six schemes in light mode (full sets, dark included, live in `app/css/base.css`, `app/css/themes.css` and the sidecar's `extensions.schemes`):
+
+| Scheme | Character | Tag | Ink | Rails | Ground | Strike |
+|---|---|---|---|---|---|---|
+| **Cenovka** (canonical) | žlutá a černá: shop yellow, black rails | #ffd400 | #111111 | #111111 | #e6e7ea | #e3000f |
+| **Marcipán** | pastelově růžová: pastel pink, plum rails | #f7c3d4 | #3a1627 | #3a1627 | #f6eaef | #c2185b |
+| **Cukrová vata** | růžová s levandulí: pink on lavender, violet rails | #ffc7de | #2a1d47 | #45357a | #efebfa | #c2185b |
+| **Pudr** | tlumená pudrová růžová: powder rose, mauve rails | #e8b7bf | #33201f | #4a2f36 | #efe7e5 | #b3261e |
+| **Broskev** | broskvově růžová: peach-pink, cocoa rails | #ffcdb5 | #3b1d12 | #4a2620 | #f8ece6 | #a3123a |
+| **Máta** | pastelově mentolová: pastel mint, deep teal rails | #bfe9d5 | #0f2b25 | #15403a | #e7f1ed | #c62828 |
+
+Every scheme, in both modes, sets all 21 tokens as solid hex and clears these contrast floors, checked by `tests/themes.test.js`:
+
+- **4.5:1:**
+  - text and muted on the ground and the surface;
+  - text on key and key-alt;
+  - ink and soft ink on the tag;
+  - rail text and rail grey on the rail.
+- **3:1:**
+  - ink line and faint ink on the tag (ink line is tuned to clear 3.4:1);
+  - the tag on the rail and on the rail track;
+  - strike and bar on the surface, and bar on the hairline;
+  - rule and focus on the ground.
+
+The ink button sets text in the tag colour on the rail. That needs 4.5:1, not the 3:1 the test asks for. Every current scheme clears 6.8:1 there, and a new scheme has to as well.
 
 ### Named Rules
-**The Tag Yellow Rule.** Yellow is the tag and what you act on: price tags, primary actions, the undo action, Hotovo, the chosen option, the active tab bar, the countdown fill, the stamp flash, and the focus ring on the rails. It never fills the ground, a section or a plain label.
+**The Tag Colour Rule.** The tag colour is the tag and what you act on: price tags, primary actions, the undo action, Hotovo, the chosen option, the active tab bar, the countdown fill, the stamp flash, and the focus ring on the rails. It never fills the ground, a section or a plain label.
 
-**The Sale Red Rule.** Red only crosses out: it strikes cancelled amounts and does nothing else. Errors are written in ink, and actions that replace or delete data use the ink button.
+**The Strike Rule.** Strike red only crosses out: it strikes cancelled amounts and does nothing else. Errors are written in ink, and actions that replace or delete data use the ink button.
 
-**The Tag Doesn't Dim Rule.** Yellow and ink are theme-invariant. Dark mode swaps the ground, labels, keys, rules and rails around the tags; the tags print exactly the same.
+**The Tag Doesn't Dim Rule.** The tag and its ink family are the same in light and dark, in every scheme. Dark mode swaps the ground, labels, keys, rules and rails around the tags; the tags print exactly the same.
+
+**The Colourway Rule.** A scheme recolours tokens and nothing else. Components take every colour role from a token, never a hex, so a screen designed in Cenovka holds in every colourway, light and dark.
 
 ## Typography
 
@@ -341,13 +398,23 @@ The palette is a shelf: tag yellow and ink, a grey ground with white labels, bla
 ### Hierarchy
 - **Display** (800, 62% width, min(58cqh, 34cqw) of the tag, line height 0.9, -0.01em, tabular): the amount on the entry tag, sized by the tag container so it fills the tag. It steps down to min(46cqh, 25cqw) and then min(34cqh, 18.5cqw) as the number grows. The amount is right-aligned, haléře sit at 0.46em against the top, and "Kč" follows at 75% width.
 - **Headline** (800, 62%, clamp(3rem, 17vw, 4.5rem), line height 1, tabular): the period total on the Přehled tag.
-- **Price** (800, 62%, 1.375rem, tabular): category row amounts. Day-list amounts use the same cut at 1.25rem, an amount being edited at 1.5rem, and payments still to come at 1.125rem in muted.
+- **Price** (800, 62%, 1.375rem, tabular): category row amounts. The same cut sets:
+  - day-list amounts at 1.25rem;
+  - an amount being edited at 1.5rem;
+  - payments still to come at 1.125rem, in muted;
+  - the 129 on each scheme card at 1.875rem.
 - **Key** (700, 75%, 1.875rem, tabular): keypad digits.
 - **Title** (800, 75%, 1.25rem, 0.01em): the rail's period range and view names.
-- **Name** (800, 75%, 1rem, 0.03em, uppercase): shelf label names. Category rows set it at 1.0625rem. Recurring payment names and category names in Nastavení use the same 800 condensed cut at 1.0625rem, in sentence case.
-- **Label** (800, 75%, 1rem, 0.05em, uppercase): buttons and the undo strip's actions. VRÁTIT on a deleted entry runs at 0.04em, section heads at 0.9375rem and 0.06em, tabs at 700 and 0.06em, the date chip at 0.9375rem and 0.04em, form labels at 0.8125rem, and the PRAVIDELNÁ chip at 0.6875rem.
+- **Name** (800, 75%, 1rem, 0.03em, uppercase): shelf label names. Category rows set it at 1.0625rem. The same 800 condensed cut, in sentence case, sets recurring payment names and category names in Nastavení (1.0625rem) and scheme names in Vzhled (1rem).
+- **Label** (800, 75%, 1rem, 0.05em, uppercase): buttons and the undo strip's actions. Close variants:
+  - VRÁTIT on a deleted entry at 0.04em;
+  - section heads at 0.9375rem and 0.06em;
+  - tabs at 700 and 0.06em;
+  - the date chip at 0.9375rem and 0.04em;
+  - form labels at 0.8125rem;
+  - the PRAVIDELNÁ chip at 0.6875rem.
 - **List** (700, 87.5%, 1rem): entry categories and picker options. Text being written uses the same width: notes at 600 (1.0625rem on the tag and in the undo strip) and labelled form fields at 700 and 1.0625rem. An amount being written keeps the Price cut. The shelf hint is 600 at 0.875rem.
-- **Body** (400, normal width, 1rem, line height 1.35): help copy and messages, saved notes under an entry, and the recurring payment line ("12 000 Kč · měsíčně · Nájem"), the last two at 0.875rem in muted. Help paragraphs stop at 60ch.
+- **Body** (400, normal width, 1rem, line height 1.35): help copy and messages. At 0.875rem in muted it also sets saved notes under an entry and the recurring payment line ("12 000 Kč · měsíčně · Nájem"). Help paragraphs stop at 60ch.
 - **Caption** (600, 0.8125rem, tabular, in muted): running totals under shelf labels, counts, section-head notes (the ruler step, "celkem 259 Kč") and picker option notes.
 
 ### Named Rules
@@ -357,7 +424,7 @@ The palette is a shelf: tag yellow and ink, a grey ground with white labels, bla
 
 ## Layout
 
-A single column of at most 520px (`--app-width`), centred on the grey ground. On desktop the column stays phone-width and never spreads into more columns. The app is a full-height grid (100dvh): each view scrolls between a sticky black top rail and the black tab rail at the bottom, and both rails respect the safe-area insets.
+A single column of at most 520px (`--app-width`), centred on the ground. On desktop the column stays phone-width and never spreads into more columns. The app is a full-height grid (100dvh): each view scrolls between a sticky top rail and the tab rail at the bottom, and both rails respect the safe-area insets.
 
 The side gutter is 16px on every view. Přidat stacks top to bottom:
 
@@ -366,33 +433,51 @@ The side gutter is 16px on every view. Přidat stacks top to bottom:
 - A three-column shelf of labels 8px apart, with the category picker in the next slot, spanning the columns the labels leave free.
 - The keypad: three columns, each row clamp(46px, 7.4dvh, 64px).
 
-Přehled stacks the total tag, then "Ještě přijde" (current period only, and only when a payment is still due), category rows 6px apart and day groups 18px apart, with 26px between sections. Nastavení runs Den výplaty, Kategorie, Pravidelné platby, Záloha and Na plochu, with 30px between sections and 10px inside them. A button set directly in a Nastavení section stretches to the full column width, like "+ Přidat pravidelnou platbu".
+Přehled stacks the total tag, then "Ještě přijde" (current period only, and only when a payment is still due), category rows 6px apart and day groups 18px apart, with 26px between sections.
+
+Nastavení runs Den výplaty, Kategorie, Pravidelné platby, Vzhled, Záloha and, until the app is installed, Na plochu. Sections sit 30px apart with 10px inside them. A button set directly in a Nastavení section stretches to the full column width, like "+ Přidat pravidelnou platbu".
 
 Short phones (max-height 700px, the iPhone SE) tighten the entry screen: the tag's minimum height drops to 150px, keypad rows to clamp(44px, 7dvh, 52px), shelf labels to 52px, and the vertical margins to 8 to 10px. While the keyboard is up for the picker, the picker takes the whole shelf and the labels, hint and keypad hide.
 
 ### Named Rules
-**The Shelf Rail Rule.** Every view hangs between two black rails. The top rail carries what you are looking at (the period with its countdown or status, or the view name); the bottom rail carries the three tabs. Content scrolls between them, never over them.
+**The Shelf Rail Rule.** Every view hangs between two rails in the rail colour. The top rail carries what you are looking at (the period with its countdown or status, or the view name); the bottom rail carries the three tabs. Content scrolls between them, never over them.
 
 ## Elevation & Depth
 
-Flat by construction. There are no drop shadows and no elevation layers. Depth comes from fill against ground (yellow and white on grey), the heavy black top rule on every label, and the 2px black seams that make the keypad one membrane panel. Pressed things move down, not up: labels and buttons drop 1px, and the stamp lands 3px low.
+Flat by construction. There are no drop shadows and no elevation layers. Depth comes from three things:
+
+- Fill against ground: the tag colour and white labels on the ground.
+- The heavy top rule on every label.
+- The 2px seams in the rail colour that make the keypad one membrane panel.
+
+Pressed things move down, not up: labels and buttons drop 1px, and the stamp lands 3px low.
 
 ### Shadow Vocabulary
 - **Hang hole** (`box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4)`): the only soft shadow. It gives the 16px punched hole in each tag its depth. The hole is filled with the ground colour, so it reads as cut through the tag.
-- **Drawn ring** (`box-shadow: inset 0 0 0 2px var(--rule)`): the 2px outline on quiet buttons and on the undo strip's Poznámka action, drawn inside so they keep their size. The PRAVIDELNÁ chip uses a 1px ring in `rule`, and archived category rows in Nastavení a 1px hairline ring, the same way.
+- **Drawn ring** (`box-shadow: inset 0 0 0 2px var(--rule)`): the 2px outline on quiet buttons and on the undo strip's Poznámka action, drawn inside so they keep their size. The same inset ring appears on:
+  - the PRAVIDELNÁ chip, 1px in `rule`;
+  - archived category rows in Nastavení, 1px in hairline;
+  - the scheme cards: 1px in hairline, or 3px in `rule` on the chosen card.
 
 ### Named Rules
 **The Printed Flat Rule.** Nothing floats. To make something stand out, give it a fill, a rule or a word, never a shadow.
 
 ## Shapes
 
-Square by default: a shelf is cut, not moulded. White labels, category rows, the entry editor, recurring payment rows and their form, field rows, panels, keys and the undo strip have square corners and a 3px top rule (the strip's rule runs along its bottom edge). The price tags are slightly rounded (6px), like die-cut card. Standalone controls you press or type into are rounded 4px: buttons, the date chip, the select and the new-category input. Actions and marks set into a strip or a row stay square: the undo strip's two actions, VRÁTIT on a deleted entry, and the PRAVIDELNÁ chip. Buttons inside a form, like the entry editor's Hotovo and Zrušit, are standalone buttons with 4px corners. The one circle is the 16px hang hole, top left on every tag.
+Square by default: a shelf is cut, not moulded.
+
+- **Square with a 3px top rule:** white labels, category rows, the entry editor, recurring payment rows and their form, field rows, panels, keys and the undo strip. The strip's rule runs along its bottom edge.
+- **Square with an inset ring instead:** the scheme cards in Vzhled.
+- **6px corners:** the price tags, like die-cut card.
+- **4px corners:** standalone controls you press or type into (buttons, the date chip, the select, the new-category input) and the miniature tag on each scheme card.
+- **Square actions and marks:** anything set into a strip or a row, meaning the undo strip's two actions, VRÁTIT on a deleted entry and the PRAVIDELNÁ chip. Buttons inside a form, like the entry editor's Hotovo and Zrušit, are standalone buttons with 4px corners.
+- **The one circle:** the 16px hang hole, top left on every tag (6px on a scheme card's miniature).
 
 Line styles carry meaning:
 
 - **Solid 3px top rule:** a shelf edge.
 - **Dashed rules:** something not live. An archived category takes a dashed 3px top rule; a payment still to come sits on a 1px dashed rule in muted.
-- **Dotted underline:** text you can write on. It is 2px under a field (the note on the tag, the picker, category names in Nastavení, the note line in the undo strip, and every labelled form field, dates included), and 1px under the "přidat poznámku" invitation on an entry without a note. A field you are writing in shows a solid underline.
+- **Dotted underline:** text you can write on. It is 2px under a field: the note on the tag, the picker, category names in Nastavení, the note line in the undo strip, and every labelled form field, dates included. It is 1px under the "přidat poznámku" invitation on an entry without a note. A field you are writing in shows a solid underline.
 - **1px hairline:** divides list items.
 
 ### Named Rules
@@ -405,33 +490,33 @@ Line styles carry meaning:
 ## Components
 
 ### Price Tag (signature)
-The entry screen's main surface: yellow, 6px corners, 16px 18px 10px padding, and a 16px hang hole 16px from the top and 18px from the left. The amount sits bottom right in Display with "Kč" after it. Under it runs the meta line:
+The entry screen's main surface: the tag colour, 6px corners, 16px 18px 10px padding, and a 16px hang hole 16px from the top and 18px from the left. The amount sits bottom right in Display with "Kč" after it. Under it runs the meta line:
 
-- **The note:** writable, 1.0625rem at 600 and 87.5% width, with a dotted underline in 55% ink and its placeholder in ink on yellow.
-- **The date chip:** ink fill, yellow condensed capitals, 44px tall, 4px corners. The native date input sits invisibly over it.
+- **The note:** writable, 1.0625rem at 600 and 87.5% width, with a 2px dotted underline in ink line and its placeholder in soft ink.
+- **The date chip:** ink fill, capitals in the tag colour, 44px tall, 4px corners. The native date input sits invisibly over it.
 
-While the tag is empty, its zero is half-strength ink. On save, the amount prints down out of the tag and the fresh zero prints in from above (340ms). Tapping a label with no amount nudges the tag sideways (300ms), and the hint above the shelf jumps to 800-weight text.
+While the tag is empty, its zero is set in faint ink. On save, the amount prints down out of the tag and the fresh zero prints in from above (340ms). Tapping a label with no amount nudges the tag sideways (300ms), and the hint above the shelf jumps to 800-weight text.
 
-The Přehled total tag uses the same yellow, corners and hole. A name line ("CELKEM ZA OBDOBÍ", Label capitals at 0.9375rem, indented past the hole) sits over the total in Headline. Beneath that is a unit line under a 1px rule of 40% ink, holding the entry count and daily average in ink on yellow. The name line says what the price is, like the product name on a shelf tag.
+The Přehled total tag uses the same colour, corners and hole. A name line ("CELKEM ZA OBDOBÍ", Label capitals at 0.9375rem, indented past the hole) sits over the total in Headline. Beneath that is a unit line under a 1px rule in ink line, holding the entry count and daily average in soft ink. The name line says what the price is, like the product name on a shelf tag.
 
 ### Shelf Label
 - **Shape:** square, 3px top rule, at least 58px tall (52px on short phones), 7px 10px 6px padding, three to a row.
 - **Content:** the category name in Name capitals over its running period total as a muted Caption.
 - **Press:** fills with pressed grey and drops 1px.
-- **Save:** the label stamps, landing 3px low in yellow with ink lettering and settling back as the yellow fades (500ms) while its total ticks up.
+- **Save:** the label stamps, landing 3px low in the tag colour with ink lettering and settling back as the colour fades (500ms) while its total ticks up.
 
 ### Scale Keypad
-Twelve flat, square keys on a black grid: 2px rail-colour seams and a 2px rail border, three columns. Keys are key white with Key digits; the comma and backspace take the function grey. Every key, comma and backspace included, turns ink with a yellow glyph while pressed. Backspace is an inline 24px stroked icon (2px stroke, round joins), like every icon in the app.
+Twelve flat, square keys on a grid in the rail colour: 2px seams and a 2px border, three columns. Keys are key white with Key digits; the comma and backspace take the function grey. Every key, comma and backspace included, turns ink with a tag-coloured glyph while pressed. Backspace is an inline 24px stroked icon (2px stroke, round joins), like every icon in the app.
 
 ### Buttons
 - **Shape:** 4px corners, at least 44px tall, 0 16px padding, Label capitals. An optional 20px icon sits 6px before the text.
-- **Primary:** yellow fill, ink lettering. The default for any action.
+- **Primary:** tag fill, ink lettering. The default for any action.
 - **Quiet:** transparent with the 2px drawn ring in `rule`, lettering in text colour. For secondary actions (Vyřadit, Upravit, Obnovit ze zálohy, Zrušit).
-- **Ink:** rail-black fill, yellow lettering. Only for actions that replace or delete data (Obnovit, Opravdu smazat, Smazat on a recurring payment).
+- **Ink:** rail fill, lettering in the tag colour. Only for actions that replace or delete data (Obnovit, Opravdu smazat, Smazat on a recurring payment).
 - **Press / Focus:** drops 1px when pressed; the 3px focus ring sits at a 2px offset. There is no hover treatment; this is a touch app.
 
 ### Inputs / Fields
-- **Writable line:** no box and no fill, just a 2px dotted underline (muted on white labels and in the strip, 55% ink on the tag), square. The underline turns solid while you write, in place of an outline. Used for the note on the tag, the picker, category names, the note line in the undo strip and every labelled form field (native date inputs included). Placeholders always take muted, or ink on yellow on the tag.
+- **Writable line:** no box and no fill, just a 2px dotted underline, square: muted on white labels and in the strip, ink line on the tag. The underline turns solid while you write, in place of an outline. Used for the note on the tag, the picker, category names, the note line in the undo strip and every labelled form field (native date inputs included). Placeholders always take muted, or soft ink on the tag.
 - **Labelled field:** a form label (capitals at 0.8125rem, 800 and 75% width, 0.05em) 4px above its control. The recurring form and the entry editor share it. A text or date input inside is a writable line at 1.0625rem, 700 and 87.5% width; a select inside runs the full width.
 - **Boxed input:** the new-category input, white with a 2px `rule` border, 4px corners, 48px tall.
 - **Select:** white with a 2px `rule` border, 4px corners, 44px tall, set at 1.125rem, 800 and 75% width. A chevron (the right arrow turned 90°) sits 10px from the right edge.
@@ -439,15 +524,15 @@ Twelve flat, square keys on a black grid: 2px rail-colour seams and a 2px rail b
 - **Error:** 0.875rem 700 text in text ink directly under the field, announced as an alert. Errors are never red.
 
 ### Navigation
-- **Top rail:** rail black; top padding is the safe-area inset or 12px, whichever is larger, with 16px sides and 10px below. The period sits left in Title, and the countdown ("Do výplaty N dní") or status sits right in rail grey (0.9375rem, 600). Under both runs a 4px countdown strip: a rail-track track whose yellow fill grows left to right as the period runs (400ms). On Přehled, the rail centres the period and its status between 44px previous and next arrows, and the next arrow hides on the current period.
-- **Tab rail:** three equal tabs, 52px tall, in rail grey capitals (1rem, 700, 75% width, 0.06em). The active tab turns rail white and gets a 4px yellow top bar.
-- **Focus:** on both rails the focus ring is yellow.
+- **Top rail:** the rail colour; top padding is the safe-area inset or 12px, whichever is larger, with 16px sides and 10px below. The period sits left in Title, and the countdown ("Do výplaty N dní") or status sits right in rail grey (0.9375rem, 600). Under both runs a 4px countdown strip: a rail-track track whose fill, in the tag colour, grows left to right as the period runs (400ms). On Přehled, the rail centres the period and its status between 44px previous and next arrows, and the next arrow hides on the current period.
+- **Tab rail:** three equal tabs, 52px tall, in rail grey capitals (1rem, 700, 75% width, 0.06em). The active tab turns rail white and gets a 4px top bar in the tag colour.
+- **Focus:** on both rails the focus ring takes the tag colour.
 
 ### Category Picker
 The next slot on the shelf: a white label with a writable line for searching or naming a new category. Opening it takes over the whole shelf, adds a 44px close button, and drops a list below a hairline:
 
 - Options are 48px rows in List type, divided by hairlines.
-- The selected option fills yellow and shows a chevron marker.
+- The selected option fills with the tag colour and shows a chevron marker.
 - Create and restore options lead with a plus icon; notes are muted Captions.
 
 ### Category Row with Ruler (signature)
@@ -467,9 +552,9 @@ Day heads are 1rem, 800 and 75% width, with the day's total on the right, over a
 
 - **Plain:** the category in List type with its saved note beneath (0.875rem, muted), the amount in Price at 1.25rem, and a 44px close icon that deletes. Two buttons open the entry editor. Category and note together (at least 44px tall) open it on the note; the amount, right-aligned and at least 44px tall, opens it with the amount selected. An entry without a note shows "přidat poznámku" in muted over a 1px dotted line.
 - **Editing:** the row opens in place into the entry editor, 8px from the row above and 14px from the rule below.
-- **Deleted:** the entry stays in place for a few seconds, muted. A 3px red line strikes its category and amount, the word SMAZÁNO (0.75rem, 800, capitals) sits under the category, and a yellow VRÁTIT button brings it back.
+- **Deleted:** the entry stays in place for a few seconds, muted. A 3px strike-red line crosses its category and amount, the word SMAZÁNO (0.75rem, 800, capitals) sits under the category, and a VRÁTIT button in the tag colour brings it back.
 
-VRÁTIT is a square yellow action: 44px tall, 0 14px padding, capitals at 0.04em. An entry written by a recurring payment carries a PRAVIDELNÁ chip 6px after its category name. The chip is square, with a 1px drawn ring in `rule`, text colour, 1px 5px padding, and capitals at 0.6875rem, 800 and 75% width.
+VRÁTIT is a square action in the tag colour: 44px tall, 0 14px padding, capitals at 0.04em. An entry written by a recurring payment carries a PRAVIDELNÁ chip 6px after its category name. The chip is square, with a 1px drawn ring in `rule`, text colour, 1px 5px padding, and capitals at 0.6875rem, 800 and 75% width.
 
 ### Entry Editor
 A written expense opens into a small form: a white label with a 3px top rule, 12px padding and a two-column grid with 12px gaps.
@@ -497,11 +582,20 @@ The form takes the edited row's place, or appears below the list for a new payme
 
 An error line in text ink sits above the actions: a primary Přidat or Uložit, a quiet Zrušit, and, when editing, an ink Smazat. Smazat asks no confirmation; the strip offers undo.
 
+### Scheme Picker (Vzhled)
+A help paragraph, then a two-column grid of preview cards 10px apart, one per scheme, picked like radio buttons. Each card carries its own scheme and renders in it, including that scheme's dark variant in dark mode. A card is square, on its scheme's ground, with a 1px hairline ring and 8px 8px 10px padding. It holds a miniature of the app:
+
+- A 10px rail bar.
+- A 44px tag (4px corners, 6px hang hole) with "129 Kč" in ink, the 129 in Price at 1.875rem.
+- Three mini shelf labels with 2px top rules.
+
+Under the miniature come the scheme name (1rem, 800, 75% width) and its description in muted (0.8125rem). The chosen card gets a 3px ring in `rule` and adds "· vybráno" to its description; the focus ring sits on the whole card.
+
 ### Undo Strip
 The app's one message strip: white, with a 3px bottom rule, it feeds down from under the top rail (260ms, clipped from the top and dropping 12px), with 8px 16px padding. It never covers the rail. It has two modes:
 
-- **Message:** the message on the left (600, tabular, wrapping when it must) and a yellow action on the right (VRÁTIT, or Ukázat when it announces payments written on opening: "Zapsané pravidelné platby: Nájem"; 44px tall, 0 18px padding). After a save, a quiet Poznámka action sits before it: transparent, the 2px drawn ring in `rule`, 0 14px padding, Label capitals.
-- **Note:** the message gives way to a writable line (1.0625rem, 600, 87.5% width, 2px dotted muted underline that goes solid in text colour while you write), and Hotovo becomes the yellow action. It stays open until you finish.
+- **Message:** the message on the left (600, tabular, wrapping when it must) and an action in the tag colour on the right: VRÁTIT, or Ukázat when it announces payments written on opening ("Zapsané pravidelné platby: Nájem"). The action is 44px tall with 0 18px padding. After a save, a quiet Poznámka action sits before it: transparent, the 2px drawn ring in `rule`, 0 14px padding, Label capitals.
+- **Note:** the message gives way to a writable line (1.0625rem, 600, 87.5% width, 2px dotted muted underline that goes solid in text colour while you write), and Hotovo becomes the action. It stays open until you finish.
 
 Both strip actions are square, unlike standalone buttons.
 
@@ -511,13 +605,14 @@ Confirmations, the empty period and the install hint take the shelf-label form: 
 ### Named Rules
 **The Form and Word Rule.** Every state carries a form and a word, never colour alone:
 
-- The active tab gets a yellow top bar.
+- The active tab gets a top bar.
 - The chosen option gets a chevron.
-- A deleted entry gets a red strike, SMAZÁNO and VRÁTIT.
+- A deleted entry gets a strike, SMAZÁNO and VRÁTIT.
 - An archived category gets a dashed rule and "vyřazená".
 - An empty category reads "nic".
 - An entry without a note reads "přidat poznámku" over a dotted line.
 - A payment still to come sits on a dashed rule under "Ještě přijde"; one already written carries PRAVIDELNÁ.
+- The chosen scheme gets a 3px ring and "· vybráno".
 - The no-amount warning is heavier and darker, and changes its words.
 
 **The Printing Motion Rule.** Motion prints: short, weighted and downward on `cubic-bezier(0.2, 0.9, 0.3, 1)`, from 260 to 500ms.
@@ -533,17 +628,18 @@ The only sideways move is the refusal nudge. Reduced motion collapses every anim
 ### Do:
 - **Do** print every amount in Archivo at 62% width and 800 weight with tabular figures, small raised haléře and a smaller "Kč" after the number.
 - **Do** hang every white label, row, field and panel from a 3px top rule in `rule`, with square corners; round only tags (6px) and standalone controls (4px).
-- **Do** keep yellow for tags and for what you act on: primary buttons, undo, Hotovo, the chosen option, the active tab bar.
-- **Do** use the ink button (black fill, yellow lettering) for actions that replace or delete data.
+- **Do** keep the tag colour for tags and for what you act on: primary buttons, undo, Hotovo, the chosen option, the active tab bar.
+- **Do** use the ink button (rail fill, lettering in the tag colour) for actions that replace or delete data.
 - **Do** write field errors in text ink at 700, directly under the field.
-- **Do** mark writable text with a dotted underline that goes solid while you write, with its placeholder in muted (ink on yellow on the tag).
+- **Do** mark writable text with a dotted underline that goes solid while you write, with its placeholder in muted (soft ink on the tag).
 - **Do** draw anything not written yet on a dashed rule, with its amount in muted.
 - **Do** give every state a form and a word, not just a colour.
+- **Do** take every colour from a token, and check a new screen in more than one scheme, in light and dark.
 - **Do** keep touch targets at least 44px (shelf labels 58px, tabs 52px) and the column no wider than 520px.
 - **Do** move things down when they print or are pressed, on `cubic-bezier(0.2, 0.9, 0.3, 1)`, and collapse motion to 1ms under reduced motion.
 
 ### Don't:
-- **Don't** use red for anything but the strike through a cancelled amount: not for fills, buttons, errors or destructive actions.
+- **Don't** use strike red for anything but the line through a cancelled amount: not for fills, buttons, errors or destructive actions.
 - **Don't** build the fintech dashboard: no rounded, shadowed white cards, no donut or pie chart, no gradient header, no floating plus button.
 - **Don't** add drop shadows or elevation; the hang hole's inset is the only soft shadow.
 - **Don't** introduce a second typeface; rank with Archivo's width, weight and size.
@@ -551,3 +647,4 @@ The only sideways move is the refusal nudge. Reduced motion collapses every anim
 - **Don't** make anything float, bounce or rise; the only sideways move is the refusal nudge.
 - **Don't** put small uppercase lead-ins above headings. Condensed capitals name the thing itself: a label, a section head, an action or a tag's name line.
 - **Don't** dim or invert the tags in dark mode.
+- **Don't** hard-code a colour, or add a scheme that leaves out a token or misses a floor in the contrast contract.

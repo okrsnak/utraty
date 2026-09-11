@@ -25,7 +25,7 @@
   gap: 4px;
   margin: 12px var(--gutter) 0;
   padding: 16px 18px 10px;
-  background: var(--yellow);
+  background: var(--tag);
   color: var(--ink);
   border-radius: 6px;
   flex: 1 1 0;
@@ -73,7 +73,7 @@
 }
 
 .tag.is-empty .price__int {
-  color: rgba(17, 17, 17, 0.5);
+  color: var(--ink-faint);
 }
 
 .tag__amount .price__dec {
@@ -101,7 +101,7 @@
   min-height: 44px;
   padding: 0 2px;
   border: 0;
-  border-bottom: 2px dotted rgba(17, 17, 17, 0.55);
+  border-bottom: 2px dotted var(--ink-line);
   border-radius: 0;
   background: transparent;
   color: var(--ink);
@@ -113,7 +113,7 @@
 }
 
 .tag__note::placeholder {
-  color: var(--ink-on-yellow);
+  color: var(--ink-soft);
 }
 
 .tag__note:focus-visible {
@@ -128,7 +128,7 @@
   min-height: 44px;
   padding: 0 14px;
   background: var(--ink);
-  color: var(--yellow);
+  color: var(--tag);
   border-radius: 4px;
   font-size: 0.9375rem;
   font-weight: 800;
@@ -204,7 +204,7 @@
 /* Every key, "," and backspace included, inverts to ink while pressed. */
 .keypad button:active {
   background: var(--ink);
-  color: var(--yellow);
+  color: var(--tag);
 }
 
 /* Short phones (iPhone SE): tighten so the whole entry screen fits. */

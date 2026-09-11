@@ -6,6 +6,7 @@
 import { isValidIsoDate } from './dates.js';
 import { MAX_AMOUNT } from './money.js';
 import { MAX_RECURRING_NAME, isValidFrequency } from './recurring.js';
+import { DEFAULT_THEME, isThemeId } from './themes.js';
 import { STATE_VERSION, MAX_CATEGORY_NAME, MAX_NOTE, isValidPayday } from './state.js';
 
 const MAX_ID = 64;
@@ -85,7 +86,8 @@ export function validateState(data) {
     ok: true,
     state: {
       version: STATE_VERSION,
-      settings: { payday: data.settings.payday },
+      // An unknown or missing scheme (older data) falls back to the default one.
+      settings: { payday: data.settings.payday, theme: isThemeId(data.settings.theme) ? data.settings.theme : DEFAULT_THEME },
       categories: categories.items,
       expenses: expenses.items,
       recurring: recurring.items,

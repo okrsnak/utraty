@@ -41,6 +41,7 @@ iPhone home-screen web app, Czech UI, CZK. Works offline. Each phone keeps its o
 - Summary per period: per-category totals and overall total, with navigation to earlier periods.
 - Undo after save/delete instead of confirmation dialogs.
 - Recurring payments (user request): rent, insurance, subscriptions. Each has a name, amount, category, a frequency (monthly, quarterly, half-yearly, yearly) and a first payment date. They are written automatically on the due day when the app opens; missed ones are caught up and none is ever written twice. Přehled shows the ones still due in the current period as "Ještě přijde".
+- Colour schemes (user request): Cenovka (default) plus pastel, mostly pink ones: Marcipán, Cukrová vata, Pudr, Broskev, and a mint Máta. Each has a dark variant that follows the phone. Chosen in Nastavení → Vzhled, stored per phone and in backups. The home-screen icon stays yellow.
 - Out of scope for now: income / remaining budget, charts, shared budgets or sync.
 - Open decisions: app name (working name "Útraty"), final category list ("doladíme spolu").
 

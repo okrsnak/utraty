@@ -10,6 +10,7 @@ import {
   renameCategory,
   setCategoryArchived,
   setPayday,
+  setTheme,
   activeCategories,
   categoryNameError,
   setExpenseNote,
@@ -30,6 +31,13 @@ test('initial state has payday 10 and the starter categories', () => {
   assert.deepEqual(state.categories.map((category) => category.name), ['Jídlo', 'Tanec', 'Nájem', 'Ostatní']);
   assert.deepEqual(state.expenses, []);
   assert.deepEqual(state.recurring, []);
+  assert.equal(state.settings.theme, 'cenovka');
+});
+
+test('setTheme switches to a listed scheme and refuses anything else', () => {
+  assert.equal(setTheme(createInitialState(), 'marcipan').settings.theme, 'marcipan');
+  assert.equal(setTheme(createInitialState(), 'marcipan').settings.payday, 10);
+  assert.throws(() => setTheme(createInitialState(), 'neon'), RangeError);
 });
 
 test('each initial state is an independent copy', () => {

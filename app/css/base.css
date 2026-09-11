@@ -22,11 +22,16 @@
     U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-:root {
-  --yellow: #ffd400;
+/* The default colour scheme. The other schemes live in themes.css and are
+   picked with data-theme on <html> (and on the preview cards in Nastavení). */
+:root,
+[data-theme='cenovka'] {
+  --tag: #ffd400;
   --ink: #111111;
-  --ink-on-yellow: rgba(17, 17, 17, 0.74);
-  --red: #e3000f;
+  --ink-soft: #4f440d;
+  --ink-line: #7c6909;
+  --ink-faint: #887309;
+  --strike: #e3000f;
   --bar: #111111;
   --ground: #e6e7ea;
   --surface: #ffffff;
@@ -50,7 +55,9 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root,
+  [data-theme='cenovka'] {
+    --strike: #ff4d5e;
     --ground: #1d1e21;
     --surface: #2a2c30;
     --key: #34363b;
@@ -115,7 +122,7 @@ button {
 }
 
 ::selection {
-  background: var(--yellow);
+  background: var(--tag);
   color: var(--ink);
 }
 
@@ -223,13 +230,13 @@ input {
 /* On the black rails an ink focus ring would vanish; it turns yellow there. */
 .rail :focus-visible,
 .tabs :focus-visible {
-  outline-color: var(--yellow);
+  outline-color: var(--tag);
 }
 
 .rail__strip span {
   display: block;
   height: 100%;
-  background: var(--yellow);
+  background: var(--tag);
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 0.4s var(--ease-print);
@@ -259,7 +266,7 @@ input {
 
 .tab[aria-current='page'] {
   color: var(--rail-text);
-  border-top-color: var(--yellow);
+  border-top-color: var(--tag);
 }
 
 @media (prefers-reduced-motion: reduce) {
