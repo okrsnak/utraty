@@ -1,0 +1,200 @@
+/* Column chart on Statistiky. Paint order inside the plot: the chosen band,
+   gridlines, the average line, then the columns, so the line reads in the air
+   between columns instead of slicing through them. */
+
+.chart-panel {
+  padding: 12px 12px 10px;
+  background: var(--surface);
+  border-top: 3px solid var(--rule);
+}
+
+.chart {
+  --column-min: 26px; /* any narrower and the plot scrolls sideways instead */
+  --plot-height: 168px;
+  --plot-top: 10px;
+  display: grid;
+  gap: 6px;
+  margin: 0;
+}
+
+.chart.is-compact {
+  --plot-height: 72px;
+  --plot-top: 6px;
+}
+
+.chart__frame {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+}
+
+.chart.is-compact .chart__frame {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* Ticks in their own gutter, matched to the plot's inner height. */
+.chart__ticks {
+  position: relative;
+  height: calc(var(--plot-height) - 2px);
+  margin-top: var(--plot-top);
+}
+
+.chart__tick {
+  position: absolute;
+  right: 6px;
+  transform: translateY(50%);
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-stretch: 75%;
+  line-height: 1;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Right to left, so a plot wider than its box opens at the running month. */
+.chart__scroll {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  direction: rtl;
+}
+
+.chart__canvas {
+  direction: ltr;
+  min-width: max(100%, calc(var(--columns) * var(--column-min)));
+  padding-top: var(--plot-top);
+}
+
+.chart__area {
+  position: relative;
+  isolation: isolate;
+  height: var(--plot-height);
+  border-bottom: 2px solid var(--rule);
+}
+
+.chart__grid {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-top: 1px solid var(--hairline);
+  pointer-events: none;
+}
+
+.chart__columns {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+}
+
+.chart__column {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-width: 0;
+  height: 100%;
+}
+
+.chart__column.is-selected {
+  background: var(--ground);
+}
+
+.chart__column:focus-visible {
+  outline-offset: -3px;
+}
+
+.chart__bar {
+  position: relative;
+  z-index: 3;
+  width: min(24px, 62%);
+  background: var(--bar);
+}
+
+/* The running month is not finished: hatched inside a dashed outline. */
+.chart__column.is-current .chart__bar,
+.chart__swatch--current {
+  border: 2px dashed var(--bar);
+  border-bottom: 0;
+  background: repeating-linear-gradient(135deg, var(--bar) 0 2px, transparent 2px 6px);
+}
+
+.chart__average {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  height: 2px;
+  margin-bottom: -1px;
+  background: var(--text);
+  pointer-events: none;
+}
+
+.chart__axis {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+  padding-top: 6px;
+}
+
+.chart__label {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 1px;
+  min-width: 0;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  font-stretch: 75%;
+  line-height: 1.2;
+  color: var(--muted);
+}
+
+.chart__month {
+  padding: 1px 2px;
+}
+
+/* The chosen month: a tag-coloured chip, not just a colour change on the bar. */
+.chart__month.is-selected {
+  background: var(--tag);
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.chart__sublabel {
+  font-size: 0.6875rem;
+  font-weight: 600;
+}
+
+.chart__keys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  padding-top: 4px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.chart__key {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chart__swatch {
+  display: inline-block;
+  flex: none;
+}
+
+.chart__swatch--average {
+  width: 16px;
+  height: 2px;
+  background: var(--text);
+}
+
+.chart__swatch--current {
+  width: 12px;
+  height: 12px;
+  border-bottom: 2px dashed var(--bar);
+}

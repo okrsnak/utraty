@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-11T15:08:34.357Z",
+  "generatedAt": "2026-09-11T15:52:39.098Z",
   "title": "Design System: Útraty",
   "extensions": {
     "colorMeta": {
@@ -556,11 +556,11 @@
       },
       "headline": {
         "displayName": "Period Total",
-        "purpose": "The total on the Přehled tag."
+        "purpose": "The total on the Přehled tag and the monthly average on Statistiky; \"Po výplatě\" stands in at 2.25rem until a month has finished."
       },
       "price": {
         "displayName": "Row Price",
-        "purpose": "Amounts in category rows (1.375rem), the day list (1.25rem), the entry editor (1.5rem) and payments still to come (1.125rem, muted)."
+        "purpose": "Amounts in category and stat rows (1.375rem), the day list and receipt (1.25rem), the entry editor (1.5rem), the chosen month readout (2rem) and payments still to come (1.125rem, muted)."
       },
       "key": {
         "displayName": "Key Digit",
@@ -588,7 +588,7 @@
       },
       "caption": {
         "displayName": "Caption",
-        "purpose": "Running totals, counts, section-head notes and picker notes, in muted."
+        "purpose": "Running totals, counts, section-head notes, picker notes, stat-row meta and the chart key row, in muted."
       }
     },
     "shadows": [
@@ -600,12 +600,17 @@
       {
         "name": "drawn-ring",
         "value": "inset 0 0 0 2px var(--rule)",
-        "purpose": "The 2px outline on quiet buttons and the undo strip Poznámka action, drawn inside so they keep their size."
+        "purpose": "The 2px outline on quiet buttons, unchosen range options and the undo strip Poznámka action, drawn inside so they keep their size."
       },
       {
         "name": "chip-ring",
         "value": "inset 0 0 0 1px var(--rule)",
         "purpose": "Outline of the PRAVIDELNÁ chip on entries a recurring payment wrote."
+      },
+      {
+        "name": "surface-ring",
+        "value": "0 0 0 2px var(--surface)",
+        "purpose": "Drawn outside the average marker on stat rows and its key, so the text-ink upright stays apart from a bar fill of the same colour."
       },
       {
         "name": "archived-ring",
@@ -643,6 +648,11 @@
         "name": "countdown-fill",
         "value": "transform 400ms var(--ease-print)",
         "purpose": "The yellow countdown strip in the top rail grows left to right as the period runs."
+      },
+      {
+        "name": "chevron-turn",
+        "value": "transform 260ms var(--ease-print)",
+        "purpose": "Stat-row chevrons turn between closed and open."
       },
       {
         "name": "reduced-motion",
@@ -775,7 +785,7 @@
         {
           "foreground": "tag",
           "background": "rail",
-          "minimum": 3
+          "minimum": 4.5
         },
         {
           "foreground": "tag",
@@ -1146,9 +1156,9 @@
       "name": "Rails and Tabs",
       "kind": "nav",
       "refersTo": "tab",
-      "description": "The shelf-edge rails in the rail colour (black in Cenovka): period and countdown over a rail-track strip with its tag-colour fill on top, three condensed tabs below with a 4px tag-colour bar on the active one. Focus rings on the rails take the tag colour.",
-      "html": "<div class=\"ds-frame\"><header class=\"ds-rail\"><p class=\"ds-rail__period\">10. 9. – 9. 10.</p><p class=\"ds-rail__countdown\">Do výplaty 29 dní</p><div class=\"ds-rail__strip\"><span></span></div></header><nav class=\"ds-tabs\" aria-label=\"Hlavní nabídka\"><button type=\"button\" class=\"ds-tab\" aria-current=\"page\">Přidat</button><button type=\"button\" class=\"ds-tab\">Přehled</button><button type=\"button\" class=\"ds-tab\">Nastavení</button></nav></div>",
-      "css": ".ds-frame{display:grid;gap:24px;width:360px;background:var(--ground,#e6e7ea);font-family:var(--font, 'Archivo', 'Helvetica Neue', Arial, sans-serif)}.ds-rail{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:4px 12px;padding:12px 16px 10px;background:var(--rail,#111111);color:var(--rail-text,#ffffff);font-stretch:75%}.ds-rail p{margin:0}.ds-rail__period{font-size:1.25rem;font-weight:800;letter-spacing:.01em;white-space:nowrap}.ds-rail__countdown{font-size:.9375rem;font-weight:600;color:var(--rail-muted,#b9bbc0);white-space:nowrap}.ds-rail__strip{grid-column:1/-1;height:4px;background:var(--rail-track,#3a3b3e)}.ds-rail__strip span{display:block;width:6%;height:100%;background:var(--tag,#ffd400)}.ds-tabs{display:grid;grid-template-columns:repeat(3,1fr);background:var(--rail,#111111)}.ds-tab{min-height:52px;border:0;border-top:4px solid transparent;background:none;color:var(--rail-muted,#b9bbc0);font-family:inherit;font-size:1rem;font-weight:700;font-stretch:75%;text-transform:uppercase;letter-spacing:.06em;cursor:pointer}.ds-tab[aria-current=\"page\"]{color:var(--rail-text,#ffffff);border-top-color:var(--tag,#ffd400)}.ds-tab:focus-visible{outline:3px solid var(--tag,#ffd400);outline-offset:2px}"
+      "description": "The shelf-edge rails in the rail colour (black in Cenovka): period and countdown over a rail-track strip with its tag-colour fill on top, four condensed tabs below with a 4px tag-colour bar on the active one. Focus rings on the rails take the tag colour.",
+      "html": "<div class=\"ds-frame\"><header class=\"ds-rail\"><p class=\"ds-rail__period\">10. 9. – 9. 10.</p><p class=\"ds-rail__countdown\">Do výplaty 29 dní</p><div class=\"ds-rail__strip\"><span></span></div></header><nav class=\"ds-tabs\" aria-label=\"Hlavní nabídka\"><button type=\"button\" class=\"ds-tab\" aria-current=\"page\">Přidat</button><button type=\"button\" class=\"ds-tab\">Přehled</button><button type=\"button\" class=\"ds-tab\">Statistiky</button><button type=\"button\" class=\"ds-tab\">Nastavení</button></nav></div>",
+      "css": ".ds-frame{display:grid;gap:24px;width:360px;background:var(--ground,#e6e7ea);font-family:var(--font, 'Archivo', 'Helvetica Neue', Arial, sans-serif)}.ds-rail{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:4px 12px;padding:12px 16px 10px;background:var(--rail,#111111);color:var(--rail-text,#ffffff);font-stretch:75%}.ds-rail p{margin:0}.ds-rail__period{font-size:1.25rem;font-weight:800;letter-spacing:.01em;white-space:nowrap}.ds-rail__countdown{font-size:.9375rem;font-weight:600;color:var(--rail-muted,#b9bbc0);white-space:nowrap}.ds-rail__strip{grid-column:1/-1;height:4px;background:var(--rail-track,#3a3b3e)}.ds-rail__strip span{display:block;width:6%;height:100%;background:var(--tag,#ffd400)}.ds-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:var(--rail,#111111)}.ds-tab{min-height:52px;border:0;border-top:4px solid transparent;background:none;color:var(--rail-muted,#b9bbc0);font-family:inherit;font-size:1rem;font-weight:700;font-stretch:75%;text-transform:uppercase;letter-spacing:.06em;cursor:pointer}.ds-tab[aria-current=\"page\"]{color:var(--rail-text,#ffffff);border-top-color:var(--tag,#ffd400)}.ds-tab:focus-visible{outline:3px solid var(--tag,#ffd400);outline-offset:2px}"
     },
     {
       "name": "Category Row with Ruler",
@@ -1173,6 +1183,14 @@
       "description": "Nastavení → Vzhled: every scheme as a small preview of the app drawn in its own tokens (rail bar, tag with 129 Kč and hang hole, three mini labels), picked like a radio; the chosen card gets a 3px rule ring and \"· vybráno\".",
       "html": "<div class=\"ds-schemes\" role=\"radiogroup\" aria-label=\"Barevné schéma\"><label class=\"ds-scheme\" style=\"--tag:#ffd400;--ink:#111111;--rail:#111111;--ground:#e6e7ea;--surface:#ffffff;--rule:#111111;--text:#111111;--muted:#53565c;--hairline:#c7c9ce;--focus:#111111\"><input class=\"ds-scheme__input\" type=\"radio\" name=\"ds-scheme\" checked><span class=\"ds-scheme__preview\" aria-hidden=\"true\"><span class=\"ds-scheme__rail\"></span><span class=\"ds-scheme__tag\"><span class=\"ds-scheme__hole\"></span><span class=\"ds-scheme__price\">129</span><span class=\"ds-scheme__cur\">Kč</span></span><span class=\"ds-scheme__labels\"><span></span><span></span><span></span></span></span><span class=\"ds-scheme__name\">Cenovka</span><span class=\"ds-scheme__desc\">žlutá a černá · vybráno</span></label><label class=\"ds-scheme\" style=\"--tag:#f7c3d4;--ink:#3a1627;--rail:#3a1627;--ground:#f6eaef;--surface:#fffbfc;--rule:#3a1627;--text:#2f1420;--muted:#6b4a58;--hairline:#e3cad4;--focus:#3a1627\"><input class=\"ds-scheme__input\" type=\"radio\" name=\"ds-scheme\"><span class=\"ds-scheme__preview\" aria-hidden=\"true\"><span class=\"ds-scheme__rail\"></span><span class=\"ds-scheme__tag\"><span class=\"ds-scheme__hole\"></span><span class=\"ds-scheme__price\">129</span><span class=\"ds-scheme__cur\">Kč</span></span><span class=\"ds-scheme__labels\"><span></span><span></span><span></span></span></span><span class=\"ds-scheme__name\">Marcipán</span><span class=\"ds-scheme__desc\">pastelově růžová</span></label><label class=\"ds-scheme\" style=\"--tag:#ffc7de;--ink:#2a1d47;--rail:#45357a;--ground:#efebfa;--surface:#fdfbff;--rule:#45357a;--text:#231a3b;--muted:#5d5380;--hairline:#dcd4ef;--focus:#45357a\"><input class=\"ds-scheme__input\" type=\"radio\" name=\"ds-scheme\"><span class=\"ds-scheme__preview\" aria-hidden=\"true\"><span class=\"ds-scheme__rail\"></span><span class=\"ds-scheme__tag\"><span class=\"ds-scheme__hole\"></span><span class=\"ds-scheme__price\">129</span><span class=\"ds-scheme__cur\">Kč</span></span><span class=\"ds-scheme__labels\"><span></span><span></span><span></span></span></span><span class=\"ds-scheme__name\">Cukrová vata</span><span class=\"ds-scheme__desc\">růžová s levandulí</span></label><label class=\"ds-scheme\" style=\"--tag:#e8b7bf;--ink:#33201f;--rail:#4a2f36;--ground:#efe7e5;--surface:#fcf9f8;--rule:#4a2f36;--text:#2c1d1d;--muted:#685252;--hairline:#dccfcc;--focus:#4a2f36\"><input class=\"ds-scheme__input\" type=\"radio\" name=\"ds-scheme\"><span class=\"ds-scheme__preview\" aria-hidden=\"true\"><span class=\"ds-scheme__rail\"></span><span class=\"ds-scheme__tag\"><span class=\"ds-scheme__hole\"></span><span class=\"ds-scheme__price\">129</span><span class=\"ds-scheme__cur\">Kč</span></span><span class=\"ds-scheme__labels\"><span></span><span></span><span></span></span></span><span class=\"ds-scheme__name\">Pudr</span><span class=\"ds-scheme__desc\">tlumená pudrová růžová</span></label><label class=\"ds-scheme\" style=\"--tag:#ffcdb5;--ink:#3b1d12;--rail:#4a2620;--ground:#f8ece6;--surface:#fffaf7;--rule:#4a2620;--text:#2f1a12;--muted:#6b4d41;--hairline:#ead6cc;--focus:#4a2620\"><input class=\"ds-scheme__input\" type=\"radio\" name=\"ds-scheme\"><span class=\"ds-scheme__preview\" aria-hidden=\"true\"><span class=\"ds-scheme__rail\"></span><span class=\"ds-scheme__tag\"><span class=\"ds-scheme__hole\"></span><span class=\"ds-scheme__price\">129</span><span class=\"ds-scheme__cur\">Kč</span></span><span class=\"ds-scheme__labels\"><span></span><span></span><span></span></span></span><span class=\"ds-scheme__name\">Broskev</span><span class=\"ds-scheme__desc\">broskvově růžová</span></label><label class=\"ds-scheme\" style=\"--tag:#bfe9d5;--ink:#0f2b25;--rail:#15403a;--ground:#e7f1ed;--surface:#fbfefd;--rule:#15403a;--text:#10241f;--muted:#465e58;--hairline:#cde0d8;--focus:#15403a\"><input class=\"ds-scheme__input\" type=\"radio\" name=\"ds-scheme\"><span class=\"ds-scheme__preview\" aria-hidden=\"true\"><span class=\"ds-scheme__rail\"></span><span class=\"ds-scheme__tag\"><span class=\"ds-scheme__hole\"></span><span class=\"ds-scheme__price\">129</span><span class=\"ds-scheme__cur\">Kč</span></span><span class=\"ds-scheme__labels\"><span></span><span></span><span></span></span></span><span class=\"ds-scheme__name\">Máta</span><span class=\"ds-scheme__desc\">pastelově mentolová</span></label></div>",
       "css": ".ds-schemes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;width:340px;font-family:var(--font, 'Archivo', 'Helvetica Neue', Arial, sans-serif)}.ds-scheme{display:grid;gap:6px;padding:8px 8px 10px;background:var(--ground);color:var(--text);box-shadow:inset 0 0 0 1px var(--hairline);cursor:pointer}.ds-scheme:has(input:checked){box-shadow:inset 0 0 0 3px var(--rule)}.ds-scheme:has(input:focus-visible){outline:3px solid var(--focus);outline-offset:2px}.ds-scheme__input{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.ds-scheme__preview{display:grid;gap:5px}.ds-scheme__rail{height:10px;background:var(--rail)}.ds-scheme__tag{position:relative;display:flex;align-items:baseline;justify-content:flex-end;gap:2px;height:44px;padding:4px 8px;background:var(--tag);color:var(--ink);border-radius:4px;font-weight:800}.ds-scheme__hole{position:absolute;top:6px;left:7px;width:6px;height:6px;border-radius:50%;background:var(--ground)}.ds-scheme__price{font-size:1.875rem;font-stretch:62%;line-height:1}.ds-scheme__cur{font-size:.75rem;font-stretch:75%}.ds-scheme__labels{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}.ds-scheme__labels span{height:12px;background:var(--surface);border-top:2px solid var(--rule)}.ds-scheme__name{font-size:1rem;font-weight:800;font-stretch:75%}.ds-scheme__desc{font-size:.8125rem;color:var(--muted)}"
+    },
+    {
+      "name": "Column Chart",
+      "kind": "custom",
+      "refersTo": "chart-bar",
+      "description": "Statistiky, the one chart form: months as square columns in bar on one baseline over hairline gridlines and compact ticks. The chosen month gets a ground band and a tag-colour chip, the running month is hatched inside a dashed outline with \"zatím\", and the average is a 2px line painted behind the columns and named in the key row.",
+      "html": "<div class=\"ds-chart-panel\"><figure class=\"ds-chart\" aria-label=\"Útraty po měsících\"><div class=\"ds-chart__plot\"><div class=\"ds-chart__area\"><span class=\"ds-chart__grid ds-chart__grid--base\" style=\"bottom:0.00%\"><span class=\"ds-chart__tick\">0</span></span><span class=\"ds-chart__grid\" style=\"bottom:25.00%\"><span class=\"ds-chart__tick\">10 tis.</span></span><span class=\"ds-chart__grid\" style=\"bottom:50.00%\"><span class=\"ds-chart__tick\">20 tis.</span></span><span class=\"ds-chart__grid\" style=\"bottom:75.00%\"><span class=\"ds-chart__tick\">30 tis.</span></span><span class=\"ds-chart__grid\" style=\"bottom:100.00%\"><span class=\"ds-chart__tick\">40 tis.</span></span><div class=\"ds-chart__columns\" style=\"--columns:6\"><button type=\"button\" class=\"ds-chart__column\" aria-pressed=\"false\" aria-label=\"dub: 31200 Kč\"><span class=\"ds-chart__bar\" style=\"height:max(2px, 78.00%)\"></span></button><button type=\"button\" class=\"ds-chart__column ds-chart__column--selected\" aria-pressed=\"true\" aria-label=\"kvě: 30747 Kč\"><span class=\"ds-chart__bar\" style=\"height:max(2px, 76.87%)\"></span></button><button type=\"button\" class=\"ds-chart__column\" aria-pressed=\"false\" aria-label=\"čvn: 21950 Kč\"><span class=\"ds-chart__bar\" style=\"height:max(2px, 54.87%)\"></span></button><button type=\"button\" class=\"ds-chart__column\" aria-pressed=\"false\" aria-label=\"čvc: 29277 Kč\"><span class=\"ds-chart__bar\" style=\"height:max(2px, 73.19%)\"></span></button><button type=\"button\" class=\"ds-chart__column\" aria-pressed=\"false\" aria-label=\"srp: 24880 Kč\"><span class=\"ds-chart__bar\" style=\"height:max(2px, 62.20%)\"></span></button><button type=\"button\" class=\"ds-chart__column ds-chart__column--current\" aria-pressed=\"false\" aria-label=\"zář: 12400 Kč\"><span class=\"ds-chart__bar\" style=\"height:max(2px, 31.00%)\"></span></button></div><span class=\"ds-chart__average\" style=\"bottom:69.03%\"></span></div></div><div class=\"ds-chart__axis\" style=\"--columns:6\"><span class=\"ds-chart__label\"><span class=\"ds-chart__month\">dub</span></span><span class=\"ds-chart__label\"><span class=\"ds-chart__month ds-chart__month--selected\">kvě</span></span><span class=\"ds-chart__label\"><span class=\"ds-chart__month\">čvn</span></span><span class=\"ds-chart__label\"><span class=\"ds-chart__month\">čvc</span></span><span class=\"ds-chart__label\"><span class=\"ds-chart__month\">srp</span></span><span class=\"ds-chart__label\"><span class=\"ds-chart__month\">zář</span><span class=\"ds-chart__sublabel\">zatím</span></span></div><p class=\"ds-chart__keys\"><span class=\"ds-chart__key\"><span class=\"ds-chart__swatch ds-chart__swatch--average\"></span>průměr 27 610,80 Kč</span><span class=\"ds-chart__key\"><span class=\"ds-chart__swatch ds-chart__swatch--current\"></span>zatím, měsíc ještě běží</span></p></figure></div>",
+      "css": ".ds-chart-panel{width:340px;padding:12px 12px 10px;background:var(--surface,#ffffff);border-top:3px solid var(--rule,#111111);color:var(--text,#111111);font-family:var(--font, 'Archivo', 'Helvetica Neue', Arial, sans-serif)}.ds-chart{display:grid;gap:6px;margin:0}.ds-chart__plot{padding:10px 0 0 44px}.ds-chart__area{position:relative;isolation:isolate;height:168px;border-bottom:2px solid var(--rule,#111111)}.ds-chart__grid{position:absolute;z-index:1;left:0;right:0;height:0;border-top:1px solid var(--hairline,#c7c9ce);pointer-events:none}.ds-chart__grid--base{border-top:0}.ds-chart__tick{position:absolute;top:0;right:calc(100% + 6px);transform:translateY(-50%);font-size:.75rem;font-weight:600;font-stretch:75%;color:var(--muted,#53565c);font-variant-numeric:tabular-nums;white-space:nowrap}.ds-chart__columns{position:absolute;inset:0;display:grid;grid-template-columns:repeat(var(--columns),minmax(0,1fr))}.ds-chart__column{position:relative;display:flex;align-items:flex-end;justify-content:center;min-width:0;height:100%;padding:0;border:0;background:none;cursor:pointer}.ds-chart__column--selected{background:var(--ground,#e6e7ea)}.ds-chart__column:focus-visible{outline:3px solid var(--focus,#111111);outline-offset:-3px}.ds-chart__bar{position:relative;z-index:3;width:min(24px,62%);background:var(--bar,#111111)}.ds-chart__column--current .ds-chart__bar,.ds-chart__swatch--current{border:2px dashed var(--bar,#111111);border-bottom:0;background:repeating-linear-gradient(135deg,var(--bar,#111111) 0 2px,transparent 2px 6px)}.ds-chart__average{position:absolute;z-index:2;left:0;right:0;height:2px;margin-bottom:-1px;background:var(--text,#111111);pointer-events:none}.ds-chart__axis{display:grid;grid-template-columns:repeat(var(--columns),minmax(0,1fr));margin-left:44px}.ds-chart__label{display:grid;justify-items:center;align-content:start;gap:1px;min-width:0;font-size:.8125rem;font-weight:700;font-stretch:75%;line-height:1.2;color:var(--muted,#53565c)}.ds-chart__month{padding:1px 3px}.ds-chart__month--selected{background:var(--tag,#ffd400);color:var(--ink,#111111);font-weight:800}.ds-chart__sublabel{font-size:.6875rem;font-weight:600}.ds-chart__keys{display:flex;flex-wrap:wrap;gap:4px 16px;margin:0;padding-top:4px;font-size:.8125rem;font-weight:600;color:var(--muted,#53565c)}.ds-chart__key{display:inline-flex;align-items:center;gap:6px}.ds-chart__swatch{display:inline-block;flex:none}.ds-chart__swatch--average{width:16px;height:2px;background:var(--text,#111111)}.ds-chart__swatch--current{width:12px;height:12px;border-bottom:2px dashed var(--bar,#111111)}"
     }
   ],
   "narrative": {
@@ -1181,7 +1199,8 @@
     "keyCharacteristics": [
       "One tag-coloured tag owns each view; everything else is white label, ground or rail.",
       "Heavy 3px top rules and square corners; only tags (6px) and standalone controls (4px) are rounded.",
-      "Solid rules hold what is written; dashed rules hold what isn't live.",
+      "Solid rules hold what is written and finished; dashed lines hold what isn't live or isn't finished.",
+      "One chart form: square columns on one baseline, the running month hatched, the average a line.",
       "One variable family ranked by width (62, 75, 87.5 and 100%), weight and size.",
       "Flat throughout: depth comes from fill, rule and seam, never shadow.",
       "Every state carries a form and a word, never colour alone.",
@@ -1191,7 +1210,7 @@
     "rules": [
       {
         "name": "The Tag Colour Rule",
-        "body": "The tag colour is the tag and what you act on: price tags, primary actions, the undo action, Hotovo, the chosen option, the active tab bar, the countdown fill, the stamp flash, and the focus ring on the rails. It never fills the ground, a section or a plain label.",
+        "body": "The tag colour is the tag and what you act on: price tags, primary actions, the undo action, Hotovo, the chosen option, range and month, the active tab bar, the countdown fill, the stamp flash, and the focus ring on the rails. It never fills the ground, a section or a plain label.",
         "section": "colors"
       },
       {
@@ -1221,7 +1240,7 @@
       },
       {
         "name": "The Shelf Rail Rule",
-        "body": "Every view hangs between two rails in the rail colour. The top rail carries what you are looking at (the period with its countdown or status, or the view name); the bottom rail carries the three tabs. Content scrolls between them, never over them.",
+        "body": "Every view hangs between two rails in the rail colour. The top rail carries what you are looking at (the period with its countdown or status, or the view name); the bottom rail carries the four tabs. Content scrolls between them, never over them.",
         "section": "layout"
       },
       {
@@ -1236,7 +1255,7 @@
       },
       {
         "name": "The Dashed Line Rule",
-        "body": "A dashed rule means not live: an archived category, or a payment not written yet. Everything written sits on a solid rule.",
+        "body": "A dashed line means not live or not finished: an archived category, a payment not written yet, or the month still running. Everything written and finished sits on a solid line.",
         "section": "shapes"
       },
       {
@@ -1246,12 +1265,12 @@
       },
       {
         "name": "The Form and Word Rule",
-        "body": "Every state carries a form and a word, never colour alone:\n- The active tab gets a top bar.\n- The chosen option gets a chevron.\n- A deleted entry gets a strike, SMAZÁNO and VRÁTIT.\n- An archived category gets a dashed rule and \"vyřazená\".\n- An empty category reads \"nic\".\n- An entry without a note reads \"přidat poznámku\" over a dotted line.\n- A payment still to come sits on a dashed rule under \"Ještě přijde\"; one already written carries PRAVIDELNÁ.\n- The chosen scheme gets a 3px ring and \"· vybráno\".\n- The no-amount warning is heavier and darker, and changes its words.",
+        "body": "Every state carries a form and a word, never colour alone:\n- The active tab gets a top bar.\n- The chosen option gets a chevron.\n- A deleted entry gets a strike, SMAZÁNO and VRÁTIT.\n- An archived category gets a dashed rule and \"vyřazená\".\n- An empty category reads \"nic\".\n- An entry without a note reads \"přidat poznámku\" over a dotted line.\n- A payment still to come sits on a dashed rule under \"Ještě přijde\"; one already written carries PRAVIDELNÁ.\n- The chosen scheme gets a 3px ring and \"· vybráno\".\n- The chosen range fills with the tag colour; the chosen month gets a chip under its column and a band behind it, and reads as pressed to a screen reader.\n- The running month is hatched inside a dashed outline and says \"zatím\"; a month where writing began part-way says \"od 14.\".\n- The average is a line and the word \"průměr\", in the chart's key and in every stat row.\n- The no-amount warning is heavier and darker, and changes its words.",
         "section": "components"
       },
       {
         "name": "The Printing Motion Rule",
-        "body": "Motion prints: short, weighted and downward on `cubic-bezier(0.2, 0.9, 0.3, 1)`, from 260 to 500ms.\n- The amount drops out and a fresh one prints in.\n- A label stamps down.\n- The undo strip feeds down from under the rail. The only sideways move is the refusal nudge. Reduced motion collapses every animation to 1ms.",
+        "body": "Motion prints: short, weighted and downward on `cubic-bezier(0.2, 0.9, 0.3, 1)`, from 260 to 500ms.\n- The amount drops out and a fresh one prints in.\n- A label stamps down.\n- The undo strip feeds down from under the rail. The only sideways move is the refusal nudge. Disclosure chevrons turn on the same curve in 260ms. Reduced motion collapses every animation to 1ms.",
         "section": "components"
       }
     ],
@@ -1263,6 +1282,7 @@
       "Do write field errors in text ink at 700, directly under the field.",
       "Do mark writable text with a dotted underline that goes solid while you write, with its placeholder in muted (soft ink on the tag).",
       "Do draw anything not written yet on a dashed rule, with its amount in muted.",
+      "Do chart months as square columns in `bar` on one baseline, hatch the running month inside a dashed outline, and draw the average as a 2px line behind the columns with a key that names it.",
       "Do give every state a form and a word, not just a colour.",
       "Do take every colour from a token, and check a new screen in more than one scheme, in light and dark.",
       "Do keep touch targets at least 44px (shelf labels 58px, tabs 52px) and the column no wider than 520px.",
@@ -1270,7 +1290,7 @@
     ],
     "donts": [
       "Don't use strike red for anything but the line through a cancelled amount: not for fills, buttons, errors or destructive actions.",
-      "Don't build the fintech dashboard: no rounded, shadowed white cards, no donut or pie chart, no gradient header, no floating plus button.",
+      "Don't build the fintech dashboard: no rounded, shadowed white cards, no donut or pie chart (the column chart is the one chart form), no gradient header, no floating plus button.",
       "Don't add drop shadows or elevation; the hang hole's inset is the only soft shadow.",
       "Don't introduce a second typeface; rank with Archivo's width, weight and size.",
       "Don't signal a state with colour alone.",

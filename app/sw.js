@@ -17,6 +17,9 @@ const SHELL = [
   './css/entries.css',
   './css/recurring.css',
   './css/settings.css',
+  './css/stats.css',
+  './css/stats-chart.css',
+  './css/stats-detail.css',
   './fonts/archivo-latin.woff2',
   './fonts/archivo-latin-ext.woff2',
   './icons/apple-touch-icon.png',
@@ -33,6 +36,7 @@ const SHELL = [
   './js/plural.js',
   './js/recurring.js',
   './js/state.js',
+  './js/stats.js',
   './js/storage.js',
   './js/summary.js',
   './js/themes.js',
@@ -47,6 +51,9 @@ const SHELL = [
   './js/ui/picker.js',
   './js/ui/recurring-section.js',
   './js/ui/settings-view.js',
+  './js/ui/stats-chart.js',
+  './js/ui/stats-sections.js',
+  './js/ui/stats-view.js',
   './js/ui/toast.js',
 ];
 

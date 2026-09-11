@@ -6,6 +6,7 @@ Osobní evidence útrat pro iPhone. Webová appka (PWA), která se přidá na pl
 
 - **Přidat:** naťukej částku a ťukni na štítek kategorie. Útrata se hned uloží a jde vrátit. Kategorii lze i vyhledat nebo založit novou přímo z pole „Hledat nebo nová…“.
 - **Přehled:** celková útrata za období, součty podle kategorií a seznam den po dni. Šipkami se přepíná na starší období.
+- **Statistiky:** průměrný měsíc za poslední 3, 6 nebo 12 výplatních období, nejdražší a nejlevnější měsíc a graf po měsících. Ťuknutím na měsíc se ukážou jeho kategorie proti jejich průměru a u každé kategorie vývoj po měsících. Všechna čísla jsou i v tabulce. Průměr počítá jen celé měsíce.
 - **Nastavení:** den výplaty, kategorie (přejmenovat, vyřadit, přidat) a záloha do souboru.
 
 Data jsou jen v telefonu (`localStorage`), nikam se neposílají. Každý telefon má svoje vlastní data.

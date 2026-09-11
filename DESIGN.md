@@ -251,6 +251,54 @@ components:
     textColor: "{colors.text}"
     rounded: "{rounded.square}"
     padding: "8px 8px 10px"
+  range-option:
+    backgroundColor: "transparent"
+    textColor: "{colors.text}"
+    typography: "{typography.label}"
+    rounded: "{rounded.control}"
+    padding: "0 6px"
+    height: "44px"
+  range-option-selected:
+    backgroundColor: "{colors.tag}"
+    textColor: "{colors.ink}"
+  facts-list:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.text}"
+    rounded: "{rounded.square}"
+    padding: "10px 12px"
+  chart-panel:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.text}"
+    rounded: "{rounded.square}"
+    padding: "12px 12px 10px"
+  chart-bar:
+    backgroundColor: "{colors.bar}"
+    rounded: "{rounded.square}"
+    width: "min(24px, 62%)"
+  chart-band:
+    backgroundColor: "{colors.ground}"
+  chart-month-chip:
+    backgroundColor: "{colors.tag}"
+    textColor: "{colors.ink}"
+    padding: "1px 3px"
+  readout:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.text}"
+    rounded: "{rounded.square}"
+    padding: "10px 12px 12px"
+  stat-row:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.text}"
+    typography: "{typography.name}"
+    rounded: "{rounded.square}"
+    padding: "8px 8px 8px 12px"
+  stat-row-pressed:
+    backgroundColor: "{colors.key-pressed}"
+  numbers-table:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.text}"
+    rounded: "{rounded.square}"
+    padding: "8px 12px"
   rail:
     backgroundColor: "{colors.rail}"
     textColor: "{colors.rail-text}"
@@ -300,7 +348,8 @@ The world refuses the fintech dashboard: no rounded, shadowed white cards, no do
 **Key Characteristics:**
 - One tag-coloured tag owns each view; everything else is white label, ground or rail.
 - Heavy 3px top rules and square corners; only tags (6px) and standalone controls (4px) are rounded.
-- Solid rules hold what is written; dashed rules hold what isn't live.
+- Solid rules hold what is written and finished; dashed lines hold what isn't live or isn't finished.
+- One chart form: square columns on one baseline, the running month hatched, the average a line.
 - One variable family ranked by width (62, 75, 87.5 and 100%), weight and size.
 - Flat throughout: depth comes from fill, rule and seam, never shadow.
 - Every state carries a form and a word, never colour alone.
@@ -315,7 +364,7 @@ The palette is a shelf: a tag colour and its ink, a ground with white labels, ra
 - **Tag Yellow** (`tag`, #ffd400): the price tag itself (the entry tag and the period total) and everything you act on:
   - Primary buttons, Hotovo in the entry editor among them.
   - The undo strip's action and VRÁTIT on a deleted entry.
-  - The selected picker option and the active tab's top bar.
+  - The selected picker option, the chosen range and the chosen month's chip on Statistiky, and the active tab's top bar.
   - The countdown fill in the top rail and the stamp flash on a shelf label.
   - Text selection: an amount opened for editing shows selected in the tag colour.
 
@@ -330,15 +379,15 @@ The palette is a shelf: a tag colour and its ink, a ground with white labels, ra
   - Soft ink carries secondary text on a tag: the note placeholder and the total tag's count and per-day line (6.8:1).
   - Ink line draws the dotted note line on the entry tag and the rule over the total tag's unit line (3.8:1).
   - Faint ink sets the empty zero on the entry tag (3.3:1).
-- **Shelf Grey** (`ground`, #e6e7ea; dark #1d1e21): the page ground. It also shows through each tag's hang hole.
-- **Label White** (`surface`, #ffffff; dark #2a2c30): shelf labels, category rows, the entry editor, recurring payment rows and their form, field rows, ruled panels, boxed inputs and the undo strip.
-- **Key White** (`key`, #ffffff; dark #34363b), **Function Key Grey** (`key-alt`, #d9dbe0; dark #2a2c30), **Pressed Key Grey** (`key-pressed`, #d6d8dc; dark #474a50): keypad faces. The comma and backspace keys take the function grey; the pressed grey is also a shelf label's pressed fill.
-- **Text Ink** (`text`, #111111; dark #f3f3f1) and **Muted Slate** (`muted`, #53565c; dark #a9abb0): text and secondary text. Muted carries running totals, counts, help, hints, placeholders, and both the amount and the dashed rule of a payment still to come. Field errors are set in text ink, never red. Muted holds 6.0:1 on the ground and 7.4:1 on white; in dark mode, 7.3:1 and 6.1:1.
-- **Shelf Rule** (`rule`, #111111; dark #f3f3f1): the 3px top rules and 2px day-head rules, plus 2px input and select borders. It also draws the rings on quiet actions, the PRAVIDELNÁ chip and the chosen scheme card.
-- **Hairline Grey** (`hairline`, #c7c9ce; dark #484b51): 1px list dividers, the picker list's top edge, the empty track of each category bar and the ring around each scheme card.
-- **Rail Black** (`rail`, #111111; dark #000000), **Rail White** (`rail-text`, #ffffff), **Rail Grey** (`rail-muted`, #b9bbc0): both rails, the keypad seams and the ink button fill. Rail grey sets the countdown, the period status and inactive tabs (9.8:1). The browser bar follows the rail colour.
+- **Shelf Grey** (`ground`, #e6e7ea; dark #1d1e21): the page ground. It also shows through each tag's hang hole and bands the chosen column in the chart.
+- **Label White** (`surface`, #ffffff; dark #2a2c30): shelf labels, category rows, the entry editor, recurring payment rows and their form, field rows, ruled panels, boxed inputs and the undo strip; on Statistiky, the receipt, the chart panel, the readout, the stat rows and the numbers table.
+- **Key White** (`key`, #ffffff; dark #34363b), **Function Key Grey** (`key-alt`, #d9dbe0; dark #2a2c30), **Pressed Key Grey** (`key-pressed`, #d6d8dc; dark #474a50): keypad faces. The comma and backspace keys take the function grey; the pressed grey is also the pressed fill of a shelf label and a stat row.
+- **Text Ink** (`text`, #111111; dark #f3f3f1) and **Muted Slate** (`muted`, #53565c; dark #a9abb0): text and secondary text. Muted carries running totals, counts, help, hints, placeholders, both the amount and the dashed rule of a payment still to come, and the chart's ticks, month labels and key row. Text ink also draws the chart's average line and the average markers on stat rows. Field errors are set in text ink, never red. Muted holds 6.0:1 on the ground and 7.4:1 on white; in dark mode, 7.3:1 and 6.1:1.
+- **Shelf Rule** (`rule`, #111111; dark #f3f3f1): the 3px top rules, 2px day-head rules, the chart's 2px baseline and the table's footer rule, plus 2px input and select borders. It also draws the rings on quiet actions and unchosen range options, the PRAVIDELNÁ chip and the chosen scheme card.
+- **Hairline Grey** (`hairline`, #c7c9ce; dark #484b51): 1px list dividers (receipt and table rows among them), chart gridlines, the picker list's top edge, the empty track of each category and stat bar, and the ring around each scheme card.
+- **Rail Black** (`rail`, #111111; dark #000000), **Rail White** (`rail-text`, #ffffff), **Rail Grey** (`rail-muted`, #b9bbc0): both rails, the keypad seams and the ink button fill. Rail grey sets the countdown, the period status, the range on Statistiky and inactive tabs (9.8:1). The browser bar follows the rail colour.
 - **Rail Track** (`rail-track`, #3a3b3e): the empty track of the countdown strip in the top rail, in both modes.
-- **Bar Ink** (`bar`, #111111; dark #ffd400): the fill of each category's measured bar. It takes the tag colour in dark mode.
+- **Bar Ink** (`bar`, #111111; dark #ffd400): the fill of each category's measured bar and stat bar, every chart column, and the hatch and dashed outline of the running month. It takes the tag colour in dark mode.
 - **Focus Ink** (`focus`, #111111; dark #ffd400): the 3px focus ring at a 2px offset. On both rails it switches to the tag colour in either mode, so it never disappears into them.
 
 ### Colour Schemes
@@ -379,7 +428,7 @@ Every scheme, in both modes, sets all 21 tokens as solid hex and clears these co
 The ink button sets text in the tag colour on the rail. That needs 4.5:1, not the 3:1 the test asks for. Every current scheme clears 6.8:1 there, and a new scheme has to as well.
 
 ### Named Rules
-**The Tag Colour Rule.** The tag colour is the tag and what you act on: price tags, primary actions, the undo action, Hotovo, the chosen option, the active tab bar, the countdown fill, the stamp flash, and the focus ring on the rails. It never fills the ground, a section or a plain label.
+**The Tag Colour Rule.** The tag colour is the tag and what you act on: price tags, primary actions, the undo action, Hotovo, the chosen option, range and month, the active tab bar, the countdown fill, the stamp flash, and the focus ring on the rails. It never fills the ground, a section or a plain label.
 
 **The Strike Rule.** Strike red only crosses out: it strikes cancelled amounts and does nothing else. Errors are written in ink, and actions that replace or delete data use the ink button.
 
@@ -397,25 +446,29 @@ The ink button sets text in the tag colour on the rail. That needs 4.5:1, not th
 
 ### Hierarchy
 - **Display** (800, 62% width, min(58cqh, 34cqw) of the tag, line height 0.9, -0.01em, tabular): the amount on the entry tag, sized by the tag container so it fills the tag. It steps down to min(46cqh, 25cqw) and then min(34cqh, 18.5cqw) as the number grows. The amount is right-aligned, haléře sit at 0.46em against the top, and "Kč" follows at 75% width.
-- **Headline** (800, 62%, clamp(3rem, 17vw, 4.5rem), line height 1, tabular): the period total on the Přehled tag.
+- **Headline** (800, 62%, clamp(3rem, 17vw, 4.5rem), line height 1, tabular): the period total on the Přehled tag and the monthly average on Statistiky. Until a month has finished, "Po výplatě" stands in for the average at 2.25rem and 75% width.
 - **Price** (800, 62%, 1.375rem, tabular): category row amounts. The same cut sets:
-  - day-list amounts at 1.25rem;
+  - day-list and receipt amounts at 1.25rem;
+  - category stat rows at 1.375rem, like category rows;
+  - the chosen month's readout at 2rem;
   - an amount being edited at 1.5rem;
-  - payments still to come at 1.125rem, in muted;
+  - payments still to come at 1.125rem in muted, and the range total under a category's trend at 1.125rem;
   - the 129 on each scheme card at 1.875rem.
 - **Key** (700, 75%, 1.875rem, tabular): keypad digits.
 - **Title** (800, 75%, 1.25rem, 0.01em): the rail's period range and view names.
-- **Name** (800, 75%, 1rem, 0.03em, uppercase): shelf label names. Category rows set it at 1.0625rem. The same 800 condensed cut, in sentence case, sets recurring payment names and category names in Nastavení (1.0625rem) and scheme names in Vzhled (1rem).
+- **Name** (800, 75%, 1rem, 0.03em, uppercase): shelf label names. Category rows and stat rows set it at 1.0625rem. The same 800 condensed cut, in sentence case, sets recurring payment names and category names in Nastavení (1.0625rem) and scheme names in Vzhled (1rem).
 - **Label** (800, 75%, 1rem, 0.05em, uppercase): buttons and the undo strip's actions. Close variants:
   - VRÁTIT on a deleted entry at 0.04em;
   - section heads at 0.9375rem and 0.06em;
   - tabs at 700 and 0.06em;
   - the date chip at 0.9375rem and 0.04em;
   - form labels at 0.8125rem;
-  - the PRAVIDELNÁ chip at 0.6875rem.
+  - the PRAVIDELNÁ chip at 0.6875rem;
+  - receipt labels (NEJVÍC, NEJMÍŇ, CELKEM) at 0.9375rem;
+  - table header cells at 0.75rem, in muted.
 - **List** (700, 87.5%, 1rem): entry categories and picker options. Text being written uses the same width: notes at 600 (1.0625rem on the tag and in the undo strip) and labelled form fields at 700 and 1.0625rem. An amount being written keeps the Price cut. The shelf hint is 600 at 0.875rem.
 - **Body** (400, normal width, 1rem, line height 1.35): help copy and messages. At 0.875rem in muted it also sets saved notes under an entry and the recurring payment line ("12 000 Kč · měsíčně · Nájem"). Help paragraphs stop at 60ch.
-- **Caption** (600, 0.8125rem, tabular, in muted): running totals under shelf labels, counts, section-head notes (the ruler step, "celkem 259 Kč") and picker option notes.
+- **Caption** (600, 0.8125rem, tabular, in muted): running totals under shelf labels, counts, section-head notes (the ruler step, "celkem 259 Kč"), picker option notes, stat-row meta and the chart's key row. The chart's own labels are condensed and muted: month labels at 0.8125rem and 700, ticks at 0.75rem and 600, sublabels at 0.6875rem and 600, all at 75% width. Larger meta keeps the 600 weight: receipt months and the readout's comparison lines at 0.9375rem, and table cells at 0.875rem in text colour.
 
 ### Named Rules
 **The Width Is Rank Rule.** Rank by width before anything else: 62% for prices, 75% for names, labels, rails, keys and buttons, 87.5% for list lines, hints and text being written, normal width for sentences. Weight follows role: 800 for prices, names and actions, 700 for keys, tabs and list lines, 600 for meta, hints and written notes, 400 for prose.
@@ -435,12 +488,14 @@ The side gutter is 16px on every view. Přidat stacks top to bottom:
 
 Přehled stacks the total tag, then "Ještě přijde" (current period only, and only when a payment is still due), category rows 6px apart and day groups 18px apart, with 26px between sections.
 
+Statistiky stacks a head block (the range switch, the average tag and the receipt, 10px apart), then Po měsících, the chosen month and the numbers table, with 14px top padding and 26px between sections. Its grid column is minmax(0, 1fr), so the wide table scrolls inside its own box and the page never scrolls sideways.
+
 Nastavení runs Den výplaty, Kategorie, Pravidelné platby, Vzhled, Záloha and, until the app is installed, Na plochu. Sections sit 30px apart with 10px inside them. A button set directly in a Nastavení section stretches to the full column width, like "+ Přidat pravidelnou platbu".
 
 Short phones (max-height 700px, the iPhone SE) tighten the entry screen: the tag's minimum height drops to 150px, keypad rows to clamp(44px, 7dvh, 52px), shelf labels to 52px, and the vertical margins to 8 to 10px. While the keyboard is up for the picker, the picker takes the whole shelf and the labels, hint and keypad hide.
 
 ### Named Rules
-**The Shelf Rail Rule.** Every view hangs between two rails in the rail colour. The top rail carries what you are looking at (the period with its countdown or status, or the view name); the bottom rail carries the three tabs. Content scrolls between them, never over them.
+**The Shelf Rail Rule.** Every view hangs between two rails in the rail colour. The top rail carries what you are looking at (the period with its countdown or status, or the view name); the bottom rail carries the four tabs. Content scrolls between them, never over them.
 
 ## Elevation & Depth
 
@@ -457,7 +512,9 @@ Pressed things move down, not up: labels and buttons drop 1px, and the stamp lan
 - **Drawn ring** (`box-shadow: inset 0 0 0 2px var(--rule)`): the 2px outline on quiet buttons and on the undo strip's Poznámka action, drawn inside so they keep their size. The same inset ring appears on:
   - the PRAVIDELNÁ chip, 1px in `rule`;
   - archived category rows in Nastavení, 1px in hairline;
-  - the scheme cards: 1px in hairline, or 3px in `rule` on the chosen card.
+  - the scheme cards: 1px in hairline, or 3px in `rule` on the chosen card;
+  - the range options on Statistiky until one is chosen, 2px in `rule`.
+- **Surface ring** (`box-shadow: 0 0 0 2px var(--surface)`): drawn outside the average marker on stat rows and its key, so the text-ink upright stays apart from a bar fill of the same colour.
 
 ### Named Rules
 **The Printed Flat Rule.** Nothing floats. To make something stand out, give it a fill, a rule or a word, never a shadow.
@@ -466,24 +523,25 @@ Pressed things move down, not up: labels and buttons drop 1px, and the stamp lan
 
 Square by default: a shelf is cut, not moulded.
 
-- **Square with a 3px top rule:** white labels, category rows, the entry editor, recurring payment rows and their form, field rows, panels, keys and the undo strip. The strip's rule runs along its bottom edge.
+- **Square with a 3px top rule:** white labels, category rows, the entry editor, recurring payment rows and their form, field rows, panels, the undo strip, and on Statistiky the receipt, chart panel, readout, stat rows and numbers table. The strip's rule runs along its bottom edge.
+- **Square with no rule:** keypad keys and chart columns.
 - **Square with an inset ring instead:** the scheme cards in Vzhled.
 - **6px corners:** the price tags, like die-cut card.
-- **4px corners:** standalone controls you press or type into (buttons, the date chip, the select, the new-category input) and the miniature tag on each scheme card.
+- **4px corners:** standalone controls you press or type into (buttons, the range options, the date chip, the select, the new-category input) and the miniature tag on each scheme card.
 - **Square actions and marks:** anything set into a strip or a row, meaning the undo strip's two actions, VRÁTIT on a deleted entry and the PRAVIDELNÁ chip. Buttons inside a form, like the entry editor's Hotovo and Zrušit, are standalone buttons with 4px corners.
 - **The one circle:** the 16px hang hole, top left on every tag (6px on a scheme card's miniature).
 
 Line styles carry meaning:
 
 - **Solid 3px top rule:** a shelf edge.
-- **Dashed rules:** something not live. An archived category takes a dashed 3px top rule; a payment still to come sits on a 1px dashed rule in muted.
+- **Dashed lines:** something not live or not finished. An archived category takes a dashed 3px top rule, on category rows and stat rows alike; a payment still to come sits on a 1px dashed rule in muted; the running month's column is hatched inside a 2px dashed outline in `bar`.
 - **Dotted underline:** text you can write on. It is 2px under a field: the note on the tag, the picker, category names in Nastavení, the note line in the undo strip, and every labelled form field, dates included. It is 1px under the "přidat poznámku" invitation on an entry without a note. A field you are writing in shows a solid underline.
 - **1px hairline:** divides list items.
 
 ### Named Rules
 **The Shelf Edge Rule.** Every white label, row, field and panel hangs from a 3px top rule in `rule` and keeps square corners.
 
-**The Dashed Line Rule.** A dashed rule means not live: an archived category, or a payment not written yet. Everything written sits on a solid rule.
+**The Dashed Line Rule.** A dashed line means not live or not finished: an archived category, a payment not written yet, or the month still running. Everything written and finished sits on a solid line.
 
 **The Write-Here Rule.** A dotted underline means you can write here: 2px under a field, 1px under the invitation to add a note. While you write, the line goes solid instead of showing a focus outline.
 
@@ -524,8 +582,8 @@ Twelve flat, square keys on a grid in the rail colour: 2px seams and a 2px borde
 - **Error:** 0.875rem 700 text in text ink directly under the field, announced as an alert. Errors are never red.
 
 ### Navigation
-- **Top rail:** the rail colour; top padding is the safe-area inset or 12px, whichever is larger, with 16px sides and 10px below. The period sits left in Title, and the countdown ("Do výplaty N dní") or status sits right in rail grey (0.9375rem, 600). Under both runs a 4px countdown strip: a rail-track track whose fill, in the tag colour, grows left to right as the period runs (400ms). On Přehled, the rail centres the period and its status between 44px previous and next arrows, and the next arrow hides on the current period.
-- **Tab rail:** three equal tabs, 52px tall, in rail grey capitals (1rem, 700, 75% width, 0.06em). The active tab turns rail white and gets a 4px top bar in the tag colour.
+- **Top rail:** the rail colour; top padding is the safe-area inset or 12px, whichever is larger, with 16px sides and 10px below. The period sits left in Title, and the countdown ("Do výplaty N dní") or status sits right in rail grey (0.9375rem, 600). Under both runs a 4px countdown strip: a rail-track track whose fill, in the tag colour, grows left to right as the period runs (400ms). On Přehled, the rail centres the period and its status between 44px previous and next arrows, and the next arrow hides on the current period. On Statistiky, the rail carries the title and, on the right in rail grey, the range ("březen – září", with years when it crosses one).
+- **Tab rail:** four equal tabs (Přidat, Přehled, Statistiky, Nastavení), 52px tall, in rail grey capitals (1rem, 700, 75% width, 0.06em). The active tab turns rail white and gets a 4px top bar in the tag colour.
 - **Focus:** on both rails the focus ring takes the tag colour.
 
 ### Category Picker
@@ -565,6 +623,49 @@ A written expense opens into a small form: a white label with a 3px top rule, 12
 
 The form speaks in the app's own words ("Zadej částku.", "Datum nemůže být v budoucnu."), not the browser's. Saving offers undo in the strip ("Uloženo · Ostatní · 150 Kč"); Escape cancels.
 
+### Statistiky Head
+Three things, 10px apart:
+
+- **Range switch:** three standalone options in a row, 6px apart ("3 měsíce", "6 měsíců", "12 měsíců"), 44px tall with 4px corners and Label capitals. The chosen one takes the tag fill with ink lettering; the others are quiet, with the 2px drawn ring in `rule`. They drop 1px when pressed.
+- **Average tag:** the Přehled total tag reused. The name line reads "PRŮMĚR ZA MĚSÍC", the average is in Headline, and the unit line holds the finished months ("6 celých měsíců") and "běžící se nepočítá". Before any month has finished, it reads "Po výplatě" (2.25rem, 75% width) over "Počítá jen celé měsíce" and "první skončí 9. 10.".
+- **Receipt:** a white label with a 3px top rule and hairline-divided rows, 10px 12px padding. Each row holds a label in capitals (0.9375rem, 800, 75% width), the month in muted 600 text and the amount in Price at 1.25rem: NEJVÍC and NEJMÍŇ once at least two months have finished, then CELKEM with the range.
+
+### Column Chart (signature)
+The one chart form: months as square columns on one baseline. It sits in a white panel with a 3px top rule and 12px 12px 10px padding, under a section head ("PO MĚSÍCÍCH") whose note gives the pay-period span ("vždy od 10. do 9.", or "kalendářní měsíce" when payday is the 1st).
+
+- **Plot and axis:** the plot is 168px tall, with a 44px left gutter for compact Czech ticks ("10 tis."). Gridlines are 1px hairlines; the baseline is a 2px rule.
+- **Columns:** every column is a full-height button that picks its month. Its bar is filled with `bar`, square, min(24px, 62%) wide and at least 2px tall when above zero. The focus ring is drawn inside the column.
+- **Chosen month:** a full-height band in `ground` behind its column (only when there is more than one), and its month label turns into a chip: tag fill, ink lettering, 800, 1px 3px padding.
+- **Running month:** hatched at 135° in `bar` (2px lines every 6px) inside a 2px dashed outline in `bar`, with "zatím" under its label.
+- **Labels:** short months ("zář"). The sublabel reads "zatím", "od 14." for a month where writing started part-way, or the year where the range crosses one.
+- **Average:** a 2px line in text colour, painted behind the columns (band, gridlines, average, then columns), so it reads in the gaps between them instead of slicing through them.
+- **Key row:** under the axis, as a muted Caption: a 16×2px line swatch with "průměr 27 610,80 Kč", and a hatched swatch with "zatím, měsíc ještě běží".
+
+A compact variant, 72px tall with no ticks and no key row, draws one category's trend inside its stat row.
+
+### Chosen Month
+The section head carries the chosen month's name as its title ("KVĚTEN") and its date range as the note. Under it sits the readout: a white label with a 3px top rule and 10px 12px 12px padding, with the total in Price at 2rem. Comparison lines follow at 0.9375rem and 600, the first in text colour and the rest in muted:
+
+- "O 3 136,53 Kč nad průměrem"
+- "Zatím o … pod průměrem" over "Do výplaty 29 dní"
+- "Zápisy až od 14. 2." over "Do průměru se nepočítá"
+- "První celý měsíc"
+
+### Category Stat Row (signature)
+A sibling of the category row with ruler: one per category, 6px apart, each a white label with a 3px top rule (dashed when the category is archived). The whole head is one button that opens the category's trend.
+
+- **Head:** the name in Name capitals at 1.0625rem, the amount in Price at 1.375rem, and a muted 20px chevron that turns on the print curve (260ms). Pressed, it fills with pressed grey; an empty row goes muted.
+- **Bar:** 8px, a hairline track with a `bar` fill at the month's share of one scale shared by every row. The category's average is a 2px upright in text colour reaching 5px above and below the bar, cut out with the 2px surface ring.
+- **Meta:** a muted Caption led by the same upright at 14px as its key, "průměr 8 167,87 Kč", then "nic" when the month is empty and "vyřazená" when the category is archived.
+- **Open:** below a hairline, with 10px 12px 12px padding, the compact chart and a "Celkem únor – září" line with the total in Price at 1.125rem.
+
+### Numbers Table
+Every number again, behind a ruled summary: a `<details>` white label with a 3px top rule.
+
+- **Summary:** 48px, "VŠECHNA ČÍSLA" in Label capitals, a muted chevron.
+- **Table:** in its own horizontal scroll box under a hairline, with the month column sticking to the left on the surface. Header cells are 0.75rem, 800, 75% width capitals in muted; cells are 0.875rem, 600 and tabular, with 8px 12px padding on hairline dividers. The newest month is on top, with muted notes after its name (" zatím", " od 14. 2."). A "Průměr" footer row in 800 sits on a 2px rule.
+- **Foot note:** in muted: "Částky v Kč, nejnovější měsíc nahoře. Průměr počítá jen celé měsíce."
+
 ### Recurring Payments (Nastavení)
 The Pravidelné platby section opens with a help paragraph, then lists each payment as a white row with a 3px top rule, 6px apart, with 8px 4px 8px 12px padding. The left of a row stacks three lines:
 
@@ -600,7 +701,7 @@ The app's one message strip: white, with a 3px bottom rule, it feeds down from u
 Both strip actions are square, unlike standalone buttons.
 
 ### Ruled Panels
-Confirmations, the empty period and the install hint take the shelf-label form: white, a 3px top rule in `rule`, square corners, 12 to 16px padding, copy at 600 and buttons below.
+Confirmations, the empty period, empty statistics ("Statistiky se ukážou, až zapíšeš první útraty." over a primary Přidat útratu) and the install hint take the shelf-label form: white, a 3px top rule in `rule`, square corners, 12 to 16px padding, copy at 600 and buttons below.
 
 ### Named Rules
 **The Form and Word Rule.** Every state carries a form and a word, never colour alone:
@@ -613,6 +714,9 @@ Confirmations, the empty period and the install hint take the shelf-label form: 
 - An entry without a note reads "přidat poznámku" over a dotted line.
 - A payment still to come sits on a dashed rule under "Ještě přijde"; one already written carries PRAVIDELNÁ.
 - The chosen scheme gets a 3px ring and "· vybráno".
+- The chosen range fills with the tag colour; the chosen month gets a chip under its column and a band behind it, and reads as pressed to a screen reader.
+- The running month is hatched inside a dashed outline and says "zatím"; a month where writing began part-way says "od 14.".
+- The average is a line and the word "průměr", in the chart's key and in every stat row.
 - The no-amount warning is heavier and darker, and changes its words.
 
 **The Printing Motion Rule.** Motion prints: short, weighted and downward on `cubic-bezier(0.2, 0.9, 0.3, 1)`, from 260 to 500ms.
@@ -621,7 +725,7 @@ Confirmations, the empty period and the install hint take the shelf-label form: 
 - A label stamps down.
 - The undo strip feeds down from under the rail.
 
-The only sideways move is the refusal nudge. Reduced motion collapses every animation to 1ms.
+The only sideways move is the refusal nudge. Disclosure chevrons turn on the same curve in 260ms. Reduced motion collapses every animation to 1ms.
 
 ## Do's and Don'ts
 
@@ -633,6 +737,7 @@ The only sideways move is the refusal nudge. Reduced motion collapses every anim
 - **Do** write field errors in text ink at 700, directly under the field.
 - **Do** mark writable text with a dotted underline that goes solid while you write, with its placeholder in muted (soft ink on the tag).
 - **Do** draw anything not written yet on a dashed rule, with its amount in muted.
+- **Do** chart months as square columns in `bar` on one baseline, hatch the running month inside a dashed outline, and draw the average as a 2px line behind the columns with a key that names it.
 - **Do** give every state a form and a word, not just a colour.
 - **Do** take every colour from a token, and check a new screen in more than one scheme, in light and dark.
 - **Do** keep touch targets at least 44px (shelf labels 58px, tabs 52px) and the column no wider than 520px.
@@ -640,7 +745,7 @@ The only sideways move is the refusal nudge. Reduced motion collapses every anim
 
 ### Don't:
 - **Don't** use strike red for anything but the line through a cancelled amount: not for fills, buttons, errors or destructive actions.
-- **Don't** build the fintech dashboard: no rounded, shadowed white cards, no donut or pie chart, no gradient header, no floating plus button.
+- **Don't** build the fintech dashboard: no rounded, shadowed white cards, no donut or pie chart (the column chart is the one chart form), no gradient header, no floating plus button.
 - **Don't** add drop shadows or elevation; the hang hole's inset is the only soft shadow.
 - **Don't** introduce a second typeface; rank with Archivo's width, weight and size.
 - **Don't** signal a state with colour alone.

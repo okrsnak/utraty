@@ -246,7 +246,7 @@ input {
 
 .tabs {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   background: var(--rail);
   padding-bottom: env(safe-area-inset-bottom);
   position: relative;
@@ -267,6 +267,14 @@ input {
 .tab[aria-current='page'] {
   color: var(--rail-text);
   border-top-color: var(--tag);
+}
+
+/* Four tabs on the narrowest phones: tighter capitals so the longest fit. */
+@media (max-width: 359px) {
+  .tab {
+    font-size: 0.875rem;
+    letter-spacing: 0.02em;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

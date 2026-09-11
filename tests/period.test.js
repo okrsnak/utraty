@@ -8,6 +8,9 @@ import {
   daysUntilNextPeriod,
   formatCountdown,
   periodProgress,
+  periodMonthName,
+  periodMonthShort,
+  periodSpanNote,
 } from '../app/js/period.js';
 
 const NBSP = '\u00a0';
@@ -69,6 +72,23 @@ test('formatCountdown speaks Czech plural and names the eve of payday', () => {
   assert.equal(formatCountdown(1), 'Výplata zítra');
   assert.equal(formatCountdown(3), 'Do výplaty 3 dny');
   assert.equal(formatCountdown(29), 'Do výplaty 29 dní');
+});
+
+test('a period is named after the month it starts in; the long name adds a year that differs', () => {
+  const september = periodForDate('2026-09-11', 10);
+  assert.equal(periodMonthName(september, 2026), 'září');
+  assert.equal(periodMonthShort(september), 'zář');
+  const january = periodForDate('2027-01-20', 10);
+  assert.equal(periodMonthName(january, 2026), 'leden 2027');
+  assert.equal(periodMonthShort(january), 'led');
+});
+
+test('periodSpanNote names the days a period runs, and stays general where short months move the payday', () => {
+  assert.equal(periodSpanNote(10), 'vždy od 10. do 9.');
+  assert.equal(periodSpanNote(28), 'vždy od 28. do 27.');
+  assert.equal(periodSpanNote(1), 'kalendářní měsíce');
+  assert.equal(periodSpanNote(29), 'od výplaty do výplaty');
+  assert.equal(periodSpanNote(31), 'od výplaty do výplaty');
 });
 
 test('periodProgress runs from 0 on payday towards 1', () => {

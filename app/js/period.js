@@ -4,6 +4,9 @@
 import { addDays, addMonths, daysBetween, daysInMonth, formatShortDate, parseIsoDate, toIsoDate } from './dates.js';
 import { plural } from './plural.js';
 
+const MONTH_NAMES = ['leden', 'únor', 'březen', 'duben', 'květen', 'červen', 'červenec', 'srpen', 'září', 'říjen', 'listopad', 'prosinec'];
+const MONTH_SHORT = ['led', 'úno', 'bře', 'dub', 'kvě', 'čvn', 'čvc', 'srp', 'zář', 'říj', 'lis', 'pro'];
+
 function startDayIn({ year, month }, payday) {
   return Math.min(payday, daysInMonth(year, month));
 }
@@ -37,6 +40,25 @@ export function daysUntilNextPeriod(today, period) {
 export function formatPeriodLabel(period, currentYear) {
   const withYear = [period.start, period.end].some((iso) => parseIsoDate(iso).year !== currentYear);
   return `${formatShortDate(period.start, { withYear })} – ${formatShortDate(period.end, { withYear })}`;
+}
+
+// A period is named after the month it starts in: "září" runs 10. 9. – 9. 10.
+export function periodMonthName(period, currentYear) {
+  const { year, month } = period.anchor;
+  const name = MONTH_NAMES[month - 1];
+  return year === currentYear ? name : `${name} ${year}`;
+}
+
+export function periodMonthShort(period) {
+  return MONTH_SHORT[period.anchor.month - 1];
+}
+
+// Which days a period runs, for the note under the chart. A payday past the
+// 28th moves in shorter months, so it only gets the general rule.
+export function periodSpanNote(payday) {
+  if (payday === 1) return 'kalendářní měsíce';
+  if (payday > 28) return 'od výplaty do výplaty';
+  return `vždy od ${payday}. do ${payday - 1}.`;
 }
 
 export function formatCountdown(days) {

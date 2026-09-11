@@ -1,0 +1,134 @@
+/* Statistiky: the range switch, the average tag and its receipt, the chosen
+   month's readout. The chart lives in stats-chart.css, the category rows and
+   the table in stats-detail.css. */
+
+/* minmax(0, 1fr): a wide table scrolls inside its own box, never the page. */
+.stats {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 26px;
+  padding: 14px var(--gutter) 40px;
+}
+
+.stats__head {
+  display: grid;
+  gap: 10px;
+}
+
+/* Range: three standalone controls; the chosen one is filled, the rest ringed. */
+
+.range {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.range__option {
+  min-height: 44px;
+  padding: 0 6px;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 2px var(--rule);
+  font-weight: 800;
+  font-stretch: 75%;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.range__option[aria-pressed='true'] {
+  background: var(--tag);
+  color: var(--ink);
+  box-shadow: none;
+}
+
+.range__option:active {
+  transform: translateY(1px);
+}
+
+.total-tag__amount.is-pending {
+  padding-block: 8px 4px;
+  font-size: 2.25rem;
+  font-stretch: 75%;
+}
+
+/* The receipt under the tag: extremes and the range total. */
+
+.facts {
+  margin: 0;
+  background: var(--surface);
+  border-top: 3px solid var(--rule);
+}
+
+.facts__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-top: 1px solid var(--hairline);
+}
+
+.facts__row:first-child {
+  border-top: 0;
+}
+
+.facts dt {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+}
+
+.facts__label {
+  font-size: 0.9375rem;
+  font-weight: 800;
+  font-stretch: 75%;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.facts__detail {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.facts dd {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+  font-stretch: 62%;
+}
+
+/* The chosen month's total and how it compares. */
+
+.readout {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 6px;
+  padding: 10px 12px 12px;
+  background: var(--surface);
+  border-top: 3px solid var(--rule);
+}
+
+.readout__amount {
+  font-size: 2rem;
+  font-weight: 800;
+  font-stretch: 62%;
+  line-height: 1.1;
+}
+
+.readout__compare {
+  display: grid;
+  gap: 2px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.readout__compare span:first-child {
+  color: var(--text);
+}

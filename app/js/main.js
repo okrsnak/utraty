@@ -1,4 +1,4 @@
-// Composition root: load the data, wire the three views, the tabs and offline support.
+// Composition root: load the data, wire the views, the tabs and offline support.
 
 import { createStore } from './app-state.js';
 import { todayIso } from './dates.js';
@@ -8,6 +8,7 @@ import { STORAGE_KEY, listSetAside, loadState, readStoredState, removeSetAside, 
 import { createAddView } from './ui/add-view.js';
 import { createOverviewView } from './ui/overview-view.js';
 import { createSettingsView } from './ui/settings-view.js';
+import { createStatsView } from './ui/stats-view.js';
 import { createToast } from './ui/toast.js';
 
 const INSTALL_HINT_KEY = 'utraty.installHintDismissed';
@@ -84,6 +85,7 @@ function start() {
   const sections = {
     add: document.querySelector('#view-add'),
     overview: document.querySelector('#view-overview'),
+    stats: document.querySelector('#view-stats'),
     settings: document.querySelector('#view-settings'),
   };
   const tabs = [...document.querySelectorAll('.tab')];
@@ -100,6 +102,7 @@ function start() {
   const views = [
     createAddView({ root: sections.add, store, toast }),
     createOverviewView({ root: sections.overview, store, toast, onAddRequested: () => showView('add') }),
+    createStatsView({ root: sections.stats, store, onAddRequested: () => showView('add') }),
     createSettingsView({ root: sections.settings, store, toast, isStandalone, setAside }),
   ];
   const renderAll = () => views.forEach((view) => view.render(store.get()));

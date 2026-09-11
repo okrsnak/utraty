@@ -82,7 +82,7 @@ export function createOverviewView({ root, store, toast, onAddRequested, now = (
         h('h2', { class: 'section-title', id: 'by-category' }, 'Podle kategorií'),
         h('p', { class: 'section-head__note' }, `dílek ${formatAmount(scale.step)}`),
       ),
-      h('ul', { class: 'category-rows' }, ...rows.map((row) => categoryRow(row, scale))),
+      h('ul', { class: 'category-rows', role: 'list' }, ...rows.map((row) => categoryRow(row, scale))),
     );
   }
 
@@ -99,7 +99,7 @@ export function createOverviewView({ root, store, toast, onAddRequested, now = (
         h('h2', { class: 'section-title', id: 'upcoming' }, 'Ještě přijde'),
         h('p', { class: 'section-head__note' }, `celkem ${formatAmount(totalAmount(rows.map((row) => row.template)))}`),
       ),
-      h('ul', { class: 'upcoming__rows' }, ...rows.map(({ template, date }) => h(
+      h('ul', { class: 'upcoming__rows', role: 'list' }, ...rows.map(({ template, date }) => h(
         'li',
         { class: 'upcoming__row' },
         h('span', { class: 'upcoming__date' }, formatShortDate(date)),
@@ -147,7 +147,7 @@ export function createOverviewView({ root, store, toast, onAddRequested, now = (
       'section',
       { class: 'day' },
       h('h3', { class: 'day__head' }, h('span', {}, formatDayLabel(group.date, day)), price(liveTotal(group.expenses))),
-      h('ul', { class: 'entries' }, ...group.expenses.map(
+      h('ul', { class: 'entries', role: 'list' }, ...group.expenses.map(
         (expense) => entryRow(expense, names.get(expense.categoryId) ?? 'Bez kategorie', categories),
       )),
     ));

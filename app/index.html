@@ -33,6 +33,9 @@
   <link rel="stylesheet" href="css/entries.css">
   <link rel="stylesheet" href="css/recurring.css">
   <link rel="stylesheet" href="css/settings.css">
+  <link rel="stylesheet" href="css/stats.css">
+  <link rel="stylesheet" href="css/stats-chart.css">
+  <link rel="stylesheet" href="css/stats-detail.css">
   <script type="module" src="js/main.js"></script>
 </head>
 <body>
@@ -122,6 +125,14 @@
         <div class="overview" id="overview"></div>
       </section>
 
+      <section class="view view--stats" id="view-stats" aria-labelledby="stats-title" hidden>
+        <header class="rail">
+          <h1 class="rail__period" id="stats-title">Statistiky</h1>
+          <p class="rail__status" data-bind="status"></p>
+        </header>
+        <div class="stats" id="stats"></div>
+      </section>
+
       <section class="view view--settings" id="view-settings" aria-labelledby="settings-title" hidden>
         <header class="rail">
           <h1 class="rail__period" id="settings-title">Nastavení</h1>
@@ -140,6 +151,7 @@
     <nav class="tabs" aria-label="Hlavní nabídka">
       <button type="button" class="tab" data-view="add" aria-current="page">Přidat</button>
       <button type="button" class="tab" data-view="overview">Přehled</button>
+      <button type="button" class="tab" data-view="stats">Statistiky</button>
       <button type="button" class="tab" data-view="settings">Nastavení</button>
     </nav>
   </div>
