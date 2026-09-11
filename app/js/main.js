@@ -3,6 +3,7 @@
 import { createStore } from './app-state.js';
 import { todayIso } from './dates.js';
 import { applyDueRecurring } from './recurring.js';
+import { DEFAULT_STYLE } from './styles.js';
 import { DEFAULT_THEME } from './themes.js';
 import { STORAGE_KEY, listSetAside, loadState, readStoredState, removeSetAside, saveState } from './storage.js';
 import { createAddView } from './ui/add-view.js';
@@ -53,11 +54,13 @@ function setUpInstallHint(storage) {
   });
 }
 
-// The scheme is the data-theme attribute on <html> (index.html sets it early,
-// before the first paint); the browser's bar colour follows the scheme's rail.
-function applyTheme(themeId = DEFAULT_THEME) {
+// The scheme and the style are data-theme and data-style on <html> (index.html
+// sets both early, before the first paint); the browser's bar colour follows
+// the scheme's rail.
+function applyAppearance({ theme = DEFAULT_THEME, style = DEFAULT_STYLE } = {}) {
   const root = document.documentElement;
-  if (root.dataset.theme !== themeId) root.dataset.theme = themeId;
+  if (root.dataset.theme !== theme) root.dataset.theme = theme;
+  if (root.dataset.style !== style) root.dataset.style = style;
   const rail = getComputedStyle(root).getPropertyValue('--rail').trim();
   document.querySelector('meta[name="theme-color"]')?.setAttribute('content', rail);
 }
@@ -131,9 +134,9 @@ function start() {
     });
   }
 
-  applyTheme(store.get().settings.theme);
-  store.subscribe((state) => applyTheme(state.settings.theme));
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => applyTheme(store.get().settings.theme));
+  applyAppearance(store.get().settings);
+  store.subscribe((state) => applyAppearance(state.settings));
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => applyAppearance(store.get().settings));
   store.subscribe(renderAll);
   tabs.forEach((tab) => tab.addEventListener('click', () => showView(tab.dataset.view)));
   window.addEventListener('storage', (event) => {

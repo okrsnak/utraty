@@ -1,0 +1,219 @@
+/* Pastelka: the drawn style. Everything here hangs off [data-style='pastelka']
+   and changes shape, texture and lettering only — every colour still comes from
+   the chosen scheme's tokens, so the drawn style works with all six schemes in
+   light and dark. Lettering is in pastelka-type.css, the views in
+   pastelka-views.css and Statistiky in pastelka-stats.css. */
+
+@font-face {
+  font-family: 'Patrick Hand';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/patrick-hand-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Patrick Hand';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/patrick-hand-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+[data-style='pastelka'] {
+  --hand: 'Patrick Hand', 'Bradley Hand', 'Segoe Print', cursive;
+  /* Texture and drawn lines are ink, not colour: translucent so every scheme keeps its own hue. */
+  --grid-line: rgba(0, 0, 0, 0.05);
+  --grain-blend: multiply;
+  /* Crayon on paper: two uneven passes, never an even stripe. The darkening
+     pass stays faint, so ink on a crayoned tag keeps its contrast. */
+  --crayon:
+    repeating-linear-gradient(112deg, rgba(255, 255, 255, 0.11) 0 1px, rgba(255, 255, 255, 0) 1px 9px),
+    repeating-linear-gradient(97deg, rgba(0, 0, 0, 0.018) 0 1px, rgba(0, 0, 0, 0) 1px 13px);
+  --paper-1: 14px 7px 12px 9px / 9px 12px 7px 14px;
+  --paper-2: 9px 13px 7px 12px / 13px 7px 12px 9px;
+  --paper-3: 7px 12px 10px 14px / 12px 9px 14px 8px;
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23g)' opacity='0.16'/%3E%3C/svg%3E");
+  --edge-wave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='8' viewBox='0 0 64 8'%3E%3Cpath d='M0 0h64v4.1c-7.5 2.3-11.7 2.7-19.4 1.5-7.7-1.2-9.6-2.6-17.3-1.4C19.6 5.4 7.2 7.2 0 5.6Z' fill='%23000'/%3E%3C/svg%3E");
+  --squiggle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='6' viewBox='0 0 80 6' preserveAspectRatio='none'%3E%3Cpath d='M1.5 4.1c13.5-2.7 26-3.4 39-2.1 13 1.2 25 2.3 38.5.4' stroke='%23000' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-style='pastelka'] {
+    --grid-line: rgba(255, 255, 255, 0.06);
+    --grain-blend: soft-light;
+    --crayon:
+      repeating-linear-gradient(112deg, rgba(255, 255, 255, 0.09) 0 1px, rgba(255, 255, 255, 0) 1px 9px),
+      repeating-linear-gradient(97deg, rgba(0, 0, 0, 0.02) 0 1px, rgba(0, 0, 0, 0) 1px 13px);
+  }
+}
+
+/* Squared paper under the whole app. The grain stays on the cards: under the
+   small print on the ground it cost muted text its 4.5:1. */
+[data-style='pastelka'] body {
+  font-family: var(--hand);
+  background-image:
+    repeating-linear-gradient(to right, var(--grid-line) 0 1px, transparent 1px 22px),
+    repeating-linear-gradient(to bottom, var(--grid-line) 0 1px, transparent 1px 22px);
+}
+
+/* Paper cards: an uneven outline drawn twice, instead of the printed top rule. */
+[data-style='pastelka'] .field,
+[data-style='pastelka'] .install-hint,
+[data-style='pastelka'] .empty,
+[data-style='pastelka'] .confirm,
+[data-style='pastelka'] .entry-editor,
+[data-style='pastelka'] .facts,
+[data-style='pastelka'] .readout,
+[data-style='pastelka'] .chart-panel,
+[data-style='pastelka'] .numbers,
+[data-style='pastelka'] .stat-row,
+[data-style='pastelka'] .category-row,
+[data-style='pastelka'] .shelf-label,
+[data-style='pastelka'] .picker,
+[data-style='pastelka'] .recurring__row,
+[data-style='pastelka'] .recurring__form,
+[data-style='pastelka'] .category-editor__row,
+[data-style='pastelka'] .toast {
+  position: relative;
+  border: 2px solid var(--rule);
+  border-radius: var(--paper-1);
+  background-image: var(--grain);
+  background-blend-mode: var(--grain-blend);
+}
+
+[data-style='pastelka'] .stat-row:nth-child(even),
+[data-style='pastelka'] .category-row:nth-child(even),
+[data-style='pastelka'] .shelf-label:nth-child(even),
+[data-style='pastelka'] .recurring__row:nth-child(even),
+[data-style='pastelka'] .category-editor__row:nth-child(even) {
+  border-radius: var(--paper-2);
+}
+
+[data-style='pastelka'] .stat-row:nth-child(3n),
+[data-style='pastelka'] .category-row:nth-child(3n),
+[data-style='pastelka'] .shelf-label:nth-child(3n) {
+  border-radius: var(--paper-3);
+}
+
+/* The second, lighter stroke: the line drawn once more, never quite on top. */
+[data-style='pastelka'] .field::after,
+[data-style='pastelka'] .empty::after,
+[data-style='pastelka'] .confirm::after,
+[data-style='pastelka'] .entry-editor::after,
+[data-style='pastelka'] .facts::after,
+[data-style='pastelka'] .readout::after,
+[data-style='pastelka'] .chart-panel::after,
+[data-style='pastelka'] .numbers::after,
+[data-style='pastelka'] .stat-row::after,
+[data-style='pastelka'] .category-row::after,
+[data-style='pastelka'] .shelf-label::after,
+[data-style='pastelka'] .picker::after,
+[data-style='pastelka'] .recurring__row::after,
+[data-style='pastelka'] .recurring__form::after {
+  content: '';
+  position: absolute;
+  inset: -4px -2px 0 -3px;
+  border: 1px solid var(--rule);
+  border-radius: var(--paper-3);
+  opacity: 0.32;
+  pointer-events: none;
+}
+
+[data-style='pastelka'] .category-row.is-archived,
+[data-style='pastelka'] .stat-row.is-archived,
+[data-style='pastelka'] .category-editor__row.is-archived {
+  border-style: dashed;
+}
+
+/* Rails: a flat band of colour torn along its inner edge. */
+[data-style='pastelka'] .rail {
+  font-family: var(--hand);
+}
+
+[data-style='pastelka'] .rail::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -7px;
+  height: 8px;
+  background: var(--rail);
+  -webkit-mask: var(--edge-wave) repeat-x top left / 64px 8px;
+  mask: var(--edge-wave) repeat-x top left / 64px 8px;
+}
+
+[data-style='pastelka'] .rail__strip {
+  border-radius: 3px;
+}
+
+[data-style='pastelka'] .tabs::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -7px;
+  height: 8px;
+  background: var(--rail);
+  -webkit-mask: var(--edge-wave) repeat-x top left / 64px 8px;
+  mask: var(--edge-wave) repeat-x top left / 64px 8px;
+  transform: scaleY(-1);
+}
+
+/* The chosen tab is underlined by hand instead of carrying a printed bar. */
+[data-style='pastelka'] .tab {
+  position: relative;
+  border-top-color: transparent;
+}
+
+[data-style='pastelka'] .tab[aria-current='page']::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 14%;
+  right: 14%;
+  height: 6px;
+  background: var(--tag);
+  -webkit-mask: var(--squiggle) no-repeat center / 100% 100%;
+  mask: var(--squiggle) no-repeat center / 100% 100%;
+}
+
+/* Buttons and other things you press: coloured in, with a drawn edge. */
+[data-style='pastelka'] .button {
+  border-radius: var(--paper-2);
+  background-image: var(--crayon);
+  box-shadow: inset 0 0 0 2px var(--ink);
+}
+
+[data-style='pastelka'] .button--quiet {
+  background-image: none;
+  border-radius: var(--paper-1);
+  box-shadow: inset 0 0 0 2px var(--rule);
+}
+
+[data-style='pastelka'] .button--ink {
+  background-image: var(--crayon);
+  box-shadow: inset 0 0 0 2px var(--rail);
+}
+
+[data-style='pastelka'] .select select,
+[data-style='pastelka'] .add-category__input {
+  border-radius: var(--paper-2);
+  background-image: var(--grain);
+  background-blend-mode: var(--grain-blend);
+}
+
+/* Icons are drawn with a shaky hand: one filter, one consistent stroke. */
+[data-style='pastelka'] .icon {
+  filter: url(#pastelka-rough);
+  stroke-width: 2.2;
+}
+
+/* The undo strip is a note torn from the pad. */
+[data-style='pastelka'] .toast {
+  border-radius: var(--paper-2);
+}

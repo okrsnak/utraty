@@ -1,0 +1,86 @@
+/* Pastelka's lettering: names, labels and sentences are handwritten, amounts
+   stay printed. Handwriting never shouts in tracked capitals — it just says
+   the word as written. */
+
+[data-style='pastelka'] .section-title,
+[data-style='pastelka'] .total-tag__label,
+[data-style='pastelka'] .tab,
+[data-style='pastelka'] .button,
+[data-style='pastelka'] .form-label,
+[data-style='pastelka'] .settings__subtitle,
+[data-style='pastelka'] .shelf-label__name,
+[data-style='pastelka'] .category-row__name,
+[data-style='pastelka'] .stat-row__name,
+[data-style='pastelka'] .entry__struck,
+[data-style='pastelka'] .entry__restore,
+[data-style='pastelka'] .entry__chip,
+[data-style='pastelka'] .tag__date,
+[data-style='pastelka'] .toast__action,
+[data-style='pastelka'] .toast__secondary,
+[data-style='pastelka'] .range__option,
+[data-style='pastelka'] .facts__label,
+[data-style='pastelka'] .numbers__summary,
+[data-style='pastelka'] .numbers__table thead th,
+[data-style='pastelka'] .form-field input,
+[data-style='pastelka'] .picker__input,
+[data-style='pastelka'] .category-editor__name,
+[data-style='pastelka'] .toast__input,
+[data-style='pastelka'] .tag__note,
+[data-style='pastelka'] .select select,
+[data-style='pastelka'] .add-category__input {
+  font-family: var(--hand);
+  font-weight: 400;
+  font-stretch: 100%;
+  text-transform: none;
+  letter-spacing: 0.01em;
+}
+
+/* Hand-lettering runs smaller than Archivo at the same size, so names and
+   titles step up to keep the same presence. */
+[data-style='pastelka'] .section-title,
+[data-style='pastelka'] .total-tag__label,
+[data-style='pastelka'] .facts__label,
+[data-style='pastelka'] .settings__subtitle,
+[data-style='pastelka'] .numbers__summary {
+  font-size: 1.125rem;
+}
+
+[data-style='pastelka'] .shelf-label__name,
+[data-style='pastelka'] .category-row__name,
+[data-style='pastelka'] .stat-row__name,
+[data-style='pastelka'] .rail__period {
+  font-size: 1.1875rem;
+}
+
+/* Section titles are underlined by hand, in the scheme's own rule colour. */
+[data-style='pastelka'] .section-title {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 8px;
+}
+
+[data-style='pastelka'] .section-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 5px;
+  background: var(--rule);
+  -webkit-mask: var(--squiggle) no-repeat center / 100% 100%;
+  mask: var(--squiggle) no-repeat center / 100% 100%;
+}
+
+/* Amounts stay in the printed face: the numbers must read at a glance. */
+[data-style='pastelka'] .price,
+[data-style='pastelka'] .tag__amount,
+[data-style='pastelka'] .keypad button,
+[data-style='pastelka'] .chart__tick,
+[data-style='pastelka'] .shelf-label__total,
+[data-style='pastelka'] .numbers__table td,
+[data-style='pastelka'] .entry-editor__amount input,
+[data-style='pastelka'] .entry-editor__currency,
+[data-style='pastelka'] .theme-card__price,
+[data-style='pastelka'] .theme-card__currency {
+  font-family: var(--font);
+}

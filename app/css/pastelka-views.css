@@ -1,0 +1,219 @@
+/* Pastelka in each view: the tag coloured in with crayon, drawn keys, a
+   hand-ruled day list and cards you can see the pencil on. */
+
+/* The price tag: a piece of paper coloured in, with a punched hole drawn round. */
+
+[data-style='pastelka'] .tag,
+[data-style='pastelka'] .total-tag {
+  border: 2px solid var(--ink);
+  border-radius: var(--paper-1);
+  background-image: var(--crayon);
+}
+
+[data-style='pastelka'] .tag__hole {
+  border: 2px solid var(--ink);
+  border-radius: 58% 42% 52% 48% / 46% 54% 46% 54%;
+  box-shadow: none;
+}
+
+[data-style='pastelka'] .tag__date {
+  border-radius: var(--paper-2);
+  background-image: var(--crayon);
+}
+
+/* The tag's own rules are drawn by hand, in ink mixed into the tag colour. */
+[data-style='pastelka'] .total-tag__unit {
+  position: relative;
+  border-top: 0;
+}
+
+[data-style='pastelka'] .total-tag__unit::before,
+[data-style='pastelka'] .day__head::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: var(--ink-line);
+  -webkit-mask: var(--squiggle) no-repeat center / 100% 100%;
+  mask: var(--squiggle) no-repeat center / 100% 100%;
+}
+
+[data-style='pastelka'] .total-tag__unit::before {
+  top: -1px;
+}
+
+/* The keypad: twelve drawn keys on the paper, not a printed membrane. */
+
+[data-style='pastelka'] .keypad {
+  gap: 6px;
+  padding: 0;
+  background: none;
+}
+
+[data-style='pastelka'] .keypad button {
+  border: 2px solid var(--rule);
+  border-radius: var(--paper-2);
+  background-image: var(--grain);
+  background-blend-mode: var(--grain-blend);
+}
+
+[data-style='pastelka'] .keypad button:nth-child(even) {
+  border-radius: var(--paper-1);
+}
+
+[data-style='pastelka'] .keypad button:nth-child(3n) {
+  border-radius: var(--paper-3);
+}
+
+[data-style='pastelka'] .keypad button:active {
+  background-image: var(--crayon);
+}
+
+/* Things you act on are coloured in the same way as the tag. */
+
+[data-style='pastelka'] .picker__option[aria-selected='true'],
+[data-style='pastelka'] .entry__restore,
+[data-style='pastelka'] .toast__action {
+  background-image: var(--crayon);
+}
+
+[data-style='pastelka'] .entry__restore,
+[data-style='pastelka'] .toast__action,
+[data-style='pastelka'] .toast__secondary {
+  border-radius: var(--paper-2);
+}
+
+[data-style='pastelka'] .entry__chip {
+  border-radius: var(--paper-3);
+}
+
+/* The day list is ruled by hand; entries keep the notebook's own lines. */
+
+[data-style='pastelka'] .day__head {
+  position: relative;
+  border-bottom: 0;
+  padding-bottom: 8px;
+}
+
+[data-style='pastelka'] .day__head::after {
+  bottom: 0;
+  background: var(--rule);
+}
+
+/* Přehled's measured bars: a drawn track coloured in as far as it goes. */
+
+[data-style='pastelka'] .category-row__bar {
+  background: none;
+  border: 2px solid var(--hairline);
+  border-radius: 6px 5px 7px 4px / 5px 7px 4px 6px;
+}
+
+[data-style='pastelka'] .category-row__bar span {
+  background-image: var(--crayon);
+  border-radius: 4px 3px 5px 3px / 3px 5px 3px 4px;
+}
+
+[data-style='pastelka'] .category-row__bar::after {
+  top: calc(100% + 2px);
+}
+
+/* Names stay handwritten wherever the app writes one down. */
+
+[data-style='pastelka'] .recurring__name,
+[data-style='pastelka'] .recurring__next,
+[data-style='pastelka'] .upcoming__name,
+[data-style='pastelka'] .entry__category,
+[data-style='pastelka'] .picker__option,
+[data-style='pastelka'] .category-editor__archived-name {
+  font-family: var(--hand);
+  font-weight: 400;
+  font-stretch: 100%;
+  letter-spacing: 0.01em;
+}
+
+/* Nastavení → Vzhled. Each card previews what it offers, whichever style the
+   app itself is in: the drawn card is drawn, the printed one stays printed. */
+
+.theme-card[data-style='pastelka'] {
+  border-radius: var(--paper-1);
+  box-shadow: inset 0 0 0 2px var(--hairline);
+  background-image: var(--grain);
+  background-blend-mode: var(--grain-blend);
+}
+
+.theme-card[data-style='pastelka']:has(input:checked) {
+  box-shadow: inset 0 0 0 3px var(--rule);
+}
+
+.theme-card[data-style='pastelka'] .theme-card__tag {
+  border: 2px solid var(--ink);
+  border-radius: var(--paper-2);
+  background-image: var(--crayon);
+}
+
+.theme-card[data-style='pastelka'] .theme-card__hole {
+  border: 2px solid var(--ink);
+  border-radius: 58% 42% 52% 48% / 46% 54% 46% 54%;
+}
+
+.theme-card[data-style='pastelka'] .theme-card__labels span {
+  border: 2px solid var(--rule);
+  border-radius: 6px 4px 5px 7px / 4px 6px 7px 5px;
+}
+
+.theme-card[data-style='pastelka'] .theme-card__rail {
+  border-radius: 4px 6px 3px 5px / 3px 4px 6px 4px;
+}
+
+.theme-card[data-style='pastelka'] .theme-card__name,
+.theme-card[data-style='pastelka'] .theme-card__description {
+  font-family: var(--hand);
+  font-weight: 400;
+  font-stretch: 100%;
+}
+
+/* A printed card keeps printed edges even while the app around it is drawn. */
+
+.theme-card[data-style='cenovka'] {
+  border: 0;
+  border-radius: 0;
+  background-image: none;
+}
+
+.theme-card[data-style='cenovka']::after {
+  content: none;
+}
+
+.theme-card[data-style='cenovka'] .theme-card__tag {
+  border: 0;
+  border-radius: 4px;
+  background-image: none;
+}
+
+.theme-card[data-style='cenovka'] .theme-card__hole {
+  border: 0;
+  border-radius: 50%;
+}
+
+.theme-card[data-style='cenovka'] .theme-card__rail {
+  border-radius: 0;
+  background-image: none;
+}
+
+.theme-card[data-style='cenovka'] .theme-card__labels span {
+  border: 0;
+  border-top: 2px solid var(--rule);
+  border-radius: 0;
+  background-image: none;
+}
+
+.theme-card[data-style='cenovka'] .theme-card__name,
+.theme-card[data-style='cenovka'] .theme-card__description {
+  font-family: var(--font);
+}
+
+.theme-card[data-style='cenovka'] .theme-card__name {
+  font-weight: 800;
+  font-stretch: 75%;
+}

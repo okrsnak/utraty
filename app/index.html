@@ -16,12 +16,13 @@
   <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/archivo-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
   <script>
-    // Apply the saved colour scheme before the first paint; the app itself loads later.
+    // Apply the saved scheme and style before the first paint; the app itself loads later.
     try {
-      const theme = JSON.parse(localStorage.getItem('utraty.state') || 'null')?.settings?.theme;
-      if (typeof theme === 'string') document.documentElement.dataset.theme = theme;
+      const settings = JSON.parse(localStorage.getItem('utraty.state') || 'null')?.settings;
+      if (typeof settings?.theme === 'string') document.documentElement.dataset.theme = settings.theme;
+      if (typeof settings?.style === 'string') document.documentElement.dataset.style = settings.style;
     } catch {
-      // No saved data or no storage: the default scheme is already in place.
+      // No saved data or no storage: the default scheme and style are already in place.
     }
   </script>
   <link rel="stylesheet" href="css/base.css">
@@ -36,10 +37,19 @@
   <link rel="stylesheet" href="css/stats.css">
   <link rel="stylesheet" href="css/stats-chart.css">
   <link rel="stylesheet" href="css/stats-detail.css">
+  <link rel="stylesheet" href="css/pastelka.css">
+  <link rel="stylesheet" href="css/pastelka-type.css">
+  <link rel="stylesheet" href="css/pastelka-views.css">
+  <link rel="stylesheet" href="css/pastelka-stats.css">
   <script type="module" src="js/main.js"></script>
 </head>
 <body>
   <svg width="0" height="0" aria-hidden="true" style="position:absolute">
+    <!-- The drawn style shakes every icon's line through this filter. -->
+    <filter id="pastelka-rough" x="-25%" y="-25%" width="150%" height="150%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="7" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.8" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
     <symbol id="i-back" viewBox="0 0 24 24"><path d="M9 5h11a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H9l-6-7z"/><path d="M12 9l6 6M18 9l-6 6"/></symbol>
     <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
     <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>

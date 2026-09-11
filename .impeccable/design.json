@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-11T15:52:39.098Z",
+  "generatedAt": "2026-09-11T23:17:08.945Z",
   "title": "Design System: Útraty",
   "extensions": {
     "colorMeta": {
@@ -1076,6 +1076,44 @@
         }
       ]
     },
+    "styles": {
+      "default": "cenovka",
+      "selection": "data-style on <html>, stored as settings.style and set before the first paint; an unknown id falls back to cenovka. It is independent of data-theme, so every style works with every scheme.",
+      "scope": "A style changes shape, texture and lettering only. Every colour comes from the scheme tokens, so all twelve combinations hold in light and dark.",
+      "list": [
+        {
+          "id": "cenovka",
+          "name": "Hranatý",
+          "description": "tištěná cenovka"
+        },
+        {
+          "id": "pastelka",
+          "name": "Kreslený",
+          "description": "nakreslené pastelkou"
+        }
+      ],
+      "drawn": {
+        "id": "pastelka",
+        "tokens": {
+          "hand": "'Patrick Hand', 'Bradley Hand', 'Segoe Print', cursive",
+          "grid-line": "rgba(0, 0, 0, 0.05)",
+          "grain-blend": "multiply",
+          "crayon": "repeating-linear-gradient(112deg, rgba(255, 255, 255, 0.11) 0 1px, rgba(255, 255, 255, 0) 1px 9px), repeating-linear-gradient(97deg, rgba(0, 0, 0, 0.018) 0 1px, rgba(0, 0, 0, 0) 1px 13px)",
+          "paper-1": "14px 7px 12px 9px / 9px 12px 7px 14px",
+          "paper-2": "9px 13px 7px 12px / 13px 7px 12px 9px",
+          "paper-3": "7px 12px 10px 14px / 12px 9px 14px 8px",
+          "grain": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23g)' opacity='0.16'/%3E%3C/svg%3E\")",
+          "edge-wave": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='8' viewBox='0 0 64 8'%3E%3Cpath d='M0 0h64v4.1c-7.5 2.3-11.7 2.7-19.4 1.5-7.7-1.2-9.6-2.6-17.3-1.4C19.6 5.4 7.2 7.2 0 5.6Z' fill='%23000'/%3E%3C/svg%3E\")",
+          "squiggle": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='6' viewBox='0 0 80 6' preserveAspectRatio='none'%3E%3Cpath d='M1.5 4.1c13.5-2.7 26-3.4 39-2.1 13 1.2 25 2.3 38.5.4' stroke='%23000' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E\")"
+        },
+        "darkTokens": {
+          "grid-line": "rgba(255, 255, 255, 0.06)",
+          "grain-blend": "soft-light",
+          "crayon": "repeating-linear-gradient(112deg, rgba(255, 255, 255, 0.09) 0 1px, rgba(255, 255, 255, 0) 1px 9px), repeating-linear-gradient(97deg, rgba(0, 0, 0, 0.02) 0 1px, rgba(0, 0, 0, 0) 1px 13px)"
+        },
+        "unusedTokens": []
+      }
+    },
     "breakpoints": [
       {
         "name": "app-width",
@@ -1191,11 +1229,19 @@
       "description": "Statistiky, the one chart form: months as square columns in bar on one baseline over hairline gridlines and compact ticks. The chosen month gets a ground band and a tag-colour chip, the running month is hatched inside a dashed outline with \"zatím\", and the average is a 2px line painted behind the columns and named in the key row.",
       "html": "<div class=\"ds-chart-panel\"><figure class=\"ds-chart\" aria-label=\"Útraty po měsících\"><div class=\"ds-chart__plot\"><div class=\"ds-chart__area\"><span class=\"ds-chart__grid ds-chart__grid--base\" style=\"bottom:0.00%\"><span class=\"ds-chart__tick\">0</span></span><span class=\"ds-chart__grid\" style=\"bottom:25.00%\"><span class=\"ds-chart__tick\">10 tis.</span></span><span class=\"ds-chart__grid\" style=\"bottom:50.00%\"><span class=\"ds-chart__tick\">20 tis.</span></span><span class=\"ds-chart__grid\" style=\"bottom:75.00%\"><span class=\"ds-chart__tick\">30 tis.</span></span><span class=\"ds-chart__grid\" style=\"bottom:100.00%\"><span class=\"ds-chart__tick\">40 tis.</span></span><div class=\"ds-chart__columns\" style=\"--columns:6\"><button type=\"button\" class=\"ds-chart__column\" aria-pressed=\"false\" aria-label=\"dub: 31200 Kč\"><span class=\"ds-chart__bar\" style=\"height:max(2px, 78.00%)\"></span></button><button type=\"button\" class=\"ds-chart__column ds-chart__column--selected\" aria-pressed=\"true\" aria-label=\"kvě: 30747 Kč\"><span class=\"ds-chart__bar\" style=\"height:max(2px, 76.87%)\"></span></button><button type=\"button\" class=\"ds-chart__column\" aria-pressed=\"false\" aria-label=\"čvn: 21950 Kč\"><span class=\"ds-chart__bar\" style=\"height:max(2px, 54.87%)\"></span></button><button type=\"button\" class=\"ds-chart__column\" aria-pressed=\"false\" aria-label=\"čvc: 29277 Kč\"><span class=\"ds-chart__bar\" style=\"height:max(2px, 73.19%)\"></span></button><button type=\"button\" class=\"ds-chart__column\" aria-pressed=\"false\" aria-label=\"srp: 24880 Kč\"><span class=\"ds-chart__bar\" style=\"height:max(2px, 62.20%)\"></span></button><button type=\"button\" class=\"ds-chart__column ds-chart__column--current\" aria-pressed=\"false\" aria-label=\"zář: 12400 Kč\"><span class=\"ds-chart__bar\" style=\"height:max(2px, 31.00%)\"></span></button></div><span class=\"ds-chart__average\" style=\"bottom:69.03%\"></span></div></div><div class=\"ds-chart__axis\" style=\"--columns:6\"><span class=\"ds-chart__label\"><span class=\"ds-chart__month\">dub</span></span><span class=\"ds-chart__label\"><span class=\"ds-chart__month ds-chart__month--selected\">kvě</span></span><span class=\"ds-chart__label\"><span class=\"ds-chart__month\">čvn</span></span><span class=\"ds-chart__label\"><span class=\"ds-chart__month\">čvc</span></span><span class=\"ds-chart__label\"><span class=\"ds-chart__month\">srp</span></span><span class=\"ds-chart__label\"><span class=\"ds-chart__month\">zář</span><span class=\"ds-chart__sublabel\">zatím</span></span></div><p class=\"ds-chart__keys\"><span class=\"ds-chart__key\"><span class=\"ds-chart__swatch ds-chart__swatch--average\"></span>průměr 27 610,80 Kč</span><span class=\"ds-chart__key\"><span class=\"ds-chart__swatch ds-chart__swatch--current\"></span>zatím, měsíc ještě běží</span></p></figure></div>",
       "css": ".ds-chart-panel{width:340px;padding:12px 12px 10px;background:var(--surface,#ffffff);border-top:3px solid var(--rule,#111111);color:var(--text,#111111);font-family:var(--font, 'Archivo', 'Helvetica Neue', Arial, sans-serif)}.ds-chart{display:grid;gap:6px;margin:0}.ds-chart__plot{padding:10px 0 0 44px}.ds-chart__area{position:relative;isolation:isolate;height:168px;border-bottom:2px solid var(--rule,#111111)}.ds-chart__grid{position:absolute;z-index:1;left:0;right:0;height:0;border-top:1px solid var(--hairline,#c7c9ce);pointer-events:none}.ds-chart__grid--base{border-top:0}.ds-chart__tick{position:absolute;top:0;right:calc(100% + 6px);transform:translateY(-50%);font-size:.75rem;font-weight:600;font-stretch:75%;color:var(--muted,#53565c);font-variant-numeric:tabular-nums;white-space:nowrap}.ds-chart__columns{position:absolute;inset:0;display:grid;grid-template-columns:repeat(var(--columns),minmax(0,1fr))}.ds-chart__column{position:relative;display:flex;align-items:flex-end;justify-content:center;min-width:0;height:100%;padding:0;border:0;background:none;cursor:pointer}.ds-chart__column--selected{background:var(--ground,#e6e7ea)}.ds-chart__column:focus-visible{outline:3px solid var(--focus,#111111);outline-offset:-3px}.ds-chart__bar{position:relative;z-index:3;width:min(24px,62%);background:var(--bar,#111111)}.ds-chart__column--current .ds-chart__bar,.ds-chart__swatch--current{border:2px dashed var(--bar,#111111);border-bottom:0;background:repeating-linear-gradient(135deg,var(--bar,#111111) 0 2px,transparent 2px 6px)}.ds-chart__average{position:absolute;z-index:2;left:0;right:0;height:2px;margin-bottom:-1px;background:var(--text,#111111);pointer-events:none}.ds-chart__axis{display:grid;grid-template-columns:repeat(var(--columns),minmax(0,1fr));margin-left:44px}.ds-chart__label{display:grid;justify-items:center;align-content:start;gap:1px;min-width:0;font-size:.8125rem;font-weight:700;font-stretch:75%;line-height:1.2;color:var(--muted,#53565c)}.ds-chart__month{padding:1px 3px}.ds-chart__month--selected{background:var(--tag,#ffd400);color:var(--ink,#111111);font-weight:800}.ds-chart__sublabel{font-size:.6875rem;font-weight:600}.ds-chart__keys{display:flex;flex-wrap:wrap;gap:4px 16px;margin:0;padding-top:4px;font-size:.8125rem;font-weight:600;color:var(--muted,#53565c)}.ds-chart__key{display:inline-flex;align-items:center;gap:6px}.ds-chart__swatch{display:inline-block;flex:none}.ds-chart__swatch--average{width:16px;height:2px;background:var(--text,#111111)}.ds-chart__swatch--current{width:12px;height:12px;border-bottom:2px dashed var(--bar,#111111)}"
+    },
+    {
+      "name": "Paper Card (drawn style)",
+      "kind": "card",
+      "refersTo": "shelf-label",
+      "description": "The drawn style, Pastelka: squared paper with grain, a torn rail edge, a squiggle-underlined title, a crayoned tag with a hand-drawn hole, and a paper card whose outline is drawn twice with uneven corners. Only the style tokens are style-local; every colour still comes from the scheme.",
+      "html": "<div class=\"ds-paper\"><span class=\"ds-paper__rail\"></span><h3 class=\"ds-paper__title\">Podle kategorií</h3><div class=\"ds-paper__tag\"><span class=\"ds-paper__hole\"></span><span class=\"ds-paper__price\">1 250</span><span class=\"ds-paper__cur\">Kč</span></div><div class=\"ds-paper__card\"><span class=\"ds-paper__name\">Jídlo</span><span class=\"ds-paper__total\">343,47 Kč</span></div><button type=\"button\" class=\"ds-paper__button\">Přidat útratu</button></div>",
+      "css": ".ds-paper{--hand:'Patrick Hand','Bradley Hand','Segoe Print',cursive;--crayon:repeating-linear-gradient(112deg, rgba(255, 255, 255, 0.11) 0 1px, rgba(255, 255, 255, 0) 1px 9px), repeating-linear-gradient(97deg, rgba(0, 0, 0, 0.018) 0 1px, rgba(0, 0, 0, 0) 1px 13px);--grain:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23g)' opacity='0.16'/%3E%3C/svg%3E\");--grid-line:rgba(0, 0, 0, 0.05);--edge-wave:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='8' viewBox='0 0 64 8'%3E%3Cpath d='M0 0h64v4.1c-7.5 2.3-11.7 2.7-19.4 1.5-7.7-1.2-9.6-2.6-17.3-1.4C19.6 5.4 7.2 7.2 0 5.6Z' fill='%23000'/%3E%3C/svg%3E\");--squiggle:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='6' viewBox='0 0 80 6' preserveAspectRatio='none'%3E%3Cpath d='M1.5 4.1c13.5-2.7 26-3.4 39-2.1 13 1.2 25 2.3 38.5.4' stroke='%23000' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E\");--paper-1:14px 7px 12px 9px / 9px 12px 7px 14px;--paper-2:9px 13px 7px 12px / 13px 7px 12px 9px;--paper-3:7px 12px 10px 14px / 12px 9px 14px 8px;display:grid;gap:12px;width:340px;padding-bottom:16px;background-color:var(--ground,#e6e7ea);background-image:var(--grain),repeating-linear-gradient(to right,var(--grid-line) 0 1px,transparent 1px 22px),repeating-linear-gradient(to bottom,var(--grid-line) 0 1px,transparent 1px 22px);background-blend-mode:multiply,normal,normal;color:var(--text,#111111);font-family:var(--hand)}.ds-paper>:not(.ds-paper__rail){margin-inline:12px}.ds-paper__rail{position:relative;height:34px;background:var(--rail,#111111)}.ds-paper__rail::after{content:'';position:absolute;left:0;right:0;bottom:-7px;height:8px;background:var(--rail,#111111);-webkit-mask:var(--edge-wave) repeat-x top left/64px 8px;mask:var(--edge-wave) repeat-x top left/64px 8px}.ds-paper__title{position:relative;justify-self:start;margin:0;padding-bottom:8px;font-size:1.125rem;font-weight:400;letter-spacing:.01em}.ds-paper__title::after{content:'';position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--rule,#111111);-webkit-mask:var(--squiggle) no-repeat center/100% 100%;mask:var(--squiggle) no-repeat center/100% 100%}.ds-paper__tag{position:relative;display:flex;align-items:baseline;justify-content:flex-end;gap:4px;min-height:96px;padding:12px 14px;background-color:var(--tag,#ffd400);background-image:var(--crayon);border:2px solid var(--ink,#111111);border-radius:var(--paper-1);color:var(--ink,#111111)}.ds-paper__hole{position:absolute;top:12px;left:14px;width:14px;height:14px;border:2px solid var(--ink,#111111);border-radius:58% 42% 52% 48%/46% 54% 46% 54%}.ds-paper__price{font-family:Archivo,'Helvetica Neue',Arial,sans-serif;font-size:2.5rem;font-weight:800;font-stretch:62%;line-height:1;font-variant-numeric:tabular-nums}.ds-paper__cur{font-family:Archivo,'Helvetica Neue',Arial,sans-serif;font-size:1rem;font-weight:800;font-stretch:75%}.ds-paper__card{position:relative;display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:8px 12px;background-color:var(--surface,#ffffff);background-image:var(--grain);background-blend-mode:multiply;border:2px solid var(--rule,#111111);border-radius:var(--paper-2)}.ds-paper__card::after{content:'';position:absolute;inset:-4px -2px 0 -3px;border:1px solid var(--rule,#111111);border-radius:var(--paper-3);opacity:.32;pointer-events:none}.ds-paper__name{font-size:1.1875rem;letter-spacing:.01em}.ds-paper__total{font-family:Archivo,'Helvetica Neue',Arial,sans-serif;font-size:.8125rem;font-weight:600;color:var(--muted,#53565c);font-variant-numeric:tabular-nums}.ds-paper__button{justify-self:start;min-height:44px;padding:0 16px;background-color:var(--tag,#ffd400);background-image:var(--crayon);color:var(--ink,#111111);border:0;border-radius:var(--paper-2);box-shadow:inset 0 0 0 2px var(--ink,#111111);font-family:var(--hand);font-size:1rem;letter-spacing:.01em;cursor:pointer}.ds-paper__button:active{transform:translateY(1px)}.ds-paper__button:focus-visible{outline:3px solid var(--focus,#111111);outline-offset:2px}"
     }
   ],
   "narrative": {
     "northStar": "Cenovka",
-    "overview": "Cenovka is the Czech supermarket shelf price tag. Each spend is a tag printed in three taps; the pay period is the shelf it lands on. In the canonical Cenovka scheme the tag is shop yellow and black shelf-edge rails frame the top and bottom of every view. Between them, a grey ground holds square white labels, each hung from a heavy black top rule, and the tags are the only large block of colour on screen. It reads like a shop's own signage, printed and matter-of-fact, not like a finance product. Five colourways recolour the same shelf through the same tokens.\n\nDensity is shelf-like: one narrow column, controls packed 2 to 12px apart, every touch target at least 44px. Hierarchy comes from one condensed grotesque, Archivo, ranked by how narrow it runs, how heavy and how big: prices in the narrowest, heaviest cut, names and actions in condensed capitals, sentences at normal width. Colour does almost no ranking. The tag colour means tag or action, ink means numerals and rules, strike red means cancelled.\n\nThe world refuses the fintech dashboard: no rounded, shadowed white cards, no donut chart, no gradient header, no floating plus. Motion prints, short, weighted and downward. Nothing floats.",
+    "overview": "Cenovka is the Czech supermarket shelf price tag. Each spend is a tag printed in three taps; the pay period is the shelf it lands on. In the canonical Cenovka scheme the tag is shop yellow and black shelf-edge rails frame the top and bottom of every view. Between them, a grey ground holds square white labels, each hung from a heavy black top rule, and the tags are the only large block of colour on screen. It reads like a shop's own signage, printed and matter-of-fact, not like a finance product. Five colourways recolour the same shelf through the same tokens.\n\nDensity is shelf-like: one narrow column, controls packed 2 to 12px apart, every touch target at least 44px. Hierarchy comes from one condensed grotesque, Archivo, ranked by how narrow it runs, how heavy and how big: prices in the narrowest, heaviest cut, names and actions in condensed capitals, sentences at normal width. Colour does almost no ranking. The tag colour means tag or action, ink means numerals and rules, strike red means cancelled.\n\nThe world refuses the fintech dashboard: no rounded, shadowed white cards, no donut chart, no gradient header, no floating plus. Motion prints, short, weighted and downward. Nothing floats.\n\nAppearance has two independent axes. `data-theme` carries one of the six colour schemes; `data-style` carries one of two styles: Cenovka, the printed look this file describes throughout, and Pastelka, the same app drawn by hand in a squared notebook. A style changes shape, texture and lettering only and takes every colour from the scheme's tokens, so all twelve combinations hold in light and dark. Where a rule below belongs to one style, it says so; the Tag Colour Rule, the Dashed Line Rule and the Form and Word Rule hold in both.",
     "keyCharacteristics": [
       "One tag-coloured tag owns each view; everything else is white label, ground or rail.",
       "Heavy 3px top rules and square corners; only tags (6px) and standalone controls (4px) are rounded.",
@@ -1205,12 +1251,13 @@
       "Flat throughout: depth comes from fill, rule and seam, never shadow.",
       "Every state carries a form and a word, never colour alone.",
       "Motion prints downward on one weighted curve.",
-      "Six colour schemes on the same 21 tokens, light and dark; the tag and its ink never change between modes."
+      "Six colour schemes on the same 21 tokens, light and dark; the tag and its ink never change between modes.",
+      "Two styles on one structure: printed by default, drawn on request, with colour always from the scheme."
     ],
     "rules": [
       {
         "name": "The Tag Colour Rule",
-        "body": "The tag colour is the tag and what you act on: price tags, primary actions, the undo action, Hotovo, the chosen option, range and month, the active tab bar, the countdown fill, the stamp flash, and the focus ring on the rails. It never fills the ground, a section or a plain label.",
+        "body": "The tag colour is the tag and what you act on: price tags, primary actions, the undo action, Hotovo, the chosen option, range and month, the active tab bar, the countdown fill, the stamp flash, and the focus ring on the rails. It never fills the ground, a section or a plain label. It holds in both styles; the drawn style colours the same fills in with crayon.",
         "section": "colors"
       },
       {
@@ -1230,12 +1277,12 @@
       },
       {
         "name": "The Width Is Rank Rule",
-        "body": "Rank by width before anything else: 62% for prices, 75% for names, labels, rails, keys and buttons, 87.5% for list lines, hints and text being written, normal width for sentences. Weight follows role: 800 for prices, names and actions, 700 for keys, tabs and list lines, 600 for meta, hints and written notes, 400 for prose.",
+        "body": "Rank by width before anything else: 62% for prices, 75% for names, labels, rails, keys and buttons, 87.5% for list lines, hints and text being written, normal width for sentences. Weight follows role: 800 for prices, names and actions, 700 for keys, tabs and list lines, 600 for meta, hints and written notes, 400 for prose. This ranks the printed style; the drawn style has one hand at one weight and ranks by size alone.",
         "section": "typography"
       },
       {
         "name": "The Small Haléře Rule",
-        "body": "Every amount prints like a shelf price: crowns big, haléře small and raised (0.46em on the tag, 0.62em lifted 0.42em inline), \"Kč\" smaller after the number, tabular figures, never wrapping.",
+        "body": "Every amount prints like a shelf price: crowns big, haléře small and raised (0.46em on the tag, 0.62em lifted 0.42em inline), \"Kč\" smaller after the number, tabular figures, never wrapping. It holds in both styles, because amounts stay in Archivo in the drawn one.",
         "section": "typography"
       },
       {
@@ -1245,17 +1292,17 @@
       },
       {
         "name": "The Printed Flat Rule",
-        "body": "Nothing floats. To make something stand out, give it a fill, a rule or a word, never a shadow.",
+        "body": "Nothing floats. To make something stand out, give it a fill, a rule or a word, never a shadow. It holds in both styles: the drawn one adds texture, not elevation, and even the tag's hole is drawn rather than shadowed.",
         "section": "elevation"
       },
       {
         "name": "The Shelf Edge Rule",
-        "body": "Every white label, row, field and panel hangs from a 3px top rule in `rule` and keeps square corners.",
+        "body": "Every white label, row, field and panel hangs from a 3px top rule in `rule` and keeps square corners. In the drawn style the same labels take the double drawn outline instead.",
         "section": "shapes"
       },
       {
         "name": "The Dashed Line Rule",
-        "body": "A dashed line means not live or not finished: an archived category, a payment not written yet, or the month still running. Everything written and finished sits on a solid line.",
+        "body": "A dashed line means not live or not finished: an archived category, a payment not written yet, or the month still running. Everything written and finished sits on a solid line. It holds in both styles: archived rows keep their dashed edge and the running month keeps its dashed outline and hatch.",
         "section": "shapes"
       },
       {
@@ -1265,7 +1312,7 @@
       },
       {
         "name": "The Form and Word Rule",
-        "body": "Every state carries a form and a word, never colour alone:\n- The active tab gets a top bar.\n- The chosen option gets a chevron.\n- A deleted entry gets a strike, SMAZÁNO and VRÁTIT.\n- An archived category gets a dashed rule and \"vyřazená\".\n- An empty category reads \"nic\".\n- An entry without a note reads \"přidat poznámku\" over a dotted line.\n- A payment still to come sits on a dashed rule under \"Ještě přijde\"; one already written carries PRAVIDELNÁ.\n- The chosen scheme gets a 3px ring and \"· vybráno\".\n- The chosen range fills with the tag colour; the chosen month gets a chip under its column and a band behind it, and reads as pressed to a screen reader.\n- The running month is hatched inside a dashed outline and says \"zatím\"; a month where writing began part-way says \"od 14.\".\n- The average is a line and the word \"průměr\", in the chart's key and in every stat row.\n- The no-amount warning is heavier and darker, and changes its words.",
+        "body": "Every state carries a form and a word, never colour alone:\n- The active tab gets a top bar.\n- The chosen option gets a chevron.\n- A deleted entry gets a strike, SMAZÁNO and VRÁTIT.\n- An archived category gets a dashed rule and \"vyřazená\".\n- An empty category reads \"nic\".\n- An entry without a note reads \"přidat poznámku\" over a dotted line.\n- A payment still to come sits on a dashed rule under \"Ještě přijde\"; one already written carries PRAVIDELNÁ.\n- The chosen style and the chosen scheme each get a 3px ring and \"· vybráno\".\n- The chosen range fills with the tag colour; the chosen month gets a chip under its column and a band behind it, and reads as pressed to a screen reader.\n- The running month is hatched inside a dashed outline and says \"zatím\"; a month where writing began part-way says \"od 14.\".\n- The average is a line and the word \"průměr\", in the chart's key and in every stat row.\n- The no-amount warning is heavier and darker, and changes its words.",
         "section": "components"
       },
       {
@@ -1284,7 +1331,8 @@
       "Do draw anything not written yet on a dashed rule, with its amount in muted.",
       "Do chart months as square columns in `bar` on one baseline, hatch the running month inside a dashed outline, and draw the average as a 2px line behind the columns with a key that names it.",
       "Do give every state a form and a word, not just a colour.",
-      "Do take every colour from a token, and check a new screen in more than one scheme, in light and dark.",
+      "Do take every colour from a token, and check a new screen in more than one scheme and in both styles, in light and dark.",
+      "Do keep a style to shape, texture and lettering, taking every colour from the scheme's tokens, so all twelve combinations hold.",
       "Do keep touch targets at least 44px (shelf labels 58px, tabs 52px) and the column no wider than 520px.",
       "Do move things down when they print or are pressed, on `cubic-bezier(0.2, 0.9, 0.3, 1)`, and collapse motion to 1ms under reduced motion."
     ],
@@ -1292,7 +1340,8 @@
       "Don't use strike red for anything but the line through a cancelled amount: not for fills, buttons, errors or destructive actions.",
       "Don't build the fintech dashboard: no rounded, shadowed white cards, no donut or pie chart (the column chart is the one chart form), no gradient header, no floating plus button.",
       "Don't add drop shadows or elevation; the hang hole's inset is the only soft shadow.",
-      "Don't introduce a second typeface; rank with Archivo's width, weight and size.",
+      "Don't introduce a third typeface. The printed style is Archivo alone; the drawn style adds Patrick Hand for words and keeps Archivo for numbers.",
+      "Don't mix the two vocabularies on one screen: printed labels keep the 3px top rule and tracked capitals, drawn labels keep the double outline and handwriting.",
       "Don't signal a state with colour alone.",
       "Don't make anything float, bounce or rise; the only sideways move is the refusal nudge.",
       "Don't put small uppercase lead-ins above headings. Condensed capitals name the thing itself: a label, a section head, an action or a tag's name line.",

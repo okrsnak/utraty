@@ -345,6 +345,8 @@ Density is shelf-like: one narrow column, controls packed 2 to 12px apart, every
 
 The world refuses the fintech dashboard: no rounded, shadowed white cards, no donut chart, no gradient header, no floating plus. Motion prints, short, weighted and downward. Nothing floats.
 
+Appearance has two independent axes. `data-theme` carries one of the six colour schemes; `data-style` carries one of two styles: Cenovka, the printed look this file describes throughout, and Pastelka, the same app drawn by hand in a squared notebook. A style changes shape, texture and lettering only and takes every colour from the scheme's tokens, so all twelve combinations hold in light and dark. Where a rule below belongs to one style, it says so; the Tag Colour Rule, the Dashed Line Rule and the Form and Word Rule hold in both.
+
 **Key Characteristics:**
 - One tag-coloured tag owns each view; everything else is white label, ground or rail.
 - Heavy 3px top rules and square corners; only tags (6px) and standalone controls (4px) are rounded.
@@ -355,10 +357,11 @@ The world refuses the fintech dashboard: no rounded, shadowed white cards, no do
 - Every state carries a form and a word, never colour alone.
 - Motion prints downward on one weighted curve.
 - Six colour schemes on the same 21 tokens, light and dark; the tag and its ink never change between modes.
+- Two styles on one structure: printed by default, drawn on request, with colour always from the scheme.
 
 ## Colors
 
-The palette is a shelf: a tag colour and its ink, a ground with white labels, rails, and a strike red kept for crossing things out. Colour lives in 21 tokens, each a solid hex. The frontmatter holds Cenovka, the canonical scheme; five colourways set the same tokens to other values (see Colour Schemes).
+The palette is a shelf: a tag colour and its ink, a ground with white labels, rails, and a strike red kept for crossing things out. Colour lives in 21 tokens, each a solid hex. The frontmatter and the components below describe the printed style; a style of its own adds no colour. The frontmatter holds Cenovka, the canonical scheme; five colourways set the same tokens to other values (see Colour Schemes).
 
 ### Primary
 - **Tag Yellow** (`tag`, #ffd400): the price tag itself (the entry tag and the period total) and everything you act on:
@@ -427,8 +430,18 @@ Every scheme, in both modes, sets all 21 tokens as solid hex and clears these co
 
 The ink button sets text in the tag colour on the rail. That needs 4.5:1, not the 3:1 the test asks for. Every current scheme clears 6.8:1 there, and a new scheme has to as well.
 
+**Overlays in the drawn style.** Pastelka adds only translucent black and white over the scheme's own colours: two crayon passes on a fill (white at 11% covering 1px in 9, black at 1.8% covering 1px in 13; 9% and 2% in dark mode), a grain at 16% on the cards, blended multiply in light and soft-light in dark, and grid lines on the paper at 5% black in light and 6% white in dark. The ground carries no grain of its own.
+
+Measured across all six schemes in both modes, at the darkest pixel of every overlay, each pair clears its floor. The thin margins are worth knowing:
+
+- **Faint ink**, the empty zero on the tag, reads 3.06–3.20:1 where a black crayon streak lands, against a 3 floor. On the plain tag it reads 3.20–3.32:1, so that margin is thin by construction rather than by overlay.
+- **Soft ink on a crayoned tag** bottoms out at 4.56:1 (Pudr dark), against a 4.5 floor.
+- **Muted text** holds 5.30:1 and up on the ruled paper, and 4.67:1 and up on a grained card, against a 4.5 floor.
+
+An overlay has to leave every pair above its floor at its darkest pixel.
+
 ### Named Rules
-**The Tag Colour Rule.** The tag colour is the tag and what you act on: price tags, primary actions, the undo action, Hotovo, the chosen option, range and month, the active tab bar, the countdown fill, the stamp flash, and the focus ring on the rails. It never fills the ground, a section or a plain label.
+**The Tag Colour Rule.** The tag colour is the tag and what you act on: price tags, primary actions, the undo action, Hotovo, the chosen option, range and month, the active tab bar, the countdown fill, the stamp flash, and the focus ring on the rails. It never fills the ground, a section or a plain label. It holds in both styles; the drawn style colours the same fills in with crayon.
 
 **The Strike Rule.** Strike red only crosses out: it strikes cancelled amounts and does nothing else. Errors are written in ink, and actions that replace or delete data use the ink button.
 
@@ -441,6 +454,7 @@ The ink button sets text in the tag colour on the rail. That needs 4.5:1, not th
 **Display Font:** Archivo, variable (width 62–125%, weight 100–900), self-hosted as latin and latin-ext woff2 (with 'Helvetica Neue', Arial, sans-serif)
 **Body Font:** Archivo, same files, at normal width
 **Label/Mono Font:** none; labels are Archivo in condensed capitals
+**Drawn Font (Pastelka):** Patrick Hand, self-hosted as latin and latin-ext woff2 (about 25 kB, OFL, licence at `app/fonts/patrick-hand-ofl.txt`), with 'Bradley Hand', 'Segoe Print', cursive
 
 **Character:** One grotesque of the kind printed on shelf tags: narrow, heavy numerals that fit a big price in a small space, and condensed capitals for product names. Nothing is set in a second face. The build sets width with `font-stretch` percentages.
 
@@ -470,10 +484,17 @@ The ink button sets text in the tag colour on the rail. That needs 4.5:1, not th
 - **Body** (400, normal width, 1rem, line height 1.35): help copy and messages. At 0.875rem in muted it also sets saved notes under an entry and the recurring payment line ("12 000 Kč · měsíčně · Nájem"). Help paragraphs stop at 60ch.
 - **Caption** (600, 0.8125rem, tabular, in muted): running totals under shelf labels, counts, section-head notes (the ruler step, "celkem 259 Kč"), picker option notes, stat-row meta and the chart's key row. The chart's own labels are condensed and muted: month labels at 0.8125rem and 700, ticks at 0.75rem and 600, sublabels at 0.6875rem and 600, all at 75% width. Larger meta keeps the 600 weight: receipt months and the readout's comparison lines at 0.9375rem, and table cells at 0.875rem in text colour.
 
-### Named Rules
-**The Width Is Rank Rule.** Rank by width before anything else: 62% for prices, 75% for names, labels, rails, keys and buttons, 87.5% for list lines, hints and text being written, normal width for sentences. Weight follows role: 800 for prices, names and actions, 700 for keys, tabs and list lines, 600 for meta, hints and written notes, 400 for prose.
+### Drawn Lettering (Pastelka)
+The hand carries names, labels, headings, tabs, sentences and every written word, at weight 400, normal width, sentence case and 0.01em. There are no tracked capitals: handwriting says the word rather than shouting it.
 
-**The Small Haléře Rule.** Every amount prints like a shelf price: crowns big, haléře small and raised (0.46em on the tag, 0.62em lifted 0.42em inline), "Kč" smaller after the number, tabular figures, never wrapping.
+Titles and names step up about 6%, because the hand runs smaller than Archivo at the same size: section titles, the total tag's name line, receipt labels, settings subtitles and the table's summary to 1.125rem; shelf, category and stat names and the rail's period to 1.1875rem.
+
+Amounts, keypad digits, chart ticks, shelf-label totals, the editor's amount and every table figure stay in Archivo. The numbers must read at a glance.
+
+### Named Rules
+**The Width Is Rank Rule.** Rank by width before anything else: 62% for prices, 75% for names, labels, rails, keys and buttons, 87.5% for list lines, hints and text being written, normal width for sentences. Weight follows role: 800 for prices, names and actions, 700 for keys, tabs and list lines, 600 for meta, hints and written notes, 400 for prose. This ranks the printed style; the drawn style has one hand at one weight and ranks by size alone.
+
+**The Small Haléře Rule.** Every amount prints like a shelf price: crowns big, haléře small and raised (0.46em on the tag, 0.62em lifted 0.42em inline), "Kč" smaller after the number, tabular figures, never wrapping. It holds in both styles, because amounts stay in Archivo in the drawn one.
 
 ## Layout
 
@@ -493,6 +514,8 @@ Statistiky stacks a head block (the range switch, the average tag and the receip
 Nastavení runs Den výplaty, Kategorie, Pravidelné platby, Vzhled, Záloha and, until the app is installed, Na plochu. Sections sit 30px apart with 10px inside them. A button set directly in a Nastavení section stretches to the full column width, like "+ Přidat pravidelnou platbu".
 
 Short phones (max-height 700px, the iPhone SE) tighten the entry screen: the tag's minimum height drops to 150px, keypad rows to clamp(44px, 7dvh, 52px), shelf labels to 52px, and the vertical margins to 8 to 10px. While the keyboard is up for the picker, the picker takes the whole shelf and the labels, hint and keypad hide.
+
+Both styles share these measurements. The drawn style changes edges, texture and lettering, never the grid.
 
 ### Named Rules
 **The Shelf Rail Rule.** Every view hangs between two rails in the rail colour. The top rail carries what you are looking at (the period with its countdown or status, or the view name); the bottom rail carries the four tabs. Content scrolls between them, never over them.
@@ -516,12 +539,21 @@ Pressed things move down, not up: labels and buttons drop 1px, and the stamp lan
   - the range options on Statistiky until one is chosen, 2px in `rule`.
 - **Surface ring** (`box-shadow: 0 0 0 2px var(--surface)`): drawn outside the average marker on stat rows and its key, so the text-ink upright stays apart from a bar fill of the same colour.
 
+### Drawn Texture (Pastelka)
+The drawn style stays flat and adds material instead. All of it is translucent black or white, so every scheme keeps its own hue.
+
+- **Paper:** the ground carries a 22px squared ruling in `--grid-line` and nothing else. The grain, an SVG noise at 16% blended multiply in light and soft-light in dark, sits on the cards.
+- **Crayon:** fills are coloured in with `--crayon`, two uneven translucent passes at 112° and 97°, never an even stripe. It covers the tag and total tag, the date chip, primary and ink buttons, the chosen picker option, VRÁTIT, the undo action, the chosen range option, the chosen month's chip and the measured bar fills.
+- **Torn edges:** the top rail and the tab bar end in a strip of `rail` masked by `--edge-wave`.
+- **Squiggles:** `--squiggle` masks the chosen tab's underline (in the tag colour), section titles and day heads (in `rule`), the total tag's unit rule (in `ink-line`), the chart's baseline, the average line and its key, and the table's footer rule.
+- **Shaky icons:** one SVG displacement filter (`#pastelka-rough`, feTurbulence plus feDisplacementMap at scale 1.8) shakes every icon's line, and the stroke goes to 2.2.
+
 ### Named Rules
-**The Printed Flat Rule.** Nothing floats. To make something stand out, give it a fill, a rule or a word, never a shadow.
+**The Printed Flat Rule.** Nothing floats. To make something stand out, give it a fill, a rule or a word, never a shadow. It holds in both styles: the drawn one adds texture, not elevation, and even the tag's hole is drawn rather than shadowed.
 
 ## Shapes
 
-Square by default: a shelf is cut, not moulded.
+Square by default: a shelf is cut, not moulded. This is the printed style's form language; the drawn style replaces it, below.
 
 - **Square with a 3px top rule:** white labels, category rows, the entry editor, recurring payment rows and their form, field rows, panels, the undo strip, and on Statistiky the receipt, chart panel, readout, stat rows and numbers table. The strip's rule runs along its bottom edge.
 - **Square with no rule:** keypad keys and chart columns.
@@ -538,10 +570,20 @@ Line styles carry meaning:
 - **Dotted underline:** text you can write on. It is 2px under a field: the note on the tag, the picker, category names in Nastavení, the note line in the undo strip, and every labelled form field, dates included. It is 1px under the "přidat poznámku" invitation on an entry without a note. A field you are writing in shows a solid underline.
 - **1px hairline:** divides list items.
 
-### Named Rules
-**The Shelf Edge Rule.** Every white label, row, field and panel hangs from a 3px top rule in `rule` and keeps square corners.
+### Drawn Shapes (Pastelka)
+The drawn style drops the 3px top rule and the square default for drawn paper.
 
-**The Dashed Line Rule.** A dashed line means not live or not finished: an archived category, a payment not written yet, or the month still running. Everything written and finished sits on a solid line.
+- **Paper cards:** every white label, row, field and panel takes a full 2px outline in `rule` with an uneven radius, cycled across `--paper-1`, `--paper-2` and `--paper-3` by nth-child, plus a second 1px outline at 32% opacity offset up and to the left: the line drawn once more, never quite on top. Archived rows keep the dashed rule.
+- **The tag:** a 2px outline in `ink` with an uneven radius, and a hand-drawn circle for the punched hole in place of the printed one and its inset shadow.
+- **The keypad:** twelve drawn keys 6px apart with uneven radii and no panel behind them. Pressing one still inverts to ink.
+- **Bars:** a drawn track, 2px in `hairline` with an uneven radius, with the crayoned fill inside it.
+- **Chart columns:** a 2px outline in `bar` with uneven top corners. The running month keeps its hatch and dashed outline, and the chosen month's chip becomes a crayon circle.
+- **Actions:** buttons, strip actions and chips take the uneven radii too.
+
+### Named Rules
+**The Shelf Edge Rule.** Every white label, row, field and panel hangs from a 3px top rule in `rule` and keeps square corners. In the drawn style the same labels take the double drawn outline instead.
+
+**The Dashed Line Rule.** A dashed line means not live or not finished: an archived category, a payment not written yet, or the month still running. Everything written and finished sits on a solid line. It holds in both styles: archived rows keep their dashed edge and the running month keeps its dashed outline and hatch.
 
 **The Write-Here Rule.** A dotted underline means you can write here: 2px under a field, 1px under the invitation to add a note. While you write, the line goes solid instead of showing a focus outline.
 
@@ -683,8 +725,19 @@ The form takes the edited row's place, or appears below the list for a new payme
 
 An error line in text ink sits above the actions: a primary Přidat or Uložit, a quiet Zrušit, and, when editing, an ink Smazat. Smazat asks no confirmation; the strip offers undo.
 
-### Scheme Picker (Vzhled)
-A help paragraph, then a two-column grid of preview cards 10px apart, one per scheme, picked like radio buttons. Each card carries its own scheme and renders in it, including that scheme's dark variant in dark mode. A card is square, on its scheme's ground, with a 1px hairline ring and 8px 8px 10px padding. It holds a miniature of the app:
+### Drawn Style (Pastelka)
+Every component keeps its composition, its measurements and its colour tokens; only edges, texture and lettering change.
+
+- **Price tag and total tag:** crayoned and outlined in ink, with a drawn hole; the unit rule becomes a squiggle in ink line.
+- **Shelf labels, category rows, stat rows, fields, panels and the undo strip:** paper cards with the double drawn outline.
+- **Keypad:** twelve drawn keys on the paper, with no membrane panel behind them.
+- **Buttons:** primary and ink crayoned inside a drawn ring; quiet keeps its 2px ring with an uneven radius.
+- **Rails and tabs:** torn edges, and the chosen tab underlined with a squiggle in the tag colour instead of the printed 4px bar.
+- **Statistiky:** finished columns coloured in inside a drawn outline, the running month still hatched and dashed, the average line and its key drawn as squiggles, and the chosen month circled in crayon.
+- **Icons:** shaken by the displacement filter, at stroke 2.2.
+
+### Style and Colour Picker (Vzhled)
+A help paragraph, then two radio groups under their own subtitles: Styl, with a card per style, and Barvy, with a card per scheme. Both use the same two-column grid of preview cards 10px apart. Each card carries its own style and scheme, so it previews exactly what it offers: the drawn card is drawn while the app is still printed, and the printed card stays printed while the app is drawn. A scheme card also shows that scheme's dark variant in dark mode. A card is square, on its scheme's ground, with a 1px hairline ring and 8px 8px 10px padding. It holds a miniature of the app:
 
 - A 10px rail bar.
 - A 44px tag (4px corners, 6px hang hole) with "129 Kč" in ink, the 129 in Price at 1.875rem.
@@ -713,7 +766,7 @@ Confirmations, the empty period, empty statistics ("Statistiky se ukážou, až 
 - An empty category reads "nic".
 - An entry without a note reads "přidat poznámku" over a dotted line.
 - A payment still to come sits on a dashed rule under "Ještě přijde"; one already written carries PRAVIDELNÁ.
-- The chosen scheme gets a 3px ring and "· vybráno".
+- The chosen style and the chosen scheme each get a 3px ring and "· vybráno".
 - The chosen range fills with the tag colour; the chosen month gets a chip under its column and a band behind it, and reads as pressed to a screen reader.
 - The running month is hatched inside a dashed outline and says "zatím"; a month where writing began part-way says "od 14.".
 - The average is a line and the word "průměr", in the chart's key and in every stat row.
@@ -739,7 +792,8 @@ The only sideways move is the refusal nudge. Disclosure chevrons turn on the sam
 - **Do** draw anything not written yet on a dashed rule, with its amount in muted.
 - **Do** chart months as square columns in `bar` on one baseline, hatch the running month inside a dashed outline, and draw the average as a 2px line behind the columns with a key that names it.
 - **Do** give every state a form and a word, not just a colour.
-- **Do** take every colour from a token, and check a new screen in more than one scheme, in light and dark.
+- **Do** take every colour from a token, and check a new screen in more than one scheme and in both styles, in light and dark.
+- **Do** keep a style to shape, texture and lettering, taking every colour from the scheme's tokens, so all twelve combinations hold.
 - **Do** keep touch targets at least 44px (shelf labels 58px, tabs 52px) and the column no wider than 520px.
 - **Do** move things down when they print or are pressed, on `cubic-bezier(0.2, 0.9, 0.3, 1)`, and collapse motion to 1ms under reduced motion.
 
@@ -747,7 +801,8 @@ The only sideways move is the refusal nudge. Disclosure chevrons turn on the sam
 - **Don't** use strike red for anything but the line through a cancelled amount: not for fills, buttons, errors or destructive actions.
 - **Don't** build the fintech dashboard: no rounded, shadowed white cards, no donut or pie chart (the column chart is the one chart form), no gradient header, no floating plus button.
 - **Don't** add drop shadows or elevation; the hang hole's inset is the only soft shadow.
-- **Don't** introduce a second typeface; rank with Archivo's width, weight and size.
+- **Don't** introduce a third typeface. The printed style is Archivo alone; the drawn style adds Patrick Hand for words and keeps Archivo for numbers.
+- **Don't** mix the two vocabularies on one screen: printed labels keep the 3px top rule and tracked capitals, drawn labels keep the double outline and handwriting.
 - **Don't** signal a state with colour alone.
 - **Don't** make anything float, bounce or rise; the only sideways move is the refusal nudge.
 - **Don't** put small uppercase lead-ins above headings. Condensed capitals name the thing itself: a label, a section head, an action or a tag's name line.

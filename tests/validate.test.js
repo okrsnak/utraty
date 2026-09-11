@@ -100,9 +100,9 @@ test('older data without recurring payments loads with an empty list', () => {
 
 test('the colour scheme is kept when known and falls back to the default otherwise', () => {
   const withTheme = (theme) => validateState({ ...validState(), settings: { payday: 10, theme } }).state.settings;
-  assert.deepEqual(withTheme('marcipan'), { payday: 10, theme: 'marcipan' });
-  assert.deepEqual(withTheme('neon'), { payday: 10, theme: 'cenovka' });
-  assert.deepEqual(withTheme(undefined), { payday: 10, theme: 'cenovka' });
+  assert.deepEqual(withTheme('marcipan'), { payday: 10, theme: 'marcipan', style: 'cenovka' });
+  assert.deepEqual(withTheme('neon'), { payday: 10, theme: 'cenovka', style: 'cenovka' });
+  assert.deepEqual(withTheme(undefined), { payday: 10, theme: 'cenovka', style: 'cenovka' });
 });
 
 test('a recurring list that is not a list is rejected', () => {

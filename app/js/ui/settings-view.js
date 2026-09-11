@@ -9,6 +9,7 @@ import {
   renameCategory,
   setCategoryArchived,
   setPayday,
+  setStyle,
   setTheme,
 } from '../state.js';
 import { createId } from '../ids.js';
@@ -207,6 +208,7 @@ export function createSettingsView({ root, store, toast, isStandalone, setAside,
     const target = event.target;
     if (target.dataset.setting === 'payday') commit((state) => setPayday(state, Number(target.value)));
     else if (target.dataset.themeChoice) commit((state) => setTheme(state, target.value));
+    else if (target.dataset.styleChoice) commit((state) => setStyle(state, target.value));
     else if (target.dataset.rename) rename(target);
     else if (!recurring.handleInput(target)) backup.handleChange(target);
   });
