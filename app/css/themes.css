@@ -232,3 +232,49 @@
     --focus: #bfe9d5;
   }
 }
+
+/* Pomněnka: light blue tag, deep navy rails. */
+
+[data-theme='pomnenka'] {
+  --tag: #bfdcf4;
+  --ink: #12314d;
+  --ink-soft: #3a5a76;
+  --ink-line: #4c6f8f;
+  --ink-faint: #527695;
+  --strike: #c62828;
+  --bar: #1c4a72;
+  --ground: #e6eef7;
+  --surface: #fbfdff;
+  --key: #fbfdff;
+  --key-pressed: #d9e4f0;
+  --key-alt: #dbe6f2;
+  --text: #10283d;
+  --muted: #44596c;
+  --rule: #123a5c;
+  --hairline: #c9d8e6;
+  --rail: #123a5c;
+  --rail-text: #f2f8ff;
+  --rail-muted: #bdd3e6;
+  --rail-track: #2f5a7e;
+  --focus: #123a5c;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-theme='pomnenka'] {
+    --strike: #ff7b7b;
+    --bar: #bfdcf4;
+    --ground: #131b23;
+    --surface: #1d2833;
+    --key: #26333f;
+    --key-pressed: #354553;
+    --key-alt: #18222b;
+    --text: #eef4fa;
+    --muted: #a8bccd;
+    --rule: #eef4fa;
+    --hairline: #354553;
+    --rail: #0a1016;
+    --rail-muted: #b2cade;
+    --rail-track: #294256;
+    --focus: #bfdcf4;
+  }
+}

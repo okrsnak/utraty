@@ -11,6 +11,7 @@ export const THEMES = [
   { id: 'pudr', name: 'Pudr', description: 'tlumená pudrová růžová' },
   { id: 'broskev', name: 'Broskev', description: 'broskvově růžová' },
   { id: 'mata', name: 'Máta', description: 'pastelově mentolová' },
+  { id: 'pomnenka', name: 'Pomněnka', description: 'světle modrá' },
 ];
 
 export function isThemeId(id) {

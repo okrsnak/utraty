@@ -1,6 +1,6 @@
 ---
 name: "Útraty"
-description: "A pay-period spending log printed as Czech supermarket shelf price tags, in six colour schemes."
+description: "A pay-period spending log printed as Czech supermarket shelf price tags, in seven colour schemes."
 colors:
   tag: "#ffd400"
   ink: "#111111"
@@ -339,13 +339,13 @@ components:
 
 **Creative North Star: "Cenovka"**
 
-Cenovka is the Czech supermarket shelf price tag. Each spend is a tag printed in three taps; the pay period is the shelf it lands on. In the canonical Cenovka scheme the tag is shop yellow and black shelf-edge rails frame the top and bottom of every view. Between them, a grey ground holds square white labels, each hung from a heavy black top rule, and the tags are the only large block of colour on screen. It reads like a shop's own signage, printed and matter-of-fact, not like a finance product. Five colourways recolour the same shelf through the same tokens.
+Cenovka is the Czech supermarket shelf price tag. Each spend is a tag printed in three taps; the pay period is the shelf it lands on. In the canonical Cenovka scheme the tag is shop yellow and black shelf-edge rails frame the top and bottom of every view. Between them, a grey ground holds square white labels, each hung from a heavy black top rule, and the tags are the only large block of colour on screen. It reads like a shop's own signage, printed and matter-of-fact, not like a finance product. Six colourways recolour the same shelf through the same tokens.
 
 Density is shelf-like: one narrow column, controls packed 2 to 12px apart, every touch target at least 44px. Hierarchy comes from one condensed grotesque, Archivo, ranked by how narrow it runs, how heavy and how big: prices in the narrowest, heaviest cut, names and actions in condensed capitals, sentences at normal width. Colour does almost no ranking. The tag colour means tag or action, ink means numerals and rules, strike red means cancelled.
 
 The world refuses the fintech dashboard: no rounded, shadowed white cards, no donut chart, no gradient header, no floating plus. Motion prints, short, weighted and downward. Nothing floats.
 
-Appearance has two independent axes. `data-theme` carries one of the six colour schemes; `data-style` carries one of two styles: Cenovka, the printed look this file describes throughout, and Pastelka, the same app drawn by hand in a squared notebook. A style changes shape, texture and lettering only and takes every colour from the scheme's tokens, so all twelve combinations hold in light and dark. Where a rule below belongs to one style, it says so; the Tag Colour Rule, the Dashed Line Rule and the Form and Word Rule hold in both.
+Appearance has two independent axes. `data-theme` carries one of the seven colour schemes; `data-style` carries one of two styles: Cenovka, the printed look this file describes throughout, and Pastelka, the same app drawn by hand in a squared notebook. A style changes shape, texture and lettering only and takes every colour from the scheme's tokens, so all fourteen combinations hold in light and dark. Where a rule below belongs to one style, it says so; the Tag Colour Rule, the Dashed Line Rule and the Form and Word Rule hold in both.
 
 **Key Characteristics:**
 - One tag-coloured tag owns each view; everything else is white label, ground or rail.
@@ -356,12 +356,12 @@ Appearance has two independent axes. `data-theme` carries one of the six colour 
 - Flat throughout: depth comes from fill, rule and seam, never shadow.
 - Every state carries a form and a word, never colour alone.
 - Motion prints downward on one weighted curve.
-- Six colour schemes on the same 21 tokens, light and dark; the tag and its ink never change between modes.
+- Seven colour schemes on the same 21 tokens, light and dark; the tag and its ink never change between modes.
 - Two styles on one structure: printed by default, drawn on request, with colour always from the scheme.
 
 ## Colors
 
-The palette is a shelf: a tag colour and its ink, a ground with white labels, rails, and a strike red kept for crossing things out. Colour lives in 21 tokens, each a solid hex. The frontmatter and the components below describe the printed style; a style of its own adds no colour. The frontmatter holds Cenovka, the canonical scheme; five colourways set the same tokens to other values (see Colour Schemes).
+The palette is a shelf: a tag colour and its ink, a ground with white labels, rails, and a strike red kept for crossing things out. Colour lives in 21 tokens, each a solid hex. The frontmatter and the components below describe the printed style; a style of its own adds no colour. The frontmatter holds Cenovka, the canonical scheme; six colourways set the same tokens to other values (see Colour Schemes).
 
 ### Primary
 - **Tag Yellow** (`tag`, #ffd400): the price tag itself (the entry tag and the period total) and everything you act on:
@@ -400,11 +400,11 @@ Five roles make a scheme:
 
 - **Tag** (`tag`): a light, clear colour the ink reads on. The same in dark mode.
 - **Ink family** (`ink`, `ink-soft`, `ink-line`, `ink-faint`): a deep ink in the tag's hue and its solid mixes over the tag. The same in dark mode.
-- **Rails** (`rail`, `rail-text`, `rail-muted`, `rail-track`, with `rule`, `focus` and `bar`): a deep colour for both rails and the keypad seams. In light mode the same colour draws the shelf rules and the focus ring, and in every scheme but Cukrová vata the bar. In dark mode the rail goes near-black, rules take the text colour, and the focus ring and bar take the tag colour.
+- **Rails** (`rail`, `rail-text`, `rail-muted`, `rail-track`, with `rule`, `focus` and `bar`): a deep colour for both rails and the keypad seams. In light mode the same colour draws the shelf rules and the focus ring, and in every scheme but Cukrová vata and Pomněnka the bar. In dark mode the rail goes near-black, rules take the text colour, and the focus ring and bar take the tag colour.
 - **Ground and surface** (`ground`, `surface`, `key`, `key-pressed`, `key-alt`, `hairline`, with `text` and `muted`): a ground tinted towards the scheme, near-white labels and keys, and the text that sits on them. In dark mode, tinted near-blacks.
 - **Strike** (`strike`): always a red (sale red, raspberry, brick or crimson), lifted in dark mode.
 
-The six schemes in light mode (full sets, dark included, live in `app/css/base.css`, `app/css/themes.css` and the sidecar's `extensions.schemes`):
+The seven schemes in light mode (full sets, dark included, live in `app/css/base.css`, `app/css/themes.css` and the sidecar's `extensions.schemes`):
 
 | Scheme | Character | Tag | Ink | Rails | Ground | Strike |
 |---|---|---|---|---|---|---|
@@ -414,6 +414,7 @@ The six schemes in light mode (full sets, dark included, live in `app/css/base.c
 | **Pudr** | tlumená pudrová růžová: powder rose, mauve rails | #e8b7bf | #33201f | #4a2f36 | #efe7e5 | #b3261e |
 | **Broskev** | broskvově růžová: peach-pink, cocoa rails | #ffcdb5 | #3b1d12 | #4a2620 | #f8ece6 | #a3123a |
 | **Máta** | pastelově mentolová: pastel mint, deep teal rails | #bfe9d5 | #0f2b25 | #15403a | #e7f1ed | #c62828 |
+| **Pomněnka** | světle modrá: light blue, deep navy rails | #bfdcf4 | #12314d | #123a5c | #e6eef7 | #c62828 |
 
 Every scheme, in both modes, sets all 21 tokens as solid hex and clears these contrast floors, checked by `tests/themes.test.js`:
 
@@ -432,9 +433,9 @@ The ink button sets text in the tag colour on the rail. That needs 4.5:1, not th
 
 **Overlays in the drawn style.** Pastelka adds only translucent black and white over the scheme's own colours: two crayon passes on a fill (white at 11% covering 1px in 9, black at 1.8% covering 1px in 13; 9% and 2% in dark mode), a grain at 16% on the cards, blended multiply in light and soft-light in dark, and grid lines on the paper at 5% black in light and 6% white in dark. The ground carries no grain of its own.
 
-Measured across all six schemes in both modes, at the darkest pixel of every overlay, each pair clears its floor. The thin margins are worth knowing:
+Measured across all seven schemes in both modes, at the darkest pixel of every overlay, every pair clears its floor. The thin margins are worth knowing:
 
-- **Faint ink**, the empty zero on the tag, reads 3.06–3.20:1 where a black crayon streak lands, against a 3 floor. On the plain tag it reads 3.20–3.32:1, so that margin is thin by construction rather than by overlay.
+- **Faint ink**, the empty zero on the tag, reads 3.06–3.24:1 where a black crayon streak lands, against a 3 floor. On the plain tag it reads 3.20–3.37:1, so that margin is thin by construction rather than by overlay.
 - **Soft ink on a crayoned tag** bottoms out at 4.56:1 (Pudr dark), against a 4.5 floor.
 - **Muted text** holds 5.30:1 and up on the ruled paper, and 4.67:1 and up on a grained card, against a 4.5 floor.
 
@@ -793,7 +794,7 @@ The only sideways move is the refusal nudge. Disclosure chevrons turn on the sam
 - **Do** chart months as square columns in `bar` on one baseline, hatch the running month inside a dashed outline, and draw the average as a 2px line behind the columns with a key that names it.
 - **Do** give every state a form and a word, not just a colour.
 - **Do** take every colour from a token, and check a new screen in more than one scheme and in both styles, in light and dark.
-- **Do** keep a style to shape, texture and lettering, taking every colour from the scheme's tokens, so all twelve combinations hold.
+- **Do** keep a style to shape, texture and lettering, taking every colour from the scheme's tokens, so all fourteen combinations hold.
 - **Do** keep touch targets at least 44px (shelf labels 58px, tabs 52px) and the column no wider than 520px.
 - **Do** move things down when they print or are pressed, on `cubic-bezier(0.2, 0.9, 0.3, 1)`, and collapse motion to 1ms under reduced motion.
 

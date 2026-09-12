@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-11T23:17:08.945Z",
+  "generatedAt": "2026-09-12T07:07:11.810Z",
   "title": "Design System: Útraty",
   "extensions": {
     "colorMeta": {
@@ -1073,13 +1073,64 @@
             "rail-track": "#26443e",
             "focus": "#bfe9d5"
           }
+        },
+        {
+          "id": "pomnenka",
+          "name": "Pomněnka",
+          "description": "světle modrá",
+          "light": {
+            "tag": "#bfdcf4",
+            "ink": "#12314d",
+            "ink-soft": "#3a5a76",
+            "ink-line": "#4c6f8f",
+            "ink-faint": "#527695",
+            "strike": "#c62828",
+            "bar": "#1c4a72",
+            "ground": "#e6eef7",
+            "surface": "#fbfdff",
+            "key": "#fbfdff",
+            "key-pressed": "#d9e4f0",
+            "key-alt": "#dbe6f2",
+            "text": "#10283d",
+            "muted": "#44596c",
+            "rule": "#123a5c",
+            "hairline": "#c9d8e6",
+            "rail": "#123a5c",
+            "rail-text": "#f2f8ff",
+            "rail-muted": "#bdd3e6",
+            "rail-track": "#2f5a7e",
+            "focus": "#123a5c"
+          },
+          "dark": {
+            "tag": "#bfdcf4",
+            "ink": "#12314d",
+            "ink-soft": "#3a5a76",
+            "ink-line": "#4c6f8f",
+            "ink-faint": "#527695",
+            "strike": "#ff7b7b",
+            "bar": "#bfdcf4",
+            "ground": "#131b23",
+            "surface": "#1d2833",
+            "key": "#26333f",
+            "key-pressed": "#354553",
+            "key-alt": "#18222b",
+            "text": "#eef4fa",
+            "muted": "#a8bccd",
+            "rule": "#eef4fa",
+            "hairline": "#354553",
+            "rail": "#0a1016",
+            "rail-text": "#f2f8ff",
+            "rail-muted": "#b2cade",
+            "rail-track": "#294256",
+            "focus": "#bfdcf4"
+          }
         }
       ]
     },
     "styles": {
       "default": "cenovka",
       "selection": "data-style on <html>, stored as settings.style and set before the first paint; an unknown id falls back to cenovka. It is independent of data-theme, so every style works with every scheme.",
-      "scope": "A style changes shape, texture and lettering only. Every colour comes from the scheme tokens, so all twelve combinations hold in light and dark.",
+      "scope": "A style changes shape, texture and lettering only. Every colour comes from the scheme tokens, so all fourteen combinations hold in light and dark.",
       "list": [
         {
           "id": "cenovka",
@@ -1219,7 +1270,7 @@
       "kind": "custom",
       "refersTo": "scheme-card",
       "description": "Nastavení → Vzhled: every scheme as a small preview of the app drawn in its own tokens (rail bar, tag with 129 Kč and hang hole, three mini labels), picked like a radio; the chosen card gets a 3px rule ring and \"· vybráno\".",
-      "html": "<div class=\"ds-schemes\" role=\"radiogroup\" aria-label=\"Barevné schéma\"><label class=\"ds-scheme\" style=\"--tag:#ffd400;--ink:#111111;--rail:#111111;--ground:#e6e7ea;--surface:#ffffff;--rule:#111111;--text:#111111;--muted:#53565c;--hairline:#c7c9ce;--focus:#111111\"><input class=\"ds-scheme__input\" type=\"radio\" name=\"ds-scheme\" checked><span class=\"ds-scheme__preview\" aria-hidden=\"true\"><span class=\"ds-scheme__rail\"></span><span class=\"ds-scheme__tag\"><span class=\"ds-scheme__hole\"></span><span class=\"ds-scheme__price\">129</span><span class=\"ds-scheme__cur\">Kč</span></span><span class=\"ds-scheme__labels\"><span></span><span></span><span></span></span></span><span class=\"ds-scheme__name\">Cenovka</span><span class=\"ds-scheme__desc\">žlutá a černá · vybráno</span></label><label class=\"ds-scheme\" style=\"--tag:#f7c3d4;--ink:#3a1627;--rail:#3a1627;--ground:#f6eaef;--surface:#fffbfc;--rule:#3a1627;--text:#2f1420;--muted:#6b4a58;--hairline:#e3cad4;--focus:#3a1627\"><input class=\"ds-scheme__input\" type=\"radio\" name=\"ds-scheme\"><span class=\"ds-scheme__preview\" aria-hidden=\"true\"><span class=\"ds-scheme__rail\"></span><span class=\"ds-scheme__tag\"><span class=\"ds-scheme__hole\"></span><span class=\"ds-scheme__price\">129</span><span class=\"ds-scheme__cur\">Kč</span></span><span class=\"ds-scheme__labels\"><span></span><span></span><span></span></span></span><span class=\"ds-scheme__name\">Marcipán</span><span class=\"ds-scheme__desc\">pastelově růžová</span></label><label class=\"ds-scheme\" style=\"--tag:#ffc7de;--ink:#2a1d47;--rail:#45357a;--ground:#efebfa;--surface:#fdfbff;--rule:#45357a;--text:#231a3b;--muted:#5d5380;--hairline:#dcd4ef;--focus:#45357a\"><input class=\"ds-scheme__input\" type=\"radio\" name=\"ds-scheme\"><span class=\"ds-scheme__preview\" aria-hidden=\"true\"><span class=\"ds-scheme__rail\"></span><span class=\"ds-scheme__tag\"><span class=\"ds-scheme__hole\"></span><span class=\"ds-scheme__price\">129</span><span class=\"ds-scheme__cur\">Kč</span></span><span class=\"ds-scheme__labels\"><span></span><span></span><span></span></span></span><span class=\"ds-scheme__name\">Cukrová vata</span><span class=\"ds-scheme__desc\">růžová s levandulí</span></label><label class=\"ds-scheme\" style=\"--tag:#e8b7bf;--ink:#33201f;--rail:#4a2f36;--ground:#efe7e5;--surface:#fcf9f8;--rule:#4a2f36;--text:#2c1d1d;--muted:#685252;--hairline:#dccfcc;--focus:#4a2f36\"><input class=\"ds-scheme__input\" type=\"radio\" name=\"ds-scheme\"><span class=\"ds-scheme__preview\" aria-hidden=\"true\"><span class=\"ds-scheme__rail\"></span><span class=\"ds-scheme__tag\"><span class=\"ds-scheme__hole\"></span><span class=\"ds-scheme__price\">129</span><span class=\"ds-scheme__cur\">Kč</span></span><span class=\"ds-scheme__labels\"><span></span><span></span><span></span></span></span><span class=\"ds-scheme__name\">Pudr</span><span class=\"ds-scheme__desc\">tlumená pudrová růžová</span></label><label class=\"ds-scheme\" style=\"--tag:#ffcdb5;--ink:#3b1d12;--rail:#4a2620;--ground:#f8ece6;--surface:#fffaf7;--rule:#4a2620;--text:#2f1a12;--muted:#6b4d41;--hairline:#ead6cc;--focus:#4a2620\"><input class=\"ds-scheme__input\" type=\"radio\" name=\"ds-scheme\"><span class=\"ds-scheme__preview\" aria-hidden=\"true\"><span class=\"ds-scheme__rail\"></span><span class=\"ds-scheme__tag\"><span class=\"ds-scheme__hole\"></span><span class=\"ds-scheme__price\">129</span><span class=\"ds-scheme__cur\">Kč</span></span><span class=\"ds-scheme__labels\"><span></span><span></span><span></span></span></span><span class=\"ds-scheme__name\">Broskev</span><span class=\"ds-scheme__desc\">broskvově růžová</span></label><label class=\"ds-scheme\" style=\"--tag:#bfe9d5;--ink:#0f2b25;--rail:#15403a;--ground:#e7f1ed;--surface:#fbfefd;--rule:#15403a;--text:#10241f;--muted:#465e58;--hairline:#cde0d8;--focus:#15403a\"><input class=\"ds-scheme__input\" type=\"radio\" name=\"ds-scheme\"><span class=\"ds-scheme__preview\" aria-hidden=\"true\"><span class=\"ds-scheme__rail\"></span><span class=\"ds-scheme__tag\"><span class=\"ds-scheme__hole\"></span><span class=\"ds-scheme__price\">129</span><span class=\"ds-scheme__cur\">Kč</span></span><span class=\"ds-scheme__labels\"><span></span><span></span><span></span></span></span><span class=\"ds-scheme__name\">Máta</span><span class=\"ds-scheme__desc\">pastelově mentolová</span></label></div>",
+      "html": "<div class=\"ds-schemes\" role=\"radiogroup\" aria-label=\"Barevné schéma\"><label class=\"ds-scheme\" style=\"--tag:#ffd400;--ink:#111111;--rail:#111111;--ground:#e6e7ea;--surface:#ffffff;--rule:#111111;--text:#111111;--muted:#53565c;--hairline:#c7c9ce;--focus:#111111\"><input class=\"ds-scheme__input\" type=\"radio\" name=\"ds-scheme\" checked><span class=\"ds-scheme__preview\" aria-hidden=\"true\"><span class=\"ds-scheme__rail\"></span><span class=\"ds-scheme__tag\"><span class=\"ds-scheme__hole\"></span><span class=\"ds-scheme__price\">129</span><span class=\"ds-scheme__cur\">Kč</span></span><span class=\"ds-scheme__labels\"><span></span><span></span><span></span></span></span><span class=\"ds-scheme__name\">Cenovka</span><span class=\"ds-scheme__desc\">žlutá a černá · vybráno</span></label><label class=\"ds-scheme\" style=\"--tag:#f7c3d4;--ink:#3a1627;--rail:#3a1627;--ground:#f6eaef;--surface:#fffbfc;--rule:#3a1627;--text:#2f1420;--muted:#6b4a58;--hairline:#e3cad4;--focus:#3a1627\"><input class=\"ds-scheme__input\" type=\"radio\" name=\"ds-scheme\"><span class=\"ds-scheme__preview\" aria-hidden=\"true\"><span class=\"ds-scheme__rail\"></span><span class=\"ds-scheme__tag\"><span class=\"ds-scheme__hole\"></span><span class=\"ds-scheme__price\">129</span><span class=\"ds-scheme__cur\">Kč</span></span><span class=\"ds-scheme__labels\"><span></span><span></span><span></span></span></span><span class=\"ds-scheme__name\">Marcipán</span><span class=\"ds-scheme__desc\">pastelově růžová</span></label><label class=\"ds-scheme\" style=\"--tag:#ffc7de;--ink:#2a1d47;--rail:#45357a;--ground:#efebfa;--surface:#fdfbff;--rule:#45357a;--text:#231a3b;--muted:#5d5380;--hairline:#dcd4ef;--focus:#45357a\"><input class=\"ds-scheme__input\" type=\"radio\" name=\"ds-scheme\"><span class=\"ds-scheme__preview\" aria-hidden=\"true\"><span class=\"ds-scheme__rail\"></span><span class=\"ds-scheme__tag\"><span class=\"ds-scheme__hole\"></span><span class=\"ds-scheme__price\">129</span><span class=\"ds-scheme__cur\">Kč</span></span><span class=\"ds-scheme__labels\"><span></span><span></span><span></span></span></span><span class=\"ds-scheme__name\">Cukrová vata</span><span class=\"ds-scheme__desc\">růžová s levandulí</span></label><label class=\"ds-scheme\" style=\"--tag:#e8b7bf;--ink:#33201f;--rail:#4a2f36;--ground:#efe7e5;--surface:#fcf9f8;--rule:#4a2f36;--text:#2c1d1d;--muted:#685252;--hairline:#dccfcc;--focus:#4a2f36\"><input class=\"ds-scheme__input\" type=\"radio\" name=\"ds-scheme\"><span class=\"ds-scheme__preview\" aria-hidden=\"true\"><span class=\"ds-scheme__rail\"></span><span class=\"ds-scheme__tag\"><span class=\"ds-scheme__hole\"></span><span class=\"ds-scheme__price\">129</span><span class=\"ds-scheme__cur\">Kč</span></span><span class=\"ds-scheme__labels\"><span></span><span></span><span></span></span></span><span class=\"ds-scheme__name\">Pudr</span><span class=\"ds-scheme__desc\">tlumená pudrová růžová</span></label><label class=\"ds-scheme\" style=\"--tag:#ffcdb5;--ink:#3b1d12;--rail:#4a2620;--ground:#f8ece6;--surface:#fffaf7;--rule:#4a2620;--text:#2f1a12;--muted:#6b4d41;--hairline:#ead6cc;--focus:#4a2620\"><input class=\"ds-scheme__input\" type=\"radio\" name=\"ds-scheme\"><span class=\"ds-scheme__preview\" aria-hidden=\"true\"><span class=\"ds-scheme__rail\"></span><span class=\"ds-scheme__tag\"><span class=\"ds-scheme__hole\"></span><span class=\"ds-scheme__price\">129</span><span class=\"ds-scheme__cur\">Kč</span></span><span class=\"ds-scheme__labels\"><span></span><span></span><span></span></span></span><span class=\"ds-scheme__name\">Broskev</span><span class=\"ds-scheme__desc\">broskvově růžová</span></label><label class=\"ds-scheme\" style=\"--tag:#bfe9d5;--ink:#0f2b25;--rail:#15403a;--ground:#e7f1ed;--surface:#fbfefd;--rule:#15403a;--text:#10241f;--muted:#465e58;--hairline:#cde0d8;--focus:#15403a\"><input class=\"ds-scheme__input\" type=\"radio\" name=\"ds-scheme\"><span class=\"ds-scheme__preview\" aria-hidden=\"true\"><span class=\"ds-scheme__rail\"></span><span class=\"ds-scheme__tag\"><span class=\"ds-scheme__hole\"></span><span class=\"ds-scheme__price\">129</span><span class=\"ds-scheme__cur\">Kč</span></span><span class=\"ds-scheme__labels\"><span></span><span></span><span></span></span></span><span class=\"ds-scheme__name\">Máta</span><span class=\"ds-scheme__desc\">pastelově mentolová</span></label><label class=\"ds-scheme\" style=\"--tag:#bfdcf4;--ink:#12314d;--rail:#123a5c;--ground:#e6eef7;--surface:#fbfdff;--rule:#123a5c;--text:#10283d;--muted:#44596c;--hairline:#c9d8e6;--focus:#123a5c\"><input class=\"ds-scheme__input\" type=\"radio\" name=\"ds-scheme\"><span class=\"ds-scheme__preview\" aria-hidden=\"true\"><span class=\"ds-scheme__rail\"></span><span class=\"ds-scheme__tag\"><span class=\"ds-scheme__hole\"></span><span class=\"ds-scheme__price\">129</span><span class=\"ds-scheme__cur\">Kč</span></span><span class=\"ds-scheme__labels\"><span></span><span></span><span></span></span></span><span class=\"ds-scheme__name\">Pomněnka</span><span class=\"ds-scheme__desc\">světle modrá</span></label></div>",
       "css": ".ds-schemes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;width:340px;font-family:var(--font, 'Archivo', 'Helvetica Neue', Arial, sans-serif)}.ds-scheme{display:grid;gap:6px;padding:8px 8px 10px;background:var(--ground);color:var(--text);box-shadow:inset 0 0 0 1px var(--hairline);cursor:pointer}.ds-scheme:has(input:checked){box-shadow:inset 0 0 0 3px var(--rule)}.ds-scheme:has(input:focus-visible){outline:3px solid var(--focus);outline-offset:2px}.ds-scheme__input{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.ds-scheme__preview{display:grid;gap:5px}.ds-scheme__rail{height:10px;background:var(--rail)}.ds-scheme__tag{position:relative;display:flex;align-items:baseline;justify-content:flex-end;gap:2px;height:44px;padding:4px 8px;background:var(--tag);color:var(--ink);border-radius:4px;font-weight:800}.ds-scheme__hole{position:absolute;top:6px;left:7px;width:6px;height:6px;border-radius:50%;background:var(--ground)}.ds-scheme__price{font-size:1.875rem;font-stretch:62%;line-height:1}.ds-scheme__cur{font-size:.75rem;font-stretch:75%}.ds-scheme__labels{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}.ds-scheme__labels span{height:12px;background:var(--surface);border-top:2px solid var(--rule)}.ds-scheme__name{font-size:1rem;font-weight:800;font-stretch:75%}.ds-scheme__desc{font-size:.8125rem;color:var(--muted)}"
     },
     {
@@ -1241,7 +1292,7 @@
   ],
   "narrative": {
     "northStar": "Cenovka",
-    "overview": "Cenovka is the Czech supermarket shelf price tag. Each spend is a tag printed in three taps; the pay period is the shelf it lands on. In the canonical Cenovka scheme the tag is shop yellow and black shelf-edge rails frame the top and bottom of every view. Between them, a grey ground holds square white labels, each hung from a heavy black top rule, and the tags are the only large block of colour on screen. It reads like a shop's own signage, printed and matter-of-fact, not like a finance product. Five colourways recolour the same shelf through the same tokens.\n\nDensity is shelf-like: one narrow column, controls packed 2 to 12px apart, every touch target at least 44px. Hierarchy comes from one condensed grotesque, Archivo, ranked by how narrow it runs, how heavy and how big: prices in the narrowest, heaviest cut, names and actions in condensed capitals, sentences at normal width. Colour does almost no ranking. The tag colour means tag or action, ink means numerals and rules, strike red means cancelled.\n\nThe world refuses the fintech dashboard: no rounded, shadowed white cards, no donut chart, no gradient header, no floating plus. Motion prints, short, weighted and downward. Nothing floats.\n\nAppearance has two independent axes. `data-theme` carries one of the six colour schemes; `data-style` carries one of two styles: Cenovka, the printed look this file describes throughout, and Pastelka, the same app drawn by hand in a squared notebook. A style changes shape, texture and lettering only and takes every colour from the scheme's tokens, so all twelve combinations hold in light and dark. Where a rule below belongs to one style, it says so; the Tag Colour Rule, the Dashed Line Rule and the Form and Word Rule hold in both.",
+    "overview": "Cenovka is the Czech supermarket shelf price tag. Each spend is a tag printed in three taps; the pay period is the shelf it lands on. In the canonical Cenovka scheme the tag is shop yellow and black shelf-edge rails frame the top and bottom of every view. Between them, a grey ground holds square white labels, each hung from a heavy black top rule, and the tags are the only large block of colour on screen. It reads like a shop's own signage, printed and matter-of-fact, not like a finance product. Six colourways recolour the same shelf through the same tokens.\n\nDensity is shelf-like: one narrow column, controls packed 2 to 12px apart, every touch target at least 44px. Hierarchy comes from one condensed grotesque, Archivo, ranked by how narrow it runs, how heavy and how big: prices in the narrowest, heaviest cut, names and actions in condensed capitals, sentences at normal width. Colour does almost no ranking. The tag colour means tag or action, ink means numerals and rules, strike red means cancelled.\n\nThe world refuses the fintech dashboard: no rounded, shadowed white cards, no donut chart, no gradient header, no floating plus. Motion prints, short, weighted and downward. Nothing floats.\n\nAppearance has two independent axes. `data-theme` carries one of the seven colour schemes; `data-style` carries one of two styles: Cenovka, the printed look this file describes throughout, and Pastelka, the same app drawn by hand in a squared notebook. A style changes shape, texture and lettering only and takes every colour from the scheme's tokens, so all fourteen combinations hold in light and dark. Where a rule below belongs to one style, it says so; the Tag Colour Rule, the Dashed Line Rule and the Form and Word Rule hold in both.",
     "keyCharacteristics": [
       "One tag-coloured tag owns each view; everything else is white label, ground or rail.",
       "Heavy 3px top rules and square corners; only tags (6px) and standalone controls (4px) are rounded.",
@@ -1251,7 +1302,7 @@
       "Flat throughout: depth comes from fill, rule and seam, never shadow.",
       "Every state carries a form and a word, never colour alone.",
       "Motion prints downward on one weighted curve.",
-      "Six colour schemes on the same 21 tokens, light and dark; the tag and its ink never change between modes.",
+      "Seven colour schemes on the same 21 tokens, light and dark; the tag and its ink never change between modes.",
       "Two styles on one structure: printed by default, drawn on request, with colour always from the scheme."
     ],
     "rules": [
@@ -1332,7 +1383,7 @@
       "Do chart months as square columns in `bar` on one baseline, hatch the running month inside a dashed outline, and draw the average as a 2px line behind the columns with a key that names it.",
       "Do give every state a form and a word, not just a colour.",
       "Do take every colour from a token, and check a new screen in more than one scheme and in both styles, in light and dark.",
-      "Do keep a style to shape, texture and lettering, taking every colour from the scheme's tokens, so all twelve combinations hold.",
+      "Do keep a style to shape, texture and lettering, taking every colour from the scheme's tokens, so all fourteen combinations hold.",
       "Do keep touch targets at least 44px (shelf labels 58px, tabs 52px) and the column no wider than 520px.",
       "Do move things down when they print or are pressed, on `cubic-bezier(0.2, 0.9, 0.3, 1)`, and collapse motion to 1ms under reduced motion."
     ],
